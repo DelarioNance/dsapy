@@ -15,7 +15,6 @@ Date: January 17, 2023 - January 17, 2023
 
 
 ## **Introduction**
-
 A test strategy detailing the resources, test types, and technologies used for ensuring high quality of the `ArrayList` class.
 
 ## **References**
