@@ -7,7 +7,10 @@ Date: January 24, 2023 - January 24, 2023
 """
 
 from dataclasses import dataclass
+import numpy as np
 
 @dataclass
 class ArrayList:
-    values: list[int] = []
+    """_summary_
+    """
+    values: np.ndarray = np.array([])

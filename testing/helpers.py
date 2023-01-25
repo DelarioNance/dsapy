@@ -1,21 +1,35 @@
 """
-A Python program containing the definitions of various helper 
+A Python program containing the definitions of helper 
 functions used in the unit, integration, and end-to-end test
-scripts.
+scripts for the ArrayList class.
 
 Author: Delario Nance, Jr.
 Date: January 24, 2023 - January 24, 2023
 """
 
-from src.ArrayList import ArrayList
+FILEPATH_TO_SRC = "c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src"
 
-def random_array_list(size: int) -> ArrayList:
-    """Returns an ArrayList of a user-specified size, of random 
-    integers in the range [-1000,1000].
+import sys
+sys.path.append(FILEPATH_TO_SRC)
+
+from ArrayList import ArrayList
+import numpy as np
+
+def rand_array_list( size: int, start: int = -1000, end: int = 1001) -> ArrayList:
+    """Returns an ArrayList of a user-specified size, 
+    containing random integers in a user-specified range 
+    [start,end).
 
     Args:
-        size (int): The user-specified size
+        size (int): specified
+        start (int, optional): The start of the random range, 
+                               inclusive. Defaults to -1000.
+        end (int, optional): The end of the random range, 
+                             exclusive. Defaults to 1001.
 
     Returns:
         ArrayList: The ArrayList of random integers
     """
+    
+    random_values = np.random.randint(start, end, size)
+    return ArrayList(random_values)
