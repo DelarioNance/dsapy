@@ -9,3 +9,11 @@ import sys
 sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src")
 
 from ArrayList import ArrayList
+from helpers import rand_array_list
+
+class testGettingSize:
+    def test_get_size_of_empty_ArrayList(self):
+
+        empty_arraylist = ArrayList()
+        size = len(empty_arraylist)
+        assert size == 0

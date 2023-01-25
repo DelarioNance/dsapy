@@ -13,9 +13,9 @@ import sys
 sys.path.append(FILEPATH_TO_SRC)
 
 from ArrayList import ArrayList
-import numpy as np
+import random
 
-def rand_array_list( size: int, start: int = -1000, end: int = 1001) -> ArrayList:
+def rand_array_list(size: int, start: int = -1000, end: int = 1000) -> ArrayList:
     """Returns an ArrayList of a user-specified size, 
     containing random integers in a user-specified range 
     [start,end).
@@ -25,11 +25,11 @@ def rand_array_list( size: int, start: int = -1000, end: int = 1001) -> ArrayLis
         start (int, optional): The start of the random range, 
                                inclusive. Defaults to -1000.
         end (int, optional): The end of the random range, 
-                             exclusive. Defaults to 1001.
+                             inclusive. Defaults to 1000.
 
     Returns:
         ArrayList: The ArrayList of random integers
     """
     
-    random_values = np.random.randint(start, end, size)
+    random_values = [random.randint(start, end) for x in range(size)]
     return ArrayList(random_values)
