@@ -31,6 +31,11 @@
     - [True Reason for Error](#true-reason-for-error)
     - [Solution for Errors](#solution-for-errors)
     - [Resources](#resources)
+  - [Issue 2 - Importing `random_array_list` Function in Unit Test Script](#issue-2---importing-random_array_list-function-in-unit-test-script)
+    - [Specific Errors](#specific-errors-1)
+    - [Meaning of Errors](#meaning-of-errors-1)
+    - [True Reason for Errors](#true-reason-for-errors)
+    - [Solution for Errors](#solution-for-errors-1)
 
 ---
 
@@ -46,12 +51,12 @@ ModuleNotFoundError: No module named 'src'
 1. When running the `dsapy/testing/unit/unit_ArrayList.py` file, the computer is not aware of the `src` directory that contains the `ArrayList.py` file
 
 ### Possible Reasons for Errors
-- When running the `unit_ArrayList.py` file, the computer is only aware of files and directories contained with the same directory that `unit_ArrayList.py` is in (i.e., `dsapy/testing/unit`). Since the `src` directory is not in the `dsapy/testing/scripts/unit` directory, the computer is not aware of any module named `src`.
+- When running the `test_unit_ArrayList.py` file, the computer is only aware of files and directories contained with the same directory that `test_unit_ArrayList.py` is in (i.e., `dsapy/testing/unit`). Since the `src` directory is not in the `dsapy/testing/scripts/unit` directory, the computer is not aware of any module named `src`.
 
 ### Unsuccessful Methods
 - Method 1
   - Explanation
-    - Rather than beginning the file path used for `import` with `src`, start the file path with `dsapy` since it is the lowest directory which contains both the `ArrayList.py` file and the `unit_ArrayList.py` file
+    - Rather than beginning the file path used for `import` with `src`, start the file path with `dsapy` since it is the lowest directory which contains both the `ArrayList.py` file and the `test_unit_ArrayList.py` file
   - Specific Approach
     - Run `from dsapy.src.ArrayList import ArrayList` instead of `from src.ArrayList import ArrayList` in the `dsapy/testing/unit/unit_ArrayList.py` file
   - Result
@@ -61,15 +66,15 @@ ModuleNotFoundError: No module named 'src'
     ```
 
 ### True Reason for Error
-- When running the `unit_ArrayList.py` file, Python maintains a list of filepaths which one can see by running the following:
+- When running the `test_unit_ArrayList.py` file, Python maintains a list of filepaths which one can see by running the following:
 ```
 import sys
 print(sys.path)
 ```
-- With these filepaths, Python can access any file whose file path begins with any of these filepaths. However, when running the `unit_ArrayList.py` file, no such filepath contained the `src` directory.
+- With these filepaths, Python can access any file whose file path begins with any of these filepaths. However, when running the `test_unit_ArrayList.py` file, no such filepath contained the `src` directory.
 
 ### Solution for Errors
-- We included the following lines in the `unit_ArrayList.py` file to add into Python's list of filepaths a filepath containing the `src` directory (5):
+- I included the following lines in the `test_unit_ArrayList.py` file to add into Python's list of filepaths a filepath containing the `src` directory (5):
 ```
 import sys
 sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src")
@@ -84,3 +89,38 @@ sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy
 5. [AppDividend - Python sys.path.appen() Method: The Guide](https://appdividend.com/2022/09/27/python-sys-path-append/#:~:text=Python%20sys.path.append%20%28%29%201%20Syntax%20sys.path.append%20%28path%29%202,need%20to%20import%20the%20sys%20module%20first.%20)
 
 ---
+
+## Issue 2 - Importing `random_array_list` Function in Unit Test Script
+
+### Specific Errors
+1. When trying to run the following code:
+```
+import sys
+sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src")
+
+from ArrayList import ArrayList
+from helpers import rand_array_list
+```
+- I get the following error:
+```
+ModuleNotFoundError: No module named 'helpers'
+```
+
+### Meaning of Errors
+2. When running the `dsapy/testing/unit/unit_ArrayList.py` file, the computer is not aware of the `testing` directory that contains the `helpers.py` file.
+
+### True Reason for Errors
+- Even though I added `"c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src"` to Python's filepath so that Python is aware of the `src` folder, Python is still not aware of the `dsapy/testing` directory. Thus, Python is not aware of the `dsapy/testing/helpers.py` file.
+
+
+### Solution for Errors
+- I included the following lines in the `test_unit_ArrayList.py` file to add into Python's list of filepaths a filepath containing the `testing` directory (5):
+```
+import sys
+sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src")
+sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\testing")
+
+from ArrayList import ArrayList
+from helpers import rand_array_list
+```
+- Since Python is now aware of the `testing` directory, we can successfully import the `rand_array_list` from the `helpers.py` file into the `test_unit_ArrayList.py` file
