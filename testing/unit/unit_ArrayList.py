@@ -5,4 +5,7 @@ Author: Delario Nance, Jr.
 Date: January 24, 2023 - January 24, 2023
 """
 
-from src.ArrayList import ArrayList
+import sys
+sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src")
+
+from ArrayList import ArrayList

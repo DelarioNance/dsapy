@@ -23,16 +23,18 @@
     - [Author](#author)
     - [Date](#date)
     - [Table of Contents](#table-of-contents)
-  - [Issue 1 - Using `ArrayList` Source Code in Test Files](#issue-1---using-arraylist-source-code-in-test-files)
+  - [Issue 1 - Importing `ArrayList` Class in Unit Test Script](#issue-1---importing-arraylist-class-in-unit-test-script)
     - [Specific Errors](#specific-errors)
     - [Meaning of Errors](#meaning-of-errors)
     - [Possible Reasons for Errors](#possible-reasons-for-errors)
     - [Unsuccessful Methods](#unsuccessful-methods)
+    - [True Reason for Error](#true-reason-for-error)
     - [Solution for Errors](#solution-for-errors)
+    - [Resources](#resources)
 
 ---
 
-## Issue 1 - Using `ArrayList` Source Code in Test Files
+## Issue 1 - Importing `ArrayList` Class in Unit Test Script
 
 ### Specific Errors
 1. When trying to run `from src.ArrayList import ArrayList` in the `dsapy/testing/unit/unit_ArrayList.py` file, the following error arose:
@@ -58,4 +60,27 @@ ModuleNotFoundError: No module named 'src'
     ModuleNotFoundError: No module named 'dsapy'
     ```
 
+### True Reason for Error
+- When running the `unit_ArrayList.py` file, Python maintains a list of filepaths which one can see by running the following:
+```
+import sys
+print(sys.path)
+```
+- With these filepaths, Python can access any file whose file path begins with any of these filepaths. However, when running the `unit_ArrayList.py` file, no such filepath contained the `src` directory.
+
 ### Solution for Errors
+- We included the following lines in the `unit_ArrayList.py` file to add into Python's list of filepaths a filepath containing the `src` directory (5):
+```
+import sys
+sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src")
+```
+- Since Python is now aware of the `src` directory, we can change the line `from src.ArrayList import ArrayList` to `from ArrayList import ArrayList`
+
+### Resources
+1. [Stack Overflow - Python - ModuleNotFoundError: No module named](https://stackoverflow.com/questions/61532337/python-modulenotfounderror-no-module-named)
+2. [How to Import from Another Folder in Python](https://fedingo.com/how-to-import-from-another-folder-in-python/#:~:text=How%20to%20Import%20from%20Another%20Folder%20in%20Python,module%20folder%20location.%20...%202%202.%20Using%20Pythonpath)
+3. [YouTube - Importing files from different folder](https://www.youtube.com/watch?v=ZYFug798Tcw)
+4. [Stack Overflow - import python module using sys.path.append](https://stackoverflow.com/questions/48885445/import-python-module-using-sys-path-append)
+5. [AppDividend - Python sys.path.appen() Method: The Guide](https://appdividend.com/2022/09/27/python-sys-path-append/#:~:text=Python%20sys.path.append%20%28%29%201%20Syntax%20sys.path.append%20%28path%29%202,need%20to%20import%20the%20sys%20module%20first.%20)
+
+---
