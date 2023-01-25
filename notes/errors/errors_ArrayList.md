@@ -13,7 +13,7 @@
 
 
 ### Date
-- January 25, 2023 - January 25, 2023
+- January 24, 2023 - January 25, 2023
 
 
 ### [Table of Contents](#table-of-contents)
@@ -23,6 +23,7 @@
     - [Author](#author)
     - [Date](#date)
     - [Table of Contents](#table-of-contents)
+- [Setting up Unit Test Script](#setting-up-unit-test-script)
   - [Issue 1 - Importing `ArrayList` Class in Unit Test Script](#issue-1---importing-arraylist-class-in-unit-test-script)
     - [Specific Errors](#specific-errors)
     - [Meaning of Errors](#meaning-of-errors)
@@ -36,10 +37,21 @@
     - [Meaning of Errors](#meaning-of-errors-1)
     - [True Reason for Errors](#true-reason-for-errors)
     - [Solution for Errors](#solution-for-errors-1)
+  - [Issue 3 - Importing `ArrayList` class when Running PyTest](#issue-3---importing-arraylist-class-when-running-pytest)
+    - [Specific Errors](#specific-errors-2)
+    - [Meaning of Errors](#meaning-of-errors-2)
+    - [Unsuccessful Methods](#unsuccessful-methods-1)
+    - [True Reason for Error](#true-reason-for-error-1)
+    - [Solution for Errors](#solution-for-errors-2)
+    - [References](#references)
 
 ---
 
+# Setting up Unit Test Script
+
 ## Issue 1 - Importing `ArrayList` Class in Unit Test Script
+
+Date: January 24, 2023
 
 ### Specific Errors
 1. When trying to run `from src.ArrayList import ArrayList` in the `dsapy/testing/unit/unit_ArrayList.py` file, the following error arose:
@@ -92,6 +104,8 @@ sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy
 
 ## Issue 2 - Importing `random_array_list` Function in Unit Test Script
 
+Date: January 25, 2023
+
 ### Specific Errors
 1. When trying to run the following code:
 ```
@@ -124,3 +138,58 @@ from ArrayList import ArrayList
 from helpers import rand_array_list
 ```
 - Since Python is now aware of the `testing` directory, we can successfully import the `rand_array_list` from the `helpers.py` file into the `test_unit_ArrayList.py` file
+
+---
+
+## Issue 3 - Importing `ArrayList` class when Running PyTest
+
+Date: January 25, 2023
+
+### Specific Errors
+1. When trying to run the PyTest unit tests in the `test_unit_ArrayList.py` test script with the terminal command `pytest` in the `dsapy/testing/unit` directory, the following error occured:
+```
+ImportError while importing test module '/mnt/c/Users/Delar/OneDrive/Desktop/Winter Break/Repos/DSAPy/dsapy/testing/unit/test_unit_ArrayList.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.8/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+test_unit_ArrayList.py:12: in <module>
+    from ArrayList import ArrayList
+E   ModuleNotFoundError: No module named 'ArrayList'
+```
+
+### Meaning of Errors
+1. When running the PyTest unit tests in the `test_unit_ArrayList.py` test script, the computer is not aware of the `src` directory that contains the `ArrayList.py` file.
+
+### Unsuccessful Methods
+- Method 1
+  - Explanation
+    - ...
+  - Specific Approach
+    - Add an empty `__init__.py` file to the `testing` directory
+  - Result
+    - Same error as before
+- Method 2
+  - Explanation
+    - ...
+  - Specific Approach
+    - Add an empty `__init__.py` file to the `src` directory
+  - Result
+    - Same error as before
+- Method 3
+  - Explanation
+    - ...
+  - Specific Approach
+    - Add an empty `__init__.py` file to both the `testing` and `src` directories
+  - Result
+    - Same error as before
+
+### True Reason for Error
+- TBA
+
+### Solution for Errors
+- TBA
+
+### References
+- [Stack Overflow - Pytest ModuleNotFoundError](https://stackoverflow.com/questions/59834619/pytest-modulenotfounderror)
+- [Stack Overflow - ModuleNotFoundError with pytest](https://stackoverflow.com/questions/54895002/modulenotfounderror-with-pytest)
