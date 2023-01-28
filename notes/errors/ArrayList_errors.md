@@ -13,7 +13,7 @@
 
 
 ### Date
-- January 24, 2023 - January 25, 2023
+- January 24, 2023 - January 27, 2023
 
 
 ### [Table of Contents](#table-of-contents)
@@ -54,7 +54,7 @@
 Date: January 24, 2023
 
 ### Specific Errors
-1. When trying to run `from src.ArrayList import ArrayList` in the `dsapy/testing/unit/unit_ArrayList.py` file, the following error arose:
+1. When trying to run `from src.ArrayList import ArrayList` in the `dsapy/testing/unit/unit_ArrayList.py` file in VSCode with Code Runner, the following error arose:
 ```
 ModuleNotFoundError: No module named 'src'
 ```
@@ -107,7 +107,7 @@ sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy
 Date: January 25, 2023
 
 ### Specific Errors
-1. When trying to run the following code:
+1. When trying to run the following code in VSCode with Code Runner:
 ```
 import sys
 sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy\\dsapy\\src")
@@ -146,20 +146,20 @@ from helpers import rand_array_list
 Date: January 25, 2023
 
 ### Specific Errors
-1. When trying to run the PyTest unit tests in the `test_unit_ArrayList.py` test script with the terminal command `pytest` in the `dsapy/testing/unit` directory, the following error occured:
+1. When trying to run the PyTest unit tests in the `ArrayList_unit_test.py` test script with the terminal command `pytest` in the `dsapy/testing/unit` directory, the following error occured:
 ```
-ImportError while importing test module '/mnt/c/Users/Delar/OneDrive/Desktop/Winter Break/Repos/DSAPy/dsapy/testing/unit/test_unit_ArrayList.py'.
+ImportError while importing test module '/mnt/c/Users/Delar/OneDrive/Desktop/Winter Break/Repos/DSAPy/dsapy/testing/unit/ArrayList_unit_test.py'.
 Hint: make sure your test modules/packages have valid Python names.
 Traceback:
 /usr/lib/python3.8/importlib/__init__.py:127: in import_module
     return _bootstrap._gcd_import(name[level:], package, level)
-test_unit_ArrayList.py:12: in <module>
+ArrayList_unit_test.py:12: in <module>
     from ArrayList import ArrayList
 E   ModuleNotFoundError: No module named 'ArrayList'
 ```
 
 ### Meaning of Errors
-1. When running the PyTest unit tests in the `test_unit_ArrayList.py` test script, the computer is not aware of the `src` directory that contains the `ArrayList.py` file.
+1. When running the PyTest unit tests in the `ArrayList_unit_test.py` test script, the computer is not aware of the `src` directory that contains the `ArrayList.py` file.
 
 ### Unsuccessful Methods
 - Method 1
@@ -215,10 +215,45 @@ E   ModuleNotFoundError: No module named 'ArrayList'
 ```
 
 ### True Reason for Error
-- 
+- Even though I could run the `ArrayList_unit_test.py` and `helpers.py` files with VSCode's Code Runner, I could not run them using WSL in the VSCode terminal. The reason for this is because VSCode's Code Runner was using the Python files on my laptop's Windows operating system:
+```
+c:\Users\Delar\OneDrive\Desktop\Winter Break\Repos\DSAPy\dsapy\testing\unit
+C:\Users\Delar\AppData\Local\Programs\Python\Python39\python39.zip
+C:\Users\Delar\AppData\Local\Programs\Python\Python39\DLLs
+C:\Users\Delar\AppData\Local\Programs\Python\Python39\lib
+C:\Users\Delar\AppData\Local\Programs\Python\Python39
+C:\Users\Delar\AppData\Local\Programs\Python\Python39\lib\site-packages
+```
+- However, WSL was using the Python files on its corresponding Linux system:
+```
+/mnt/c/Users/Delar/OneDrive/Desktop/Winter Break/Repos/DSAPy/dsapy/testing/unit
+/usr/lib/python39.zip
+/usr/lib/python3.9
+/usr/lib/python3.9/lib-dynload
+/home/delario-nance-jr/.local/lib/python3.9/site-packages
+/usr/local/lib/python3.9/dist-packages
+/usr/lib/python3/dist-packages
+```
+- The following lines in my `ArrayList_unit_test.py` used the filepaths on my laptop's Windows operating system. However, PyTest is ran on WSL (Linux). Therefore, when I used PyTest to try to run my `ArrayList_unit_test.py` Python unit test script, PyTest could not find the Windows filepaths on WSL's Linux operating system.
 
 ### Solution for Errors
-- TBA
+- I opened a remote window in WSL on VSCode. Then, I cloned the Bitbucket repository for my project in the folder used in this window. By doing this, I am able to use all of my repository's code on a Linux operating system and use the Linux terminal, instead of using my repository's code on my laptop's Windows operating system and using the Linux terminal like before.
+- Since I am now using my repository's code to a Linux operating system, I had to change the `sys.path.append` lines in the `ArrayList_unit_test.py` and `helpers.py` files to as follows:
+```
+In ArrayList_unit_test.py:
+
+WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/dsapy/src"
+sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
+WSL_FILEPATH_TO_TESTING = "/home/delario-nance-jr/dsapy/testing" 
+sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
+
+
+In helpers.py:
+
+# Accessing project directories
+WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/dsapy/src"
+sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
+```
 
 ### References
 - [Stack Overflow - Pytest ModuleNotFoundError](https://stackoverflow.com/questions/59834619/pytest-modulenotfounderror)
