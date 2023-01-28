@@ -13,4 +13,3 @@ import numpy as np
 class ArrayList:
     """_summary_
     """
-    values: np.ndarray = np.array([])

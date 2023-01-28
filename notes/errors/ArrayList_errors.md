@@ -197,9 +197,25 @@ E   ModuleNotFoundError: No module named 'ArrayList'
     - Run the commands `pip3 uninstall pytest` and `pip3 install pytest` with the command line
   - Result
     - Same error as before
+- Method 5
+  - Explanation
+    - I reinstalled the version of PyTest being used in VSCode with WSL so that it used `python3.9` like my WSL is used and my Python interpreter on VSCode. For some reason PyTest was previously using `python3.8`
+  - Specific Approach
+    - I ran the commands `python -m pip install pytest` and then `pytest`
+  - Result
+```
+ImportError while importing test module '/mnt/c/Users/Delar/OneDrive/Desktop/Winter Break/Repos/DSAPy/dsapy/testing/unit/ArrayList_unit_test.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.9/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+testing/unit/ArrayList_unit_test.py:13: in <module>
+    from ArrayList import ArrayList
+E   ModuleNotFoundError: No module named 'ArrayList'    
+```
 
 ### True Reason for Error
-- TBA
+- 
 
 ### Solution for Errors
 - TBA
