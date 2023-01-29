@@ -22,7 +22,26 @@ from helpers import rand_array_list
 
 class TestGettingSize:
     def test_get_size_of_empty_ArrayList(self):
-
-        empty_arraylist = ArrayList()
+        empty_arraylist = rand_array_list(0)
         size = len(empty_arraylist)
         assert size == 0
+    
+    def test_get_size_of_ArrayList_of_one_int(self):
+        empty_arraylist = rand_array_list(1)
+        size = len(empty_arraylist)
+        assert size == 1
+    
+    def test_get_size_of_ArrayList_of_ten_ints(self):
+        empty_arraylist = rand_array_list(10)
+        size = len(empty_arraylist)
+        assert size == 10
+    
+    def test_get_size_of_ArrayList_of_one_hundred_ints(self):
+        empty_arraylist = rand_array_list(100)
+        size = len(empty_arraylist)
+        assert size == 100
+    
+    def test_get_size_of_ArrayList_of_ten_thousand_ints(self):
+        empty_arraylist = rand_array_list(10000)
+        size = len(empty_arraylist)
+        assert size == 10000
