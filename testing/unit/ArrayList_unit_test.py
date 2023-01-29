@@ -20,7 +20,7 @@ from ArrayList import ArrayList
 from helpers import rand_array_list
 
 
-class testGettingSize:
+class TestGettingSize:
     def test_get_size_of_empty_ArrayList(self):
 
         empty_arraylist = ArrayList()

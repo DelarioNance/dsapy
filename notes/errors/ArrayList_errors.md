@@ -44,6 +44,11 @@
     - [True Reason for Error](#true-reason-for-error-1)
     - [Solution for Errors](#solution-for-errors-2)
     - [References](#references)
+  - [Issue 4 - Running `test_get_size_of_empty_ArrayList` Unit Test for `ArrayList` Class with PyTest Results in No Tests Being Ran](#issue-4---running-test_get_size_of_empty_arraylist-unit-test-for-arraylist-class-with-pytest-results-in-no-tests-being-ran)
+    - [Specific Errors](#specific-errors-3)
+    - [True Reason for Error](#true-reason-for-error-2)
+    - [Solution for Errors](#solution-for-errors-3)
+    - [References](#references-1)
 
 ---
 
@@ -143,7 +148,7 @@ from helpers import rand_array_list
 
 ## Issue 3 - Importing `ArrayList` class when Running PyTest
 
-Date: January 25, 2023
+Date: January 27, 2023
 
 ### Specific Errors
 1. When trying to run the PyTest unit tests in the `ArrayList_unit_test.py` test script with the terminal command `pytest` in the `dsapy/testing/unit` directory, the following error occured:
@@ -259,3 +264,44 @@ sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
 - [Stack Overflow - Pytest ModuleNotFoundError](https://stackoverflow.com/questions/59834619/pytest-modulenotfounderror)
 - [Stack Overflow - ModuleNotFoundError with pytest](https://stackoverflow.com/questions/54895002/modulenotfounderror-with-pytest)
 - [Medium - pytest: ModuleNotFoundError: No module named 'requests'](https://medium.com/@dirk.avery/pytest-modulenotfounderror-no-module-named-requests-a770e6926ac5)
+
+---
+
+## Issue 4 - Running `test_get_size_of_empty_ArrayList` Unit Test for `ArrayList` Class with PyTest Results in No Tests Being Ran
+
+Date: January 28, 2023
+
+### Specific Errors
+1. When try to run the `test_get_size_of_empty_ArrayList` unit test with 
+`pytest` in the WSL terminal, no PyTests are ran as shown below:
+```
+platform linux -- Python 3.9.5, pytest-7.2.1, pluggy-1.0.0
+rootdir: /home/delario-nance-jr/dsapy/testing/unit
+collected 0 items
+```
+
+### True Reason for Error
+- The unit test which I wanted to run is as follows:
+```
+class testGettingSize:
+    def test_get_size_of_empty_ArrayList(self):
+
+        empty_arraylist = ArrayList()
+        size = len(empty_arraylist)
+        assert size == 0
+```
+- However, PyTest only recognizes classes whose name begins with `Test*`
+
+### Solution for Errors
+- Change the name of the `testGettingSize` class to `TestGettingSize` as follows:
+```
+class TestGettingSize:
+    def test_get_size_of_empty_ArrayList(self):
+
+        empty_arraylist = ArrayList()
+        size = len(empty_arraylist)
+        assert size == 0
+```
+
+### References
+- [Stack Overflow - 'pytest' exits with no error, but with "collected 0 items"](https://stackoverflow.com/questions/37353960/pytest-exits-with-no-error-but-with-collected-0-items)
