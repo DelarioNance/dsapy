@@ -40,6 +40,18 @@ class ArrayList:
         """
         return str(self._values)
     
+    def __getitem__(self, index: int) -> int:
+        """Returns the value at a user-specified index in 
+           this ArrayList.
+
+        Args:
+            index (int): The user-specified index
+
+        Returns:
+            int: The value at the given index
+        """
+        return self._values[index]
+    
     def is_empty(self) -> bool:
         """Returns true iff this ArrayList is empty.
 
