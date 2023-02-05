@@ -8,6 +8,7 @@ Date: January 24, 2023 - January 27, 2023
 """
 
 # Standard library imports
+import numpy as np
 import random
 import sys
 
@@ -38,3 +39,13 @@ def rand_array_list(size: int, start: int = -1000, end: int = 1000) -> ArrayList
     
     random_values = [random.randint(start, end) for x in range(size)]
     return ArrayList(random_values)
+
+def ndarray_of_first_ints(n: int) -> np.ndarray:
+    """Returns a one-dimensional NumPy array of the first n
+    positive integers.
+
+    Args:
+        n (int): The number of the first positive integers
+    """
+    first_n_ints = np.array([x for x in range(1,n+1)])
+    return first_n_ints
