@@ -130,6 +130,8 @@ class TestCheckingIfEmpty:
         
         
 class TestGettingValue:
+    """Uses __init__ and __get_item__ methods from ArrayList class.
+    """
     
     class TestGettingValueWithNonnegativeIndex:
         """Uses __init__ and __get_item__ methods from ArrayList class.
@@ -401,3 +403,35 @@ class TestGettingValue:
             last_value_in_array_list = arraylist_of_ten_thousand_ints[-1]
             
             assert last_value_in_array_list == pylist_of_ten_thousand_ints[-1]
+            
+            
+            
+class TestSettingValueWithoutError:
+    
+    def test_set_value_at_middle_index_in_ArrayList_of_one_int(self):
+        arraylist_of_one_int = rand_array_list(1)
+        
+        arraylist_of_one_int[0] = 1729
+        
+        assert True == True
+    
+    def test_set_value_at_middle_index_in_ArrayList_of_ten_ints(self):
+        arraylist_of_ten_ints = rand_array_list(10)
+        
+        arraylist_of_ten_ints[4] = 1729
+        
+        assert True == True
+    
+    def test_set_value_at_middle_index_in_ArrayList_of_one_hundred_ints(self):
+        arraylist_of_one_hundred_ints = rand_array_list(100)
+        
+        arraylist_of_one_hundred_ints[49] = 1729
+        
+        assert True == True
+    
+    def test_set_value_at_middle_index_in_ArrayList_of_ten_thousand_ints(self):
+        arraylist_of_ten_thousand_ints = rand_array_list(10000)
+        
+        arraylist_of_ten_thousand_ints[4999] = 1729
+        
+        assert True == True
