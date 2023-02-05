@@ -68,6 +68,26 @@ class TestGettingSize:
 
 class TestPrinting:
     """Uses __init__ and __str__ methods from ArrayList class.
+    
+    To test if ArrayList objects are correctly printed to the
+    terminal, many of the unit test functions in the 
+    TestPrinting class take in the argument capsys - a 
+    built-in PyTest fixture which allows users to obtain the 
+    stdout/stderror data produced when printing output.
+    
+    After calling capsys.readouterr(), the current data in
+    stdout and stderror is returned as a tuple. To access the
+    printed output (as a string with newline and tab 
+    characters) in stdout, one can index the tuple returned
+    by readouterr() as follows: 
+        printed_output = capsys.readouterr()[0]
+    
+    Official PyTest documentation for capsys and other 
+    related fixtures in found here: 
+        https://docs.pytest.org/en/6.2.x/capture.html
+    
+    A tutorial of using capsys is found here: 
+        https://www.youtube.com/watch?v=dN-pVt7i4Us&t=215s
     """
     def test_print_empty_ArrayList(self, capsys):
         empty_arraylist = rand_array_list(0)
@@ -78,7 +98,6 @@ class TestPrinting:
         
         assert output_from_empty_arraylist == str(empty_ndarray)
         
-    
     def test_print_ArrayList_of_one_int(self, capsys):
         arraylist_of_one_int = array_list_range(1,1)
         ndarray_of_one_int = ndarray_of_first_ints(1)
