@@ -440,6 +440,8 @@ class TestSettingValueWithoutError:
         
 
 class TestAddingValueWithoutError:
+    """Uses __init__ and append methods from ArrayList class.
+    """
     def test_add_value_to_empty_ArrayList(self):
         empty_arraylist = rand_array_list(0)
         
@@ -468,7 +470,7 @@ class TestAddingValueWithoutError:
         
         assert TEST_RAN_WITHOUT_ERROR
     
-    def test_add_value_to_ArrayList_of_fifteen_ints(self):
+    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
         arraylist_of_fifteen_ints = rand_array_list(15)
         
         arraylist_of_fifteen_ints.append(DEFAULT_INT)
@@ -509,3 +511,235 @@ class TestAddingValueWithoutError:
         arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
         
         assert TEST_RAN_WITHOUT_ERROR
+        
+        
+class TestRemovingValueWithoutError:
+    class TestRemovingValueFromArrayListOfOneInt:
+        def test_remove_first_value_from_ArrayList_of_one_int(self):
+            array_list_of_one_int = rand_array_list(1)
+            
+            array_list_of_one_int.remove(0)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+    
+    
+    class TestRemovingValueFromArrayListOfFifteenInts:
+        def test_remove_first_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(0)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_second_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(1)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_middle_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(7)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_penultimate_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(13)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+
+        def test_remove_last_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(14)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+    
+    
+    class TestRemovingValueFromArrayListOfSixteenInts:
+        def test_remove_first_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(0)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_second_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(1)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_middle_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(7)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_penultimate_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(14)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+
+        def test_remove_last_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(15)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+    
+    
+    class TestRemovingValueFromArrayListOfSeventeenInts:
+        def test_remove_first_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(0)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_second_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(1)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_middle_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(8)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_penultimate_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(15)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+
+        def test_remove_last_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(16)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyOneInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(0)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(1)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(4095)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8189)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8190)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyTwoInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(0)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(1)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(4095)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8190)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8191)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyThreeInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(0)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(1)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(4096)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+        
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8191)
+            
+            assert TEST_RAN_WITHOUT_ERROR
+
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8192)
+            
+            assert TEST_RAN_WITHOUT_ERROR
