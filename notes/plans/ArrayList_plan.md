@@ -239,25 +239,25 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 
 ### [Adding Value With Correct New Size](#arraylist-test-plan)
 
-5. Add a random integer value in `[-1000,1000]` to an empty `ArrayList`, with correct new size
+5. Add `1729` to an empty `ArrayList`, with correct new size
 
 ---
 
-6. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^1 - 1` random integer in `[-1000,1000]`, with correct new size
-7. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^1` random integers in `[-1000,1000]`, with correct new size
-8. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^1 + 1` random integers in `[-1000,1000]`, with correct new size
+6. Add `1729` to an `ArrayList` of `2^1 - 1` random integer in `[-1000,1000]`, with correct new size
+7. Add `1729` to an `ArrayList` of `2^1` random integers in `[-1000,1000]`, with correct new size
+8. Add `1729` to an `ArrayList` of `2^1 + 1` random integers in `[-1000,1000]`, with correct new size
 
 ---
 
-9. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct new size
-10. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct new size
-11. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct new size
+9. Add `1729` to an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct new size
+10. Add `1729` to an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct new size
+11. Add `1729` to an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct new size
 
 ---
 
-12. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct new size
-13. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct new size
-14. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct new size
+12. Add `1729` to an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct new size
+13. Add `1729` to an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct new size
+14. Add `1729` to an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct new size
 
 ---
 ---
