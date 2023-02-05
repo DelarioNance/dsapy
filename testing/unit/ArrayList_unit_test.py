@@ -62,8 +62,10 @@ class TestGettingSize:
         assert size == 10000
         
 class TestPrinting:
+    """Uses __init__ and __str__ methods from ArrayList class.
+    """
     def test_print_empty_ArrayList(self, capsys):
-        empty_arraylist = []
+        empty_arraylist = rand_array_list(0)
         empty_ndarray = ndarray_of_first_ints(0)
         
         print(empty_arraylist)
@@ -107,3 +109,19 @@ class TestPrinting:
         output_from_arraylist_of_ten_thousand_ints = capsys.readouterr()[0][:INDEX_BEFORE_NEWLINE]
         
         assert output_from_arraylist_of_ten_thousand_ints == str(ndarray_of_ten_thousand_ints)
+        
+
+class TestCheckingIfEmpty:
+    def test_check_if_empty_ArrayList_is_empty(self):
+        empty_arraylist = rand_array_list(0)
+        
+        verdict = empty_arraylist.is_empty()
+        
+        assert verdict == True
+    
+    def test_check_if_nonempty_ArrayList_is_empty(self):
+        nonempty_arraylist = rand_array_list(1729)
+        
+        verdict = nonempty_arraylist.is_empty()
+        
+        assert verdict == False

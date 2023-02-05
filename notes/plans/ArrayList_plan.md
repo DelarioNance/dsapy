@@ -80,7 +80,7 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 ### [Checking if Empty](#arraylist-test-plan)
 
 16. Check if empty `ArrayList` is empty
-17. Check if `ArrayList` of a random integer number in `[101,10000]` of random integers in `[-1000,1000]` is empty
+17. Check if `ArrayList` of a random integer number of `1729` random integers in `[-1000,1000]` is empty
 
 ---
 ---
