@@ -8,7 +8,7 @@ Date: January 24, 2023 - February 5, 2023
 
 # Standard library imports
 import numpy as np
-import sys
+import sys # for adding filepaths
 
 # Accessing project directories
 WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/dsapy/src"
@@ -20,9 +20,12 @@ sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
 from ArrayList import ArrayList
 from helpers import *
 
+
+# Global variables
 INDEX_BEFORE_NEWLINE = -1
 TEST_RAN_WITHOUT_ERROR = True
 DEFAULT_INT = 1729
+
 
 class TestGettingSize:
     """Uses __init__ and __len__ methods from ArrayList class.
@@ -514,6 +517,8 @@ class TestAddingValueWithoutError:
         
         
 class TestRemovingValueWithoutError:
+    """Uses __init__ and remove methods from ArrayList class.
+    """
     class TestRemovingValueFromArrayListOfOneInt:
         def test_remove_first_value_from_ArrayList_of_one_int(self):
             array_list_of_one_int = rand_array_list(1)

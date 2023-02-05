@@ -7,15 +7,11 @@ Date: January 24, 2023 - February 5, 2023
 """
 
 # Standard library imports
-from dataclasses import dataclass
 import numpy as np
 from numpy.typing import NDArray # for NumPy type hints
 
 
-@dataclass
-class ArrayList:
-    """_summary_
-    """
+class ArrayList:    
     def __init__(self, values: list[int]) -> None:
         """Constructs an ArrayList object from a 
         user-specified list of numbers.
