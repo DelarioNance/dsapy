@@ -407,7 +407,8 @@ class TestGettingValue:
             
             
 class TestSettingValueWithoutError:
-    
+    """Uses __init__ and __setitem__ methods from ArrayList class.
+    """
     def test_set_value_at_middle_index_in_ArrayList_of_one_int(self):
         arraylist_of_one_int = rand_array_list(1)
         

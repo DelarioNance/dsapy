@@ -2,7 +2,7 @@
 
 Author: Delario Nance, Jr.
 
-Date: January 18, 2023 - January 21, 2023
+Date: January 18, 2023 - February 4, 2023
 
 ## Introduction
 A test plan organizing the `ArrayList` functionalities to setup test, unit test, integration test, and end-to-end test.
@@ -148,10 +148,10 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 
 ### [Setting Value Without Error](#arraylist-test-plan)
 
-34. Set `1` at the only index in an `ArrayList` with `1` random integer in `[-1000,1000]`, without error
-35. Set each consecutive integer value in `[-1000, 1000]` at each consecutive index in an `ArrayList` with `10` random integers in `[-1000,1000]`, without error
-36. Set each consecutive integer value in `[-1000, 1000]` at each consecutive index in an `ArrayList` with `100` random integers in `[-1000,1000]`, without error
-37. Set each consecutive integer value in `[-1000, 1000]` at each consecutive index in an `ArrayList` with `10000` random integers in `[-1000,1000]`, without error
+34. Set the value `1729` at the only index in an `ArrayList` with `1` random integer in `[-1000,1000]`, without error
+35. Set the value `1729` at the middle index in an `ArrayList` with `10` random integers in `[-1000,1000]`, without error
+36. Set the value `1729` at the middle index in an `ArrayList` with `100` random integers in `[-1000,1000]`, without error
+37. Set the value `1729` at the middle index in an `ArrayList` with `10000` random integers in `[-1000,1000]`, without error
 
 ---
 ---
