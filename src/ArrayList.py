@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - January 28, 2023
+Date: January 24, 2023 - February 5, 2023
 """
 
 # Standard library imports
@@ -68,6 +68,15 @@ class ArrayList:
 
         Args:
             value (int): The user-specified value
+        """
+        pass
+    
+    def remove(self, index: int) -> None:
+        """Removes the value at a user-specified index in this
+        ArrayList.
+
+        Args:
+            index (int): The user-specified index
         """
         pass
     
