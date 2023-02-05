@@ -127,3 +127,139 @@ class TestCheckingIfEmpty:
         verdict = nonempty_arraylist.is_empty()
         
         assert verdict == False
+        
+        
+class TestGettingValue:
+    
+    class TestGettingValueWithNonnegativeIndex:
+        def test_get_first_value_in_ArrayList_of_one_ints_with_nonnegative_index(self):
+            pylist_of_one_int = rand_pylist(1)
+            arraylist_of_one_int = ArrayList(pylist_of_one_int)
+            
+            first_value_in_array_list = arraylist_of_one_int[0]
+            
+            assert first_value_in_array_list == pylist_of_one_int[0]
+        
+        
+        def test_get_first_value_in_ArrayList_of_ten_ints_with_nonnegative_index(self):
+            pylist_of_ten_ints = rand_pylist(10)
+            arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+            
+            first_value_in_array_list = arraylist_of_ten_ints[0]
+            
+            assert first_value_in_array_list == pylist_of_ten_ints[0]
+
+        def test_get_second_value_in_ArrayList_of_ten_ints_with_nonnegative_index(self):
+            pylist_of_ten_ints = rand_pylist(10)
+            arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+            
+            second_value_in_array_list = arraylist_of_ten_ints[1]
+            
+            assert second_value_in_array_list == pylist_of_ten_ints[1]
+        
+        def test_get_middle_value_in_ArrayList_of_ten_ints_with_nonnegative_index(self):
+            pylist_of_ten_ints = rand_pylist(10)
+            arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+            
+            middle_value_in_array_list = arraylist_of_ten_ints[4]
+            
+            assert middle_value_in_array_list == pylist_of_ten_ints[4]
+
+        def test_get_penultimate_value_in_ArrayList_of_ten_ints_with_nonnegative_index(self):
+            pylist_of_ten_ints = rand_pylist(10)
+            arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+            
+            penultimate_value_in_array_list = arraylist_of_ten_ints[8]
+            
+            assert penultimate_value_in_array_list == pylist_of_ten_ints[8]
+        
+        def test_get_last_value_in_ArrayList_of_ten_ints_with_nonnegative_index(self):
+            pylist_of_ten_ints = rand_pylist(10)
+            arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+            
+            last_value_in_array_list = arraylist_of_ten_ints[9]
+            
+            assert last_value_in_array_list == pylist_of_ten_ints[9]
+
+
+
+        def test_get_first_value_in_ArrayList_of_one_hundred_ints_with_nonnegative_index(self):
+            pylist_of_one_hundred_ints = rand_pylist(100)
+            arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+            
+            first_value_in_array_list = arraylist_of_one_hundred_ints[0]
+            
+            assert first_value_in_array_list == pylist_of_one_hundred_ints[0]
+        
+        def test_get_second_value_in_ArrayList_of_one_hundred_ints_with_nonnegative_index(self):
+            pylist_of_one_hundred_ints = rand_pylist(100)
+            arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+        
+            second_value_in_array_list = arraylist_of_one_hundred_ints[1]
+            
+            assert second_value_in_array_list == pylist_of_one_hundred_ints[1]
+
+        def test_get_middle_value_in_ArrayList_of_one_hundred_ints_with_nonnegative_index(self):
+            pylist_of_one_hundred_ints = rand_pylist(100)
+            arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+        
+            middle_value_in_array_list = arraylist_of_one_hundred_ints[49]
+            
+            assert middle_value_in_array_list == pylist_of_one_hundred_ints[49]
+
+        def test_get_penultimate_value_in_ArrayList_of_one_hundred_ints_with_nonnegative_index(self):
+            pylist_of_one_hundred_ints = rand_pylist(100)
+            arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+        
+            penultimate_value_in_array_list = arraylist_of_one_hundred_ints[98]
+            
+            assert penultimate_value_in_array_list == pylist_of_one_hundred_ints[98]
+
+        def test_get_last_value_in_ArrayList_of_one_hundred_ints_with_nonnegative_index(self):
+            pylist_of_one_hundred_ints = rand_pylist(100)
+            arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+        
+            last_value_in_array_list = arraylist_of_one_hundred_ints[99]
+            
+            assert last_value_in_array_list == pylist_of_one_hundred_ints[99]
+
+
+        def test_get_first_value_in_ArrayList_of_ten_thousand_ints_with_nonnegative_index(self):
+            pylist_of_ten_thousand_ints = rand_pylist(10000)
+            arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
+        
+            first_value_in_array_list = arraylist_of_ten_thousand_ints[0]
+            
+            assert first_value_in_array_list == pylist_of_ten_thousand_ints[0]
+
+        def test_get_second_value_in_ArrayList_of_ten_thousand_ints_with_nonnegative_index(self):
+            pylist_of_ten_thousand_ints = rand_pylist(10000)
+            arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
+        
+            second_value_in_array_list = arraylist_of_ten_thousand_ints[1]
+            
+            assert second_value_in_array_list == pylist_of_ten_thousand_ints[1]
+
+        def test_get_middle_value_in_ArrayList_of_ten_thousand_ints_with_nonnegative_index(self):
+            pylist_of_ten_thousand_ints = rand_pylist(10000)
+            arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
+        
+            middle_value_in_array_list = arraylist_of_ten_thousand_ints[4999]
+            
+            assert middle_value_in_array_list == pylist_of_ten_thousand_ints[4999]
+
+        def test_get_penultimate_value_in_ArrayList_of_ten_thousand_ints_with_nonnegative_index(self):
+            pylist_of_ten_thousand_ints = rand_pylist(10000)
+            arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
+        
+            penultimate_value_in_array_list = arraylist_of_ten_thousand_ints[9998]
+            
+            assert penultimate_value_in_array_list == pylist_of_ten_thousand_ints[9998]
+
+        def test_get_last_value_in_ArrayList_of_ten_thousand_ints_with_nonnegative_index(self):
+            pylist_of_ten_thousand_ints = rand_pylist(10000)
+            arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
+            
+            last_value_in_array_list = arraylist_of_ten_thousand_ints[9999]
+            
+            assert last_value_in_array_list == pylist_of_ten_thousand_ints[9999]
