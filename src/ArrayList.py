@@ -39,3 +39,11 @@ class ArrayList:
         """Returns the string representation of this ArrayList.
         """
         return str(self._values)
+    
+    def is_empty(self) -> bool:
+        """Returns true iff this ArrayList is empty.
+
+        Returns:
+            bool: True iff this ArrayList is empty
+        """
+        return self._size == 0
