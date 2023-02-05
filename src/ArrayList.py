@@ -9,7 +9,7 @@ Date: January 24, 2023 - January 28, 2023
 # Standard library imports
 from dataclasses import dataclass
 import numpy as np
-from numpy.typing import NDArray
+from numpy.typing import NDArray # for NumPy type hints
 
 
 @dataclass
@@ -18,7 +18,7 @@ class ArrayList:
     """
     def __init__(self, values: list[int]) -> None:
         """Constructs an ArrayList object from a 
-           user-specified list of numbers.
+        user-specified list of numbers.
 
         Args:
             values (list[int]): The user-specified list of 
@@ -42,7 +42,7 @@ class ArrayList:
     
     def __getitem__(self, index: int) -> int:
         """Returns the value at a user-specified index in 
-           this ArrayList.
+        this ArrayList.
 
         Args:
             index (int): The user-specified index
@@ -54,13 +54,22 @@ class ArrayList:
     
     def __setitem__(self, index: int, value: int) -> None:
         """Sets the value at a user-specified index in this
-           ArrayList to a user-specified value
+        ArrayList to a user-specified value
 
         Args:
             index (int): The user-specified index
             value (int): The user-specified value
         """
-        self._values[index] = value
+        pass
+        
+    def append(self, value: int) -> None:
+        """Appends a user-specified value to the end of this
+        ArrayList.
+
+        Args:
+            value (int): The user-specified value
+        """
+        pass
     
     def is_empty(self) -> bool:
         """Returns true iff this ArrayList is empty.
