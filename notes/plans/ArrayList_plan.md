@@ -35,8 +35,8 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
     - [Finding Maximum](#finding-maximum)
     - [Searching](#searching)
     - [Reversing](#reversing)
-    - [Bubble Sorting](#bubble-sorting)
     - [Selection Sorting](#selection-sorting)
+    - [Bubble Sorting](#bubble-sorting)
     - [Insertion Sorting](#insertion-sorting)
     - [Merge Sorting](#merge-sorting)
     - [Quick Sorting](#quick-sorting)
@@ -463,22 +463,22 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 ---
 ---
 
-### [Bubble Sorting](#arraylist-test-plan)
-
-18. Bubble sort `ArrayList` of `1` random integer in `[-1000,1000]`
-19. Bubble sort `ArrayList` of `10` random integer in `[-1000,1000]`
-20. Bubble sort `ArrayList` of `100` random integer in `[-1000,1000]`
-21. Bubble sort `ArrayList` of `10000` random integer in `[-1000,1000]`
-
----
----
-
 ### [Selection Sorting](#arraylist-test-plan)
 
-22. Selection sort `ArrayList` of `1` random integer in `[-1000,1000]`
-23. Selection sort `ArrayList` of `10` random integer in `[-1000,1000]`
-24. Selection sort `ArrayList` of `100` random integer in `[-1000,1000]`
-25. Selection sort `ArrayList` of `10000` random integer in `[-1000,1000]`
+18. Selection sort `ArrayList` of `1` random integer in `[-1000,1000]`
+19. Selection sort `ArrayList` of `10` random integer in `[-1000,1000]`
+20. Selection sort `ArrayList` of `100` random integer in `[-1000,1000]`
+21. Selection sort `ArrayList` of `10000` random integer in `[-1000,1000]`
+
+---
+---
+
+### [Bubble Sorting](#arraylist-test-plan)
+
+22. Bubble sort `ArrayList` of `1` random integer in `[-1000,1000]`
+23. Bubble sort `ArrayList` of `10` random integer in `[-1000,1000]`
+24. Bubble sort `ArrayList` of `100` random integer in `[-1000,1000]`
+25. Bubble sort `ArrayList` of `10000` random integer in `[-1000,1000]`
 
 ---
 ---
