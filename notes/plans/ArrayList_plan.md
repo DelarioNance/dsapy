@@ -69,10 +69,10 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 ### [Printing](#arraylist-test-plan)
 
 11. Print empty `ArrayList`
-12. Print `ArrayList` of `1` random integer in `[-1000,1000]`
-13. Print `ArrayList` of `10` random integers in `[-1000,1000]`
-14. Print `ArrayList` of `100` random integers in `[-1000,1000]`
-15. Print `ArrayList` of `10000` random integers in `[-1000,1000]`
+12. Print `ArrayList` of first positive integer
+13. Print `ArrayList` of first `10` positive integers
+14. Print `ArrayList` of first `100` positive integers
+15. Print `ArrayList` of first `10000` positive integers
 
 ---
 ---
