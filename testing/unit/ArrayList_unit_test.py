@@ -132,6 +132,8 @@ class TestCheckingIfEmpty:
 class TestGettingValue:
     
     class TestGettingValueWithNonnegativeIndex:
+        """Uses __init__ and __get_item__ methods from ArrayList class.
+        """
         def test_get_first_value_in_ArrayList_of_one_ints_with_nonnegative_index(self):
             pylist_of_one_int = rand_pylist(1)
             arraylist_of_one_int = ArrayList(pylist_of_one_int)
