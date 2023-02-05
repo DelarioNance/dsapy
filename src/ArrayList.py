@@ -52,6 +52,16 @@ class ArrayList:
         """
         return self._values[index]
     
+    def __setitem__(self, index: int, value: int) -> None:
+        """Sets the value at a user-specified index in this
+           ArrayList to a user-specified value
+
+        Args:
+            index (int): The user-specified index
+            value (int): The user-specified value
+        """
+        self._values[index] = value
+    
     def is_empty(self) -> bool:
         """Returns true iff this ArrayList is empty.
 
