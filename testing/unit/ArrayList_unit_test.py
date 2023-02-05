@@ -22,7 +22,6 @@ from helpers import *
 
 INDEX_BEFORE_NEWLINE = -1
 
-
 class TestGettingSize:
     """Uses __init__ and __len__ methods from ArrayList class.
     """
@@ -61,6 +60,7 @@ class TestGettingSize:
         
         assert size == 10000
         
+
 class TestPrinting:
     """Uses __init__ and __str__ methods from ArrayList class.
     """
@@ -112,6 +112,8 @@ class TestPrinting:
         
 
 class TestCheckingIfEmpty:
+    """Uses __init__ and is_empty methods from ArrayList class.
+    """
     def test_check_if_empty_ArrayList_is_empty(self):
         empty_arraylist = rand_array_list(0)
         
