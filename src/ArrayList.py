@@ -9,20 +9,22 @@ Date: January 24, 2023 - January 28, 2023
 # Standard library imports
 from dataclasses import dataclass
 import numpy as np
+from numpy.typing import NDArray
 
 
 @dataclass
 class ArrayList:
     """_summary_
     """
-    def __init__(self, values: list[float]) -> None:
+    def __init__(self, values: list[int]) -> None:
         """Constructs an ArrayList object from a 
            user-specified list of numbers.
 
         Args:
-            values (list[float]): The user-specified list of 
+            values (list[int]): The user-specified list of 
                                   numbers
         """
+        self._values = np.array(values, dtype = int)
         self._size = len(values)
         
     def __len__(self) -> int:
@@ -32,3 +34,8 @@ class ArrayList:
             int: The size of this ArrayList
         """
         return self._size
+    
+    def __str__(self) -> NDArray[np.int_]:
+        """Returns the string representation of this ArrayList.
+        """
+        return str(self._values)
