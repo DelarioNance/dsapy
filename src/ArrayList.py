@@ -65,8 +65,8 @@ class ArrayList:
         Args:
             value (int): The user-specified value
         """
-        pass
-    
+        self._size += 1
+            
     def remove(self, index: int) -> None:
         """Removes the value at a user-specified index in this
         ArrayList.
