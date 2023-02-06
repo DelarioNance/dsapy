@@ -7,7 +7,6 @@ Date: January 24, 2023 - February 5, 2023
 """
 
 # Standard library imports
-import numpy as np
 import sys # for adding filepaths
 
 # Accessing project directories

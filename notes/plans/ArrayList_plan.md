@@ -230,9 +230,9 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 ### [Setting Value With Correct New Value](#arraylist-test-plan)
 
 1. Set `1` at the only index in an `ArrayList` with `1` random integer in `[-1000,1000]`, with correct value
-2. Set each consecutive integer value in `[-1000, 1000]` at each consecutive index in an `ArrayList` with `10` random integers in `[-1000,1000]`, with correct values
-3. Set each consecutive integer value in `[-1000, 1000]` at each consecutive index in an `ArrayList` with `100` random integers in `[-1000,1000]`, with correct values
-4. Set each consecutive integer value in `[-1000, 1000]` at each consecutive index in an `ArrayList` with `10000` random integers in `[-1000,1000]`, with correct values
+2. Set each consecutive integer value in `[1,10]` at each consecutive index in an `ArrayList` with `10` random integers in `[-1000,1000]`, with correct values
+3. Set each consecutive integer value in `[1,100]` at each consecutive index in an `ArrayList` with `100` random integers in `[-1000,1000]`, with correct values
+4. Set each consecutive integer value in `[1,10000]` at each consecutive index in an `ArrayList` with `10000` random integers in `[-1000,1000]`, with correct values
 
 ---
 ---

@@ -56,7 +56,7 @@ class ArrayList:
             index (int): The user-specified index
             value (int): The user-specified value
         """
-        pass
+        self._values[index] = value
         
     def append(self, value: int) -> None:
         """Appends a user-specified value to the end of this
