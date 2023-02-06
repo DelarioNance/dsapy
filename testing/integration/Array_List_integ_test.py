@@ -68,6 +68,10 @@ class TestSettingValueWithCorrectNewValue:
 
 
 class TestAddingValueWithCorrectNewSize:
+    """Uses __init__ and append methods.
+    
+    Uses AddingValueWithoutError and GettingSize modules.
+    """
     def test_add_value_to_empty_ArrayList(self):
         empty_arraylist = rand_array_list(0)
         
