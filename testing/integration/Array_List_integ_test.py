@@ -26,6 +26,10 @@ TEST_RAN_WITHOUT_ERROR = True
 DEFAULT_INT = 1729
 
 class TestSettingValueWithCorrectNewValue:
+    """Uses __init__ and __setitem__ methods.
+    
+    Uses GettingValue and SettingValueWithoutError modules.
+    """
     def test_set_value_in_ArrayList_of_one_int(self):
         arraylist_of_one_int = rand_array_list(1)
         
