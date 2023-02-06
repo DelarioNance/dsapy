@@ -65,3 +65,75 @@ class TestSettingValueWithCorrectNewValue:
             
         for index in range(10000):
             assert arraylist_of_ten_thousand_ints[index] == index + 1 # Uses __getitem__
+
+
+class TestAddingValueWithCorrectNewSize:
+    def test_add_value_to_empty_ArrayList(self):
+        empty_arraylist = rand_array_list(0)
+        
+        empty_arraylist.append(DEFAULT_INT)
+        
+        assert len(empty_arraylist) == 1
+    
+    def test_add_value_to_ArrayList_of_one_int(self):
+        arraylist_of_one_int = rand_array_list(1)
+        
+        arraylist_of_one_int.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_one_int) == 2
+    
+    def test_add_value_to_ArrayList_of_two_ints(self):
+        arraylist_of_two_ints = rand_array_list(2)
+        
+        arraylist_of_two_ints.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_two_ints) == 3
+    
+    def test_add_value_to_ArrayList_of_three_ints(self):
+        arraylist_of_three_ints = rand_array_list(3)
+        
+        arraylist_of_three_ints.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_three_ints) == 4
+    
+    def test_add_value_to_ArrayList_of_fifteen_ints(self):
+        arraylist_of_fifteen_ints = rand_array_list(15)
+        
+        arraylist_of_fifteen_ints.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_fifteen_ints) == 16
+    
+    def test_add_value_to_ArrayList_of_sixteen_ints(self):
+        arraylist_of_sixteen_ints = rand_array_list(16)
+        
+        arraylist_of_sixteen_ints.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_sixteen_ints) == 17
+    
+    def test_add_value_to_ArrayList_of_seventeen_ints(self):
+        arraylist_of_seventeen_ints = rand_array_list(17)
+        
+        arraylist_of_seventeen_ints.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_seventeen_ints) == 18
+    
+    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+        arraylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+        
+        arraylist_of_eight_thousand_one_hundred_ninety_one_ints.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_eight_thousand_one_hundred_ninety_one_ints) == 8192
+    
+    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+        arraylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+        
+        arraylist_of_eight_thousand_one_hundred_ninety_two_ints.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_eight_thousand_one_hundred_ninety_two_ints) == 8193
+    
+    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+        arraylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+        
+        arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
+        
+        assert len(arraylist_of_eight_thousand_one_hundred_ninety_three_ints) == 8194
