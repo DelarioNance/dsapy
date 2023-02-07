@@ -141,3 +141,74 @@ class TestAddingValueWithCorrectNewSize:
         arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
         
         assert len(arraylist_of_eight_thousand_one_hundred_ninety_three_ints) == 8194
+        
+class TestAddingValueWithCorrectNewValue:
+    def test_add_value_to_empty_ArrayList(self):
+        empty_arraylist = rand_array_list(0)
+        
+        empty_arraylist.append(DEFAULT_INT)
+        
+        assert empty_arraylist[0] == DEFAULT_INT        
+    
+    def test_add_value_to_ArrayList_of_one_int(self):
+        arraylist_of_one_int = rand_array_list(1)
+        
+        arraylist_of_one_int.append(DEFAULT_INT)
+        
+        assert arraylist_of_one_int[1] == DEFAULT_INT
+    
+    def test_add_value_to_ArrayList_of_two_ints(self):
+        arraylist_of_two_ints = rand_array_list(2)
+        
+        arraylist_of_two_ints.append(DEFAULT_INT)
+        
+        assert arraylist_of_two_ints[2] == DEFAULT_INT
+    
+    def test_add_value_to_ArrayList_of_three_ints(self):
+        arraylist_of_three_ints = rand_array_list(3)
+        
+        arraylist_of_three_ints.append(DEFAULT_INT)
+        
+        assert arraylist_of_three_ints[3] == DEFAULT_INT
+    
+    def test_add_value_to_ArrayList_of_fifteen_ints(self):
+        arraylist_of_fifteen_ints = rand_array_list(15)
+        
+        arraylist_of_fifteen_ints.append(DEFAULT_INT)
+        
+        assert arraylist_of_fifteen_ints[15] == DEFAULT_INT
+    
+    def test_add_value_to_ArrayList_of_sixteen_ints(self):
+        arraylist_of_sixteen_ints = rand_array_list(16)
+        
+        arraylist_of_sixteen_ints.append(DEFAULT_INT)
+        
+        assert arraylist_of_sixteen_ints[16] == DEFAULT_INT
+    
+    def test_add_value_to_ArrayList_of_seventeen_ints(self):
+        arraylist_of_seventeen_ints = rand_array_list(17)
+        
+        arraylist_of_seventeen_ints.append(DEFAULT_INT)
+        
+        assert arraylist_of_seventeen_ints[17] == DEFAULT_INT
+    
+    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+        arraylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+        
+        arraylist_of_eight_thousand_one_hundred_ninety_one_ints.append(DEFAULT_INT)
+        
+        assert arraylist_of_eight_thousand_one_hundred_ninety_one_ints[8191] == DEFAULT_INT
+    
+    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+        arraylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+        
+        arraylist_of_eight_thousand_one_hundred_ninety_two_ints.append(DEFAULT_INT)
+        
+        assert arraylist_of_eight_thousand_one_hundred_ninety_two_ints[8192] == DEFAULT_INT
+    
+    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+        arraylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+        
+        arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
+        
+        assert arraylist_of_eight_thousand_one_hundred_ninety_three_ints[8193] == DEFAULT_INT

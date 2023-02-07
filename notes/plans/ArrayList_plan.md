@@ -264,25 +264,25 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 
 ### [Adding Value With Correct New Value](#arraylist-test-plan)
 
-15. Add a random integer value in `[-1000,1000]` to an empty `ArrayList`, with correct value
+15. Add `1729` to an empty `ArrayList`, with correct value
 
 ---
 
-16. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^1 - 1` random integer in `[-1000,1000]`, with correct value
-17. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^1` random integers in `[-1000,1000]`, with correct value
-18. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^1 + 1` random integers in `[-1000,1000]`, with correct value
+16. Add `1729` to an `ArrayList` of `2^1 - 1` random integer in `[-1000,1000]`, with correct value
+17. Add `1729` to an `ArrayList` of `2^1` random integers in `[-1000,1000]`, with correct value
+18. Add `1729` to an `ArrayList` of `2^1 + 1` random integers in `[-1000,1000]`, with correct value
 
 ---
 
-19. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct value
-20. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct value
-21. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct value
+19. Add `1729` to an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct value
+20. Add `1729` to an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct value
+21. Add `1729` to an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct value
 
 ---
 
-22. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct value
-23. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct value
-24. Add a random integer value in `[-1000,1000]` to an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct value
+22. Add `1729` to an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct value
+23. Add `1729` to an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct value
+24. Add `1729` to an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct value
 
 ---
 ---
