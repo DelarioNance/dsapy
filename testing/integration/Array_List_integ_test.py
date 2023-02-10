@@ -26,9 +26,7 @@ TEST_RAN_WITHOUT_ERROR = True
 DEFAULT_INT = 1729
 
 class TestSettingValueWithCorrectNewValue:
-    """Uses __init__ and __setitem__ methods.
-    
-    Uses GettingValue and SettingValueWithoutError modules.
+    """Uses GettingValue and SettingValueWithoutError modules.
     """
     def test_set_value_in_ArrayList_of_one_int(self):
         arraylist_of_one_int = rand_array_list(1)
@@ -68,9 +66,7 @@ class TestSettingValueWithCorrectNewValue:
 
 
 class TestAddingValueWithCorrectNewSize:
-    """Uses __init__ and append methods.
-    
-    Uses AddingValueWithoutError and GettingSize modules.
+    """Uses AddingValueWithoutError and GettingSize modules.
     """
     def test_add_value_to_empty_ArrayList(self):
         empty_arraylist = rand_array_list(0)
@@ -143,6 +139,8 @@ class TestAddingValueWithCorrectNewSize:
         assert len(arraylist_of_eight_thousand_one_hundred_ninety_three_ints) == 8194
         
 class TestAddingValueWithCorrectNewValue:
+    """Uses AddingValueWithoutError and GettingSize modules.
+    """
     def test_add_value_to_empty_ArrayList(self):
         empty_arraylist = rand_array_list(0)
         
