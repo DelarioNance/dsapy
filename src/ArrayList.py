@@ -13,7 +13,9 @@ import numpy as np
 from numpy.typing import NDArray # for NumPy type hints
 from typing import Union # for Union type hint
 
+# Global variables
 DEFAULT_CAPACITY_BASE = 16 # Chose 16 since 16 is a power of two close to Java's default of 10
+VALUE_FOR_INDEX_PAST_CAPACITY = -1
 RESIZE_FACTOR = 2 # Not 1.5 to avoid decimal size of NumPy array
 
 class ArrayList:    
@@ -84,8 +86,11 @@ class ArrayList:
             bool: True iff this ArrayList and the user-specified
                   ArrayLisy contain the same values
         """
-        return self._values == lst_to_compare._values
-        
+        values_in_this_array = self._values[:self._next]
+        values_in_other_array = lst_to_compare._values[:lst_to_compare._next]
+        return np.array_equal(values_in_this_array, values_in_other_array)
+    
+    
     def append(self, value: int) -> None:
         """Appends a user-specified value to the end of this
         ArrayList, and increases the capacity of the ArrayList
@@ -133,7 +138,7 @@ class ArrayList:
         Returns:
             list[int]: The newly created longer array
         """
-        longer_array = [-1] * new_size
+        longer_array = [VALUE_FOR_INDEX_PAST_CAPACITY] * new_size
         for index, value in enumerate(values):
             longer_array[index] = value
         return longer_array

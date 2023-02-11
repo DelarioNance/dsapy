@@ -48,13 +48,20 @@
     - [Specific Errors](#specific-errors-3)
     - [True Reason for Error](#true-reason-for-error-2)
     - [Solution for Errors](#solution-for-errors-3)
+- [Integration Testing `ArrayList` Class](#integration-testing-arraylist-class)
+  - [Issue 1 - Passing `TestCheckingIfEqual` Integration Tests](#issue-1---passing-testcheckingifequal-integration-tests)
+    - [Specific Errors](#specific-errors-4)
+    - [Possible Reasons for Errors](#possible-reasons-for-errors-1)
+    - [True Reason for Error](#true-reason-for-error-3)
+    - [Solution for Errors](#solution-for-errors-4)
     - [References](#references-1)
+    - [References](#references-2)
 
 ---
 
-# Setting up Unit Test Script
+# [Setting up Unit Test Script](#table-of-contents)
 
-## Issue 1 - Importing `ArrayList` Class in Unit Test Script
+## [Issue 1](#table-of-contents) - Importing `ArrayList` Class in Unit Test Script
 
 Date: January 24, 2023
 
@@ -107,7 +114,7 @@ sys.path.append("c:\\Users\\Delar\\OneDrive\\Desktop\\Winter Break\\Repos\\DSAPy
 
 ---
 
-## Issue 2 - Importing `random_array_list` Function in Unit Test Script
+## [Issue 2](#table-of-contents) - Importing `random_array_list` Function in Unit Test Script
 
 Date: January 25, 2023
 
@@ -146,7 +153,7 @@ from helpers import rand_array_list
 
 ---
 
-## Issue 3 - Importing `ArrayList` class when Running PyTest
+## [Issue 3](#table-of-contents) - Importing `ArrayList` class when Running PyTest
 
 Date: January 27, 2023
 
@@ -267,7 +274,7 @@ sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
 
 ---
 
-## Issue 4 - Running `test_get_size_of_empty_ArrayList` Unit Test for `ArrayList` Class with PyTest Results in No Tests Being Ran
+## [Issue 4](#table-of-contents) - Running `test_get_size_of_empty_ArrayList` Unit Test for `ArrayList` Class with PyTest Results in No Tests Being Ran
 
 Date: January 28, 2023
 
@@ -302,6 +309,77 @@ class TestGettingSize:
         size = len(empty_arraylist)
         assert size == 0
 ```
+
+--- 
+
+# [Integration Testing `ArrayList` Class](#table-of-contents)
+
+---
+
+## [Issue 1](#table-of-contents) - Passing `TestCheckingIfEqual` Integration Tests
+
+### Specific Errors
+- After running `pytest testing/integration/` in the WSL terminal with VSCode, the following warnings and errors were shown immediately when trying to determine if two `ArrayList` had the exact same values with the code `assert verdict == False` in the `Array_List_integ_test.py` integration test script
+```
+=========================================================================================== warnings summary ============================================================================================
+testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameValuesButDifferentSizes::test_check_if_ArrayLists_of_same_sixteen_ints_but_different_sizes_are_equal
+testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameValuesButDifferentSizes::test_check_if_ArrayLists_of_same_sixteen_ints_but_different_sizes_are_equal
+  /.../src/ArrayList.py:87: DeprecationWarning: elementwise comparison failed; this will raise an error in the future.
+    return self._values == lst_to_compare._values
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================================================================================== short test summary info ========================================================================================
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameSizeAndSameValues::test_check_if_empty_ArrayLists_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameSizeAndSameValues::test_check_if_equal_ArrayLists_of_one_int_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameSizeAndSameValues::test_check_if_equal_ArrayLists_of_sixteen_ints_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameSizeButDifferentValues::test_check_if_ArrayLists_of_one_int_but_different_values_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameSizeButDifferentValues::test_check_if_ArrayLists_of_sixteen_ints_but_different_values_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameSizeButDifferentValues::test_check_if_ArrayLists_of_one_thousand_two_hundred_twenty_nine_ints_but_different_values_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameValuesButDifferentSizes::test_check_if_ArrayLists_of_same_one_int_but_different_sizes_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForSameValuesButDifferentSizes::test_check_if_ArrayLists_of_same_one_thousand_two_hundred_twenty_nine_ints_but_different_sizes_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+FAILED testing/integration/Array_List_integ_test.py::TestCheckingIfEqual::TestCheckingIfEqualForDifferentSizeAndDifferentValues::test_check_if_ArrayLists_of_different_size_and_different_ints_are_equal - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
+=============================================================================== 9 failed, 56 passed, 2 warnings in 0.55s ================================================================================
+```
+
+### Possible Reasons for Errors
+- `ValueError: The trurth value of an array with more than one element is ambiguous` means that either Python or PyTest does not know how to compare `NumPy` arrays with `>1` elements for equality
+
+### True Reason for Error
+- If a user wants to compare two NumPy arrays for equality, NumPy forces them to use one of the following examples of NumPy methods:
+  - `any`
+    - Returns true if any of the values in two NumPy arrays are equal
+  - `all`
+    - Returns true if all the values in two NumPy arrays of equal shape are equal
+  - `array_equal`
+    - Returns true if all the values in two NumPy arrays of arbitrary shape are equal
+
+### Solution for Errors
+- Instead of using the code `return self._values == lst_to_compare._values` to check if two `ArrayLists` are equal in the `ArrayList` class's `__eq__` method, I now use the following code:
+```
+def __eq__(self, lst_to_compare: ArrayList) -> bool:
+  """Returns true iff this ArrayList contains exactly
+  the values in a second user-specified ArrayList to
+  compare.
+
+  Args:
+      lst_to_compare (ArrayList): The second user-specified 
+                                  ArrayList
+
+  Returns:
+      bool: True iff this ArrayList and the user-specified
+            ArrayLisy contain the same values
+  """
+  values_in_this_array = self._values[:self._next]
+  values_in_other_array = lst_to_compare._values[:lst_to_compare._next]
+  return np.array_equal(values_in_this_array, values_in_other_array)
+```
+
+### References
+- [Data Science Parichay - Check If Two Numpy Arrays are Equal](https://datascienceparichay.com/article/check-if-two-numpy-arrays-are-equal/#:~:text=Summary%20%E2%80%93%20Compare%20two%20Numpy%20arrays%20for%20equality,an%20error%20when%20comparing%20arrays%20of%20different%20lengths.)
+- [NumPy - `numpy.array_equal`](https://numpy.org/doc/stable/reference/generated/numpy.array_equal.html)
+- [Stack Overflow - ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()](https://stackoverflow.com/questions/10062954/valueerror-the-truth-value-of-an-array-with-more-than-one-element-is-ambiguous)
+
+---
 
 ### References
 - [Stack Overflow - 'pytest' exits with no error, but with "collected 0 items"](https://stackoverflow.com/questions/37353960/pytest-exits-with-no-error-but-with-collected-0-items)

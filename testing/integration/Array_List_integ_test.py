@@ -19,12 +19,12 @@ sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
 from ArrayList import ArrayList
 from helpers import *
 
-
 # Global variables
+DEFAULT_INT = 1729
+DUMMY_NEGATIVE_INT = -2 # Not -1 because -1 is the dummy negative int for ArrayLists
 INDEX_BEFORE_NEWLINE = -1
 TEST_RAN_WITHOUT_ERROR = True
-DEFAULT_INT = 1729
-DUMMY_NEGATIVE_INT = -1
+
 
 class TestSettingValueWithCorrectNewValue:
     """Uses GettingValue and SettingValueWithoutError modules.
@@ -532,9 +532,9 @@ class TestCheckingIfEqual:
         def test_check_if_ArrayLists_of_same_one_int_but_different_sizes_are_equal(self):
             pylist_of_one_int = rand_pylist(1)
             arraylist_of_one_int = ArrayList(pylist_of_one_int)
-            second_arraylist_of_two_ints = ArrayList(pylist_of_one_int + [DUMMY_NEGATIVE_INT])
+            arraylist_of_two_ints = ArrayList(pylist_of_one_int + [DUMMY_NEGATIVE_INT])
             
-            verdict = (arraylist_of_one_int == second_arraylist_of_two_ints)
+            verdict = (arraylist_of_one_int == arraylist_of_two_ints)
             
             assert verdict == False
         
