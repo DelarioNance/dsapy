@@ -342,25 +342,28 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 
 ### [Checking for Equality](#arraylist-test-plan)
 
-56. Check if two equal `ArrayLists` of `1` random integer in `[-1000,1000]` are equal
-57. Check if two equal `ArrayLists` of `16` random integer in `[-1000,1000]` are equal
-58. Check if two equal `ArrayLists` of random integer number in `[101,1000]` of random integers in `[-1000,1000]` are equal
+56. Check if two equal `ArrayLists` of `0` random integers in `[-1000,1000]` are equal
+57. Check if two equal `ArrayLists` of `1` random integer in `[-1000,1000]` are equal
+58. Check if two equal `ArrayLists` of `16` random integer in `[-1000,1000]` are equal
+59. Check if two equal `ArrayLists` of `1729` random integers in `[-1000,1000]` are equal
 
 ---
 
 59. Check if two same-size `ArrayLists` of different `1` random integer in `[-1000,1000]` are not equal
 60. Check if two same-size `ArrayLists` of different `16` random integers in `[-1000,1000]` are not equal
-61. Check if two same-size `ArrayLists` of random integer number in `[101,1000]` of different random integers in `[-1000,1000]` are not equal
+61. Check if two same-size `ArrayLists` of different `1729` random integers in `[-1000,1000]` are not equal
 
 ---
 
 62. Check if two different-size `ArrayLists` of same `1` random integer in `[-1000,1000]` are not equal
 63. Check if two different-size `ArrayLists` of same `16` random integers in `[-1000,1000]` are not equal
-64. Check if two different-size `ArrayLists` of random integer number in `[101,1000]` of same random integers in `[-1000,1000]` are not equal
+64. Check if two different-size `ArrayLists` of same `1729` random integers in `[-1000,1000]` are not equal
+
+---
 
 65. Check if two different-size `ArrayLists` of different `1` random integer in `[-1000,1000]` are not equal
 66. Check if two different-size `ArrayLists` of different `16` random integers in `[-1000,1000]` are not equal
-67. Check if two different-size `ArrayLists` of random integer number in `[101,1000]` of different random integers in `[-1000,1000]` are not equal
+67. Check if two different-size `ArrayLists` of different `1729` random integers in `[-1000,1000]` are not equal
 
 ---
 ---

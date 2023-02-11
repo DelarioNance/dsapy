@@ -13,7 +13,7 @@ import random
 import sys
 
 # Accessing project directories
-WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/dsapy/src"
+WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/BitBucket/dsapy/src"
 sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
 
 # Local application imports

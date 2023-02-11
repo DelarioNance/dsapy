@@ -24,6 +24,7 @@ from helpers import *
 INDEX_BEFORE_NEWLINE = -1
 TEST_RAN_WITHOUT_ERROR = True
 DEFAULT_INT = 1729
+DUMMY_NEGATIVE_INT = -1
 
 class TestSettingValueWithCorrectNewValue:
     """Uses GettingValue and SettingValueWithoutError modules.
@@ -212,8 +213,7 @@ class TestAddingValueWithCorrectNewValue:
         
         assert arraylist_of_eight_thousand_one_hundred_ninety_three_ints[8193] == DEFAULT_INT
         
-        
-        
+
 class TestRemovingValueWithCorrectNewSize:
     """Uses RemovingValueWithoutError and GettingSize modules.
     """
@@ -446,3 +446,138 @@ class TestRemovingValueWithCorrectNewSize:
             array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8192)
             
             assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
+       
+            
+class TestCheckingIfEqual:
+    """_summary_
+    
+    In the TestCheckingIfEqualForSameSizeButDifferentValues 
+    class for ensuring that ArrayLists of the same size but 
+    with different values are considered unequal, my choice of
+    using random values for our ArrayLists could
+    theoretically produce ArrayLists with the same values
+    (hence equal ArrayLists). However, since we are using 
+    random integers in the range [-1000,1000], the 
+    probability of since an event happening is equal to the
+    fraction 1/(2001^n), where is the size of both ArrayLists.
+    This fraction takes on a minimum value less than 0.05%
+    (when n=1), so we will use random integers in the
+    TestCheckingIfEqualForSameSizeButDifferentValues class.
+    """
+    class TestCheckingIfEqualForSameSizeAndSameValues:
+        def test_check_if_empty_ArrayLists_are_equal(self):
+            empty_pylist = []
+            first_empty_arraylist = ArrayList(empty_pylist)
+            second_empty_arraylist = ArrayList(empty_pylist)
+            
+            verdict = (first_empty_arraylist == second_empty_arraylist)
+            
+            assert verdict == True
+            
+        def test_check_if_equal_ArrayLists_of_one_int_are_equal(self):
+            pylist_of_one_int = rand_pylist(1)
+            first_arraylist_of_one_int = ArrayList(pylist_of_one_int)
+            second_arraylist_of_one_int = ArrayList(pylist_of_one_int)
+            
+            verdict = (first_arraylist_of_one_int == second_arraylist_of_one_int)
+            
+            assert verdict == True
+        
+        def test_check_if_equal_ArrayLists_of_sixteen_ints_are_equal(self):
+            pylist_of_sixteen_ints = rand_pylist(16)
+            first_arraylist_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+            second_arraylist_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+            
+            verdict = (first_arraylist_of_sixteen_ints == second_arraylist_of_sixteen_ints)
+            
+            assert verdict == True
+        
+        def test_check_if_equal_ArrayLists_of_one_int_are_equal(self):
+            pylist_of_one_thousand_two_hundred_twenty_nine_ints = rand_pylist(DEFAULT_INT)
+            first_arraylist_of_one_thousand_two_hundred_twenty_nine_ints = ArrayList(pylist_of_one_thousand_two_hundred_twenty_nine_ints)
+            second_arraylist_of_one_thousand_two_hundred_twenty_nine_ints = ArrayList(pylist_of_one_thousand_two_hundred_twenty_nine_ints)
+            
+            verdict = (first_arraylist_of_one_thousand_two_hundred_twenty_nine_ints == second_arraylist_of_one_thousand_two_hundred_twenty_nine_ints)
+            
+            assert verdict == True
+    
+    
+    class TestCheckingIfEqualForSameSizeButDifferentValues:
+        def test_check_if_ArrayLists_of_one_int_but_different_values_are_equal(self):
+            first_arraylist_of_one_int =  rand_array_list(1)
+            second_arraylist_of_one_int = rand_array_list(1)
+            
+            verdict = (first_arraylist_of_one_int == second_arraylist_of_one_int)
+            
+            assert verdict == False                
+        
+        def test_check_if_ArrayLists_of_sixteen_ints_but_different_values_are_equal(self):
+            first_arraylist_of_sixteen_ints =  rand_array_list(16)
+            second_arraylist_of_sixteen_ints = rand_array_list(16)
+            
+            verdict = (first_arraylist_of_sixteen_ints == second_arraylist_of_sixteen_ints)
+            
+            assert verdict == False   
+        
+        def test_check_if_ArrayLists_of_one_thousand_two_hundred_twenty_nine_ints_but_different_values_are_equal(self):
+            first_arraylist_of_one_thousand_two_hundred_twenty_nine_ints =  rand_array_list(DEFAULT_INT)
+            second_arraylist_of_one_thousand_two_hundred_twenty_nine_ints = rand_array_list(DEFAULT_INT)
+            
+            verdict = (first_arraylist_of_one_thousand_two_hundred_twenty_nine_ints == second_arraylist_of_one_thousand_two_hundred_twenty_nine_ints)
+            
+            assert verdict == False   
+    
+    
+    class TestCheckingIfEqualForSameValuesButDifferentSizes:
+        def test_check_if_ArrayLists_of_same_one_int_but_different_sizes_are_equal(self):
+            pylist_of_one_int = rand_pylist(1)
+            arraylist_of_one_int = ArrayList(pylist_of_one_int)
+            second_arraylist_of_two_ints = ArrayList(pylist_of_one_int + [DUMMY_NEGATIVE_INT])
+            
+            verdict = (arraylist_of_one_int == second_arraylist_of_two_ints)
+            
+            assert verdict == False
+        
+        def test_check_if_ArrayLists_of_same_sixteen_ints_but_different_sizes_are_equal(self):
+            pylist_of_sixteen_ints = rand_pylist(16)
+            arraylist_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+            arraylist_of_seventeen_ints = ArrayList(pylist_of_sixteen_ints + [DUMMY_NEGATIVE_INT])
+            
+            verdict = (arraylist_of_sixteen_ints == arraylist_of_seventeen_ints)
+            
+            assert verdict == False
+        
+        def test_check_if_ArrayLists_of_same_one_thousand_two_hundred_twenty_nine_ints_but_different_sizes_are_equal(self):
+            pylist_of_one_thousand_two_hundred_twenty_nine_ints = rand_pylist(DEFAULT_INT)
+            arraylist_of_one_thousand_two_hundred_twenty_nine_ints = ArrayList(pylist_of_one_thousand_two_hundred_twenty_nine_ints)
+            arraylist_of_one_thousand_two_hundred_thirty_ints = ArrayList(pylist_of_one_thousand_two_hundred_twenty_nine_ints + [DUMMY_NEGATIVE_INT])
+            
+            verdict = (arraylist_of_one_thousand_two_hundred_twenty_nine_ints == arraylist_of_one_thousand_two_hundred_thirty_ints)
+            
+            assert verdict == False
+    
+    
+    class TestCheckingIfEqualForDifferentSizeAndDifferentValues:
+        def test_check_if_ArrayLists_of_different_size_and_different_ints_are_equal(self):
+            arraylist_of_one_int =  rand_array_list(1)
+            arraylist_of_two_ints = rand_array_list(2)
+            
+            verdict = (arraylist_of_one_int == arraylist_of_two_ints)
+            
+            assert verdict == False
+        
+        def test_check_if_ArrayLists_of_different_size_and_different_ints_are_equal(self):
+            arraylist_of_sixteen_ints =  rand_array_list(16)
+            arraylist_of_seventeen_ints = rand_array_list(17)
+            
+            verdict = (arraylist_of_sixteen_ints == arraylist_of_seventeen_ints)
+            
+            assert verdict == False
+        
+        def test_check_if_ArrayLists_of_different_size_and_different_ints_are_equal(self):
+            arraylist_of_one_thousand_two_hundred_twenty_nine_ints =  rand_array_list(1229)
+            arraylist_of_one_thousand_two_hundred_thirty_ints = rand_array_list(1230)
+            
+            verdict = (arraylist_of_one_thousand_two_hundred_twenty_nine_ints == arraylist_of_one_thousand_two_hundred_thirty_ints)
+            
+            assert verdict == False
