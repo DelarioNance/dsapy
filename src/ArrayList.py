@@ -12,8 +12,8 @@ import numpy as np
 from numpy.typing import NDArray # for NumPy type hints
 from typing import Union # for Union type hint
 
-DEFAULT_CAPACITY_BASE = 16
-RESIZE_FACTOR = 2
+DEFAULT_CAPACITY_BASE = 16 # Chose 16 since 16 is a power of two close to Java's default of 10
+RESIZE_FACTOR = 2 # Not 1.5 to avoid decimal size of NumPy array
 
 class ArrayList:    
     def __init__(self, values: list[int]) -> None:

@@ -3,16 +3,16 @@ A Python script for integration testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 7, 2023
+Date: January 24, 2023 - February 10, 2023
 """
 
 # Standard library imports
 import sys # for adding filepaths
 
 # Accessing project directories
-WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/dsapy/src"
+WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/BitBucket/dsapy/src"
 sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
-WSL_FILEPATH_TO_TESTING = "/home/delario-nance-jr/dsapy/testing" 
+WSL_FILEPATH_TO_TESTING = "/home/delario-nance-jr/BitBucket/dsapy/testing" 
 sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
 
 # Local application imports
@@ -137,6 +137,7 @@ class TestAddingValueWithCorrectNewSize:
         arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
         
         assert len(arraylist_of_eight_thousand_one_hundred_ninety_three_ints) == 8194
+   
         
 class TestAddingValueWithCorrectNewValue:
     """Uses AddingValueWithoutError and GettingSize modules.
@@ -210,3 +211,236 @@ class TestAddingValueWithCorrectNewValue:
         arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
         
         assert arraylist_of_eight_thousand_one_hundred_ninety_three_ints[8193] == DEFAULT_INT
+        
+        
+        
+class TestRemovingValueWithCorrectNewSize:
+    class TestRemovingValueFromArrayListOfOneInt:
+        def test_remove_first_value_from_ArrayList_of_one_int(self):
+            array_list_of_one_int = rand_array_list(1)
+            
+            array_list_of_one_int.remove(0)
+            
+            assert len(array_list_of_one_int) == 1
+    
+    
+    class TestRemovingValueFromArrayListOfFifteenInts:
+        def test_remove_first_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(0)
+            
+            assert len(array_list_of_fifteen_ints) == 14
+        
+        def test_remove_second_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(1)
+            
+            assert len(array_list_of_fifteen_ints) == 14
+        
+        def test_remove_middle_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(7)
+            
+            assert len(array_list_of_fifteen_ints) == 14
+        
+        def test_remove_penultimate_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(13)
+            
+            assert len(array_list_of_fifteen_ints) == 14
+
+        def test_remove_last_value_from_ArrayList_of_fifteen_ints(self):
+            array_list_of_fifteen_ints = rand_array_list(15)
+            
+            array_list_of_fifteen_ints.remove(14)
+            
+            assert len(array_list_of_fifteen_ints) == 14
+    
+    
+    class TestRemovingValueFromArrayListOfSixteenInts:
+        def test_remove_first_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(0)
+            
+            assert len(array_list_of_sixteen_ints) == 15
+        
+        def test_remove_second_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(1)
+            
+            assert len(array_list_of_sixteen_ints) == 15
+        
+        def test_remove_middle_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(7)
+            
+            assert len(array_list_of_sixteen_ints) == 15
+        
+        def test_remove_penultimate_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(14)
+            
+            assert len(array_list_of_sixteen_ints) == 15
+
+        def test_remove_last_value_from_ArrayList_of_sixteen_ints(self):
+            array_list_of_sixteen_ints = rand_array_list(16)
+            
+            array_list_of_sixteen_ints.remove(15)
+            
+            assert len(array_list_of_sixteen_ints) == 15
+    
+    
+    class TestRemovingValueFromArrayListOfSeventeenInts:
+        def test_remove_first_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(0)
+            
+            assert len(array_list_of_seventeen_ints) == 16
+        
+        def test_remove_second_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(1)
+            
+            assert len(array_list_of_seventeen_ints) == 16
+        
+        def test_remove_middle_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(8)
+            
+            assert len(array_list_of_seventeen_ints) == 16
+        
+        def test_remove_penultimate_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(15)
+            
+            assert len(array_list_of_seventeen_ints) == 16
+
+        def test_remove_last_value_from_ArrayList_of_seventeen_ints(self):
+            array_list_of_seventeen_ints = rand_array_list(17)
+            
+            array_list_of_seventeen_ints.remove(16)
+            
+            assert len(array_list_of_seventeen_ints) == 16
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyOneInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(0)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
+        
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(1)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
+        
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(4095)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
+        
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8189)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
+
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8190)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyTwoInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(0)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
+        
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(1)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
+        
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(4095)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
+        
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8190)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
+
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8191)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyThreeInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(0)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
+        
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(1)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
+        
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(4096)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
+        
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8191)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
+
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
+            
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8192)
+            
+            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192

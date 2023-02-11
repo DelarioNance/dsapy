@@ -10,9 +10,9 @@ Date: January 24, 2023 - February 5, 2023
 import sys # for adding filepaths
 
 # Accessing project directories
-WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/dsapy/src"
+WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/BitBucket/dsapy/src"
 sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
-WSL_FILEPATH_TO_TESTING = "/home/delario-nance-jr/dsapy/testing" 
+WSL_FILEPATH_TO_TESTING = "/home/delario-nance-jr/BitBucket/dsapy/testing" 
 sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
 
 # Local application imports
