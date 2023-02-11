@@ -7,6 +7,7 @@ Date: January 24, 2023 - February 10, 2023
 """
 
 # Standard library imports
+from __future__ import annotations # for using ArrayList type hint in ArrayList methods
 from math import ceil # for rounding up initial ArrayList capacities
 import numpy as np
 from numpy.typing import NDArray # for NumPy type hints
@@ -69,6 +70,21 @@ class ArrayList:
             value (int): The user-specified value
         """
         self._values[index] = value
+        
+    def __eq__(self, lst_to_compare: ArrayList) -> bool:
+        """Returns true iff this ArrayList contains exactly
+        the values in a second user-specified ArrayList to
+        compare.
+
+        Args:
+            lst_to_compare (ArrayList): The second user-specified 
+                                        ArrayList
+
+        Returns:
+            bool: True iff this ArrayList and the user-specified
+                  ArrayLisy contain the same values
+        """
+        return self._values == lst_to_compare._values
         
     def append(self, value: int) -> None:
         """Appends a user-specified value to the end of this
