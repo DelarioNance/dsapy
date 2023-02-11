@@ -3,7 +3,7 @@ A Python script for integration testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 10, 2023
+Date: January 24, 2023 - February 11, 2023
 """
 
 # Standard library imports
@@ -449,9 +449,7 @@ class TestRemovingValueWithCorrectNewSize:
        
             
 class TestCheckingIfEqual:
-    """_summary_
-    
-    In the TestCheckingIfEqualForSameSizeButDifferentValues 
+    """In the TestCheckingIfEqualForSameSizeButDifferentValues 
     class for ensuring that ArrayLists of the same size but 
     with different values are considered unequal, my choice of
     using random values for our ArrayLists could

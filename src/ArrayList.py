@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 10, 2023
+Date: January 24, 2023 - February 11, 2023
 """
 
 # Standard library imports
@@ -90,7 +90,6 @@ class ArrayList:
         values_in_other_array = lst_to_compare._values[:lst_to_compare._next]
         return np.array_equal(values_in_this_array, values_in_other_array)
     
-    
     def append(self, value: int) -> None:
         """Appends a user-specified value to the end of this
         ArrayList, and increases the capacity of the ArrayList
@@ -158,4 +157,3 @@ class ArrayList:
                  of base
         """
         return ceil(x/base) * base
-    
