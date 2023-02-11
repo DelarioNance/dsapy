@@ -3,7 +3,7 @@ A Python script for unit testing the ArrayList class with
 PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 5, 2023
+Date: January 24, 2023 - February 10, 2023
 """
 
 # Standard library imports

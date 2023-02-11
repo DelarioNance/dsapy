@@ -221,7 +221,7 @@ class TestRemovingValueWithCorrectNewSize:
             
             array_list_of_one_int.remove(0)
             
-            assert len(array_list_of_one_int) == 1
+            assert len(array_list_of_one_int) == 0
     
     
     class TestRemovingValueFromArrayListOfFifteenInts:
