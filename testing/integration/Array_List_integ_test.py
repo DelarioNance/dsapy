@@ -140,7 +140,7 @@ class TestAddingValueWithCorrectNewSize:
    
         
 class TestAddingValueWithCorrectNewValue:
-    """Uses AddingValueWithoutError and GettingSize modules.
+    """Uses AddingValueWithoutError and GettingValue modules.
     """
     def test_add_value_to_empty_ArrayList(self):
         empty_arraylist = rand_array_list(0)
@@ -215,6 +215,8 @@ class TestAddingValueWithCorrectNewValue:
         
         
 class TestRemovingValueWithCorrectNewSize:
+    """Uses RemovingValueWithoutError and GettingSize modules.
+    """
     class TestRemovingValueFromArrayListOfOneInt:
         def test_remove_first_value_from_ArrayList_of_one_int(self):
             array_list_of_one_int = rand_array_list(1)
