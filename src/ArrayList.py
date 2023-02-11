@@ -94,7 +94,7 @@ class ArrayList:
         Args:
             index (int): The user-specified index
         """
-        pass
+        self._next -= 1
     
     def is_empty(self) -> bool:
         """Returns true iff this ArrayList is empty.
