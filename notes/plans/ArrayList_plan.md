@@ -28,8 +28,8 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
     - [Adding Value With Correct New Size](#adding-value-with-correct-new-size)
     - [Adding Value With Correct New Value](#adding-value-with-correct-new-value)
     - [Removing Value With Correct New Size](#removing-value-with-correct-new-size)
-    - [Removing Value With Correct Old Values](#removing-value-with-correct-old-values)
     - [Checking for Equality](#checking-for-equality)
+    - [Removing Value With Correct Old Values](#removing-value-with-correct-old-values)
   - [**End-to-End** Tests](#end-to-end-tests)
     - [Finding Minimum](#finding-minimum)
     - [Finding Maximum](#finding-maximum)
@@ -340,82 +340,82 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 ---
 ---
 
-### [Removing Value With Correct Old Values](#arraylist-test-plan)
-
-56. Remove the value from an `ArrayList` of `1` random integer in `[-1000,1000]`, with correct old values
-
----
-
-57. Remove the value at start index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
-58. Remove the value at after-start index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
-59. Remove the value at middle index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
-60. Remove the value at before-end index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
-61. Remove the value at end index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
-
----
-
-62. Remove the value at start index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
-63. Remove the value at after-start index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
-64. Remove the value at middle index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
-65. Remove the value at before-end index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
-66. Remove the value at end index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
-
----
-
-67. Remove the value at start index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
-68. Remove the value at after-start index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
-69. Remove the value at middle index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
-70. Remove the value at before-end index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
-71. Remove the value at end index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
-
----
-
-72. Remove the value at start index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
-73. Remove the value at after-start index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
-74. Remove the value at middle index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
-75. Remove the value at before-end index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
-76. Remove the value at end index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
-
----
-
-77. Remove the value at start index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
-78. Remove the value at after-start index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
-79. Remove the value at middle index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
-80. Remove the value at before-end index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
-81. Remove the value at end index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
-
----
-
-82. Remove the value at start index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
-83. Remove the value at after-start index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
-84. Remove the value at middle index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
-85. Remove the value at before-end index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
-86. Remove the value at end index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
-
----
----
-
 ### [Checking for Equality](#arraylist-test-plan)
 
-87. Check if two equal `ArrayLists` of `1` random integer in `[-1000,1000]` are equal
-88. Check if two equal `ArrayLists` of `16` random integer in `[-1000,1000]` are equal
-89. Check if two equal `ArrayLists` of random integer number in `[101,1000]` of random integers in `[-1000,1000]` are equal
+56. Check if two equal `ArrayLists` of `1` random integer in `[-1000,1000]` are equal
+57. Check if two equal `ArrayLists` of `16` random integer in `[-1000,1000]` are equal
+58. Check if two equal `ArrayLists` of random integer number in `[101,1000]` of random integers in `[-1000,1000]` are equal
 
 ---
 
-90. Check if two same-size `ArrayLists` of different `1` random integer in `[-1000,1000]` are not equal
-91. Check if two same-size `ArrayLists` of different `16` random integers in `[-1000,1000]` are not equal
-92. Check if two same-size `ArrayLists` of random integer number in `[101,1000]` of different random integers in `[-1000,1000]` are not equal
+59. Check if two same-size `ArrayLists` of different `1` random integer in `[-1000,1000]` are not equal
+60. Check if two same-size `ArrayLists` of different `16` random integers in `[-1000,1000]` are not equal
+61. Check if two same-size `ArrayLists` of random integer number in `[101,1000]` of different random integers in `[-1000,1000]` are not equal
 
 ---
 
-93. Check if two different-size `ArrayLists` of same `1` random integer in `[-1000,1000]` are not equal
-94. Check if two different-size `ArrayLists` of same `16` random integers in `[-1000,1000]` are not equal
-95. Check if two different-size `ArrayLists` of random integer number in `[101,1000]` of same random integers in `[-1000,1000]` are not equal
+62. Check if two different-size `ArrayLists` of same `1` random integer in `[-1000,1000]` are not equal
+63. Check if two different-size `ArrayLists` of same `16` random integers in `[-1000,1000]` are not equal
+64. Check if two different-size `ArrayLists` of random integer number in `[101,1000]` of same random integers in `[-1000,1000]` are not equal
 
-96. Check if two different-size `ArrayLists` of different `1` random integer in `[-1000,1000]` are not equal
-97. Check if two different-size `ArrayLists` of different `16` random integers in `[-1000,1000]` are not equal
-98. Check if two different-size `ArrayLists` of random integer number in `[101,1000]` of different random integers in `[-1000,1000]` are not equal
+65. Check if two different-size `ArrayLists` of different `1` random integer in `[-1000,1000]` are not equal
+66. Check if two different-size `ArrayLists` of different `16` random integers in `[-1000,1000]` are not equal
+67. Check if two different-size `ArrayLists` of random integer number in `[101,1000]` of different random integers in `[-1000,1000]` are not equal
+
+---
+---
+
+### [Removing Value With Correct Old Values](#arraylist-test-plan)
+
+68. Remove the value from an `ArrayList` of `1` random integer in `[-1000,1000]`, with correct old values
+
+---
+
+69. Remove the value at start index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
+70. Remove the value at after-start index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
+71. Remove the value at middle index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
+72. Remove the value at before-end index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
+73. Remove the value at end index from an `ArrayList` of `2^4 - 1` random integers in `[-1000,1000]`, with correct old values
+
+---
+
+74. Remove the value at start index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
+75. Remove the value at after-start index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
+76. Remove the value at middle index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
+77. Remove the value at before-end index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
+78. Remove the value at end index from an `ArrayList` of `2^4` random integers in `[-1000,1000]`, with correct old values
+
+---
+
+79. Remove the value at start index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
+80. Remove the value at after-start index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
+81. Remove the value at middle index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
+82. Remove the value at before-end index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
+83. Remove the value at end index from an `ArrayList` of `2^4 + 1` random integers in `[-1000,1000]`, with correct old values
+
+---
+
+84. Remove the value at start index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
+85. Remove the value at after-start index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
+86. Remove the value at middle index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
+87. Remove the value at before-end index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
+88. Remove the value at end index from an `ArrayList` of `2^13 - 1` random integers in `[-1000,1000]`, with correct old values
+
+---
+
+89. Remove the value at start index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
+90. Remove the value at after-start index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
+91. Remove the value at middle index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
+92. Remove the value at before-end index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
+93. Remove the value at end index from an `ArrayList` of `2^13` random integers in `[-1000,1000]`, with correct old values
+
+---
+
+94. Remove the value at start index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
+95. Remove the value at after-start index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
+96. Remove the value at middle index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
+97. Remove the value at before-end index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
+98. Remove the value at end index from an `ArrayList` of `2^13 + 1` random integers in `[-1000,1000]`, with correct old values
 
 ---
 ---
