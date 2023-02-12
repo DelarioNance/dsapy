@@ -3,7 +3,7 @@ A Python script for integration testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 11, 2023
+Date: January 24, 2023 - February 12, 2023
 """
 
 # Standard library imports
@@ -579,3 +579,296 @@ class TestCheckingIfEqual:
             verdict = (arraylist_of_one_thousand_two_hundred_twenty_nine_ints == arraylist_of_one_thousand_two_hundred_thirty_ints)
             
             assert verdict == False
+    
+            
+class TestRemovingValueWithCorrectOldValues:
+    class TestRemovingValueFromArrayListOfOneInt:
+        def test_remove_first_value_from_ArrayList_of_one_int(self):
+            pylist_of_one_int = rand_pylist(1)
+            array_list_of_one_int = ArrayList(pylist_of_one_int)
+            
+            verdict = (array_list_of_one_int == pylist_of_one_int[1:]) 
+            
+            assert verdict == True
+    
+    
+    class TestRemovingValueFromArrayListOfFifteenInts:
+        def test_remove_first_value_from_ArrayList_of_fifteen_ints(self):
+            index_after_removed = 1
+            pylist_of_fifteen_ints = rand_pylist(15)
+            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
+            
+            verdict = (array_list_of_fifteen_ints == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            
+            assert verdict == True
+          
+        def test_remove_second_value_from_ArrayList_of_fifteen_ints(self):
+            index_after_removed = 2
+            pylist_of_fifteen_ints = rand_pylist(15)
+            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
+            
+            verdict = (array_list_of_fifteen_ints == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+
+            assert verdict == True
+            
+        def test_remove_middle_value_from_ArrayList_of_fifteen_ints(self):
+            index_after_removed = 8
+            pylist_of_fifteen_ints = rand_pylist(15)
+            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
+            
+            verdict = (array_list_of_fifteen_ints == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_penultimate_value_from_ArrayList_of_fifteen_ints(self):
+            index_after_removed = 14
+            pylist_of_fifteen_ints = rand_pylist(15)
+            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
+            
+            verdict = (array_list_of_fifteen_ints == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_last_value_from_ArrayList_of_fifteen_ints(self):
+            index_after_removed = 15
+            pylist_of_fifteen_ints = rand_pylist(15)
+            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
+            
+            verdict = (array_list_of_fifteen_ints == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+    
+    class TestRemovingValueFromArrayListOfSixteenInts:
+        def test_remove_first_value_from_ArrayList_of_sixteen_ints(self):
+            index_after_removed = 1
+            pylist_of_sixteen_ints = rand_pylist(16)
+            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+            
+            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            
+            assert verdict == True
+          
+        def test_remove_second_value_from_ArrayList_of_sixteen_ints(self):
+            index_after_removed = 2
+            pylist_of_sixteen_ints = rand_pylist(16)
+            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+            
+            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_middle_value_from_ArrayList_of_sixteen_ints(self):
+            index_after_removed = 8
+            pylist_of_sixteen_ints = rand_pylist(16)
+            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+            
+            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_penultimate_value_from_ArrayList_of_sixteen_ints(self):
+            index_after_removed = 15
+            pylist_of_sixteen_ints = rand_pylist(16)
+            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+            
+            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_last_value_from_ArrayList_of_sixteen_ints(self):
+            index_after_removed = 16
+            pylist_of_sixteen_ints = rand_pylist(16)
+            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+            
+            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            
+            assert verdict == True
+    
+    
+    class TestRemovingValueFromArrayListOfSeventeenInts:
+        def test_remove_first_value_from_ArrayList_of_seventeen_ints(self):
+            index_after_removed = 1
+            pylist_of_seventeen_ints = rand_pylist(17)
+            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
+            
+            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            
+            assert verdict == True
+          
+        def test_remove_second_value_from_ArrayList_of_seventeen_ints(self):
+            index_after_removed = 2
+            pylist_of_seventeen_ints = rand_pylist(17)
+            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
+            
+            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_middle_value_from_ArrayList_of_seventeen_ints(self):
+            index_after_removed = 9
+            pylist_of_seventeen_ints = rand_pylist(17)
+            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
+            
+            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_penultimate_value_from_ArrayList_of_seventeen_ints(self):
+            index_after_removed = 17
+            pylist_of_seventeen_ints = rand_pylist(17)
+            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
+            
+            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_last_value_from_ArrayList_of_seventeen_ints(self):
+            index_after_removed = 17
+            pylist_of_seventeen_ints = rand_pylist(17)
+            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
+            
+            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            
+            assert verdict == True
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyOneInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            index_after_removed = 1
+            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            
+            assert verdict == True
+          
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            index_after_removed = 2
+            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            index_after_removed = 4096
+            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            index_after_removed = 8190
+            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
+            index_after_removed = 8191
+            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
+            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            
+            assert verdict == True
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyTwoInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            index_after_removed = 1
+            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            
+            assert verdict == True
+          
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            index_after_removed = 2
+            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            index_after_removed = 4096
+            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            index_after_removed = 8191
+            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
+            index_after_removed = 8192
+            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
+            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            
+            assert verdict == True
+    
+    
+    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyThreeInts:
+        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            index_after_removed = 1
+            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            
+            assert verdict == True
+          
+        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            index_after_removed = 2
+            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            index_after_removed = 4097
+            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            index_after_removed = 8192
+            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            
+            assert verdict == True
+            
+        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
+            index_after_removed = 8193
+            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8192)
+            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
+            
+            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            
+            assert verdict == True
