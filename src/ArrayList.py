@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 11, 2023
+Date: January 24, 2023 - February 12, 2023
 """
 
 # Standard library imports
@@ -73,7 +73,7 @@ class ArrayList:
         """
         self._values[index] = value
         
-    def __eq__(self, lst_to_compare: ArrayList) -> bool:
+    def __eq__(self, lst_to_compare: Union[list[int], ArrayList]) -> bool:
         """Returns true iff this ArrayList contains exactly
         the values in a second user-specified ArrayList to
         compare.
@@ -87,8 +87,12 @@ class ArrayList:
                   ArrayLisy contain the same values
         """
         values_in_this_array = self._values[:self._next]
-        values_in_other_array = lst_to_compare._values[:lst_to_compare._next]
-        return np.array_equal(values_in_this_array, values_in_other_array)
+        
+        if type(lst_to_compare) == ArrayList:    
+            values_in_other_array = lst_to_compare._values[:lst_to_compare._next]
+            return np.array_equal(values_in_this_array, values_in_other_array)
+        else:
+            return np.array_equal(values_in_this_array, lst_to_compare)
     
     def append(self, value: int) -> None:
         """Appends a user-specified value to the end of this
@@ -157,3 +161,10 @@ class ArrayList:
                  of base
         """
         return ceil(x/base) * base
+    
+cool = np.array([1,2,3],dtype='i')
+print(type(cool))
+print(type(cool) == np.ndarray)
+
+
+print(np.array_equal(np.array([1,2,3]),[1,2,3]))
