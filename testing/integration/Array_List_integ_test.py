@@ -8,6 +8,7 @@ Date: January 24, 2023 - February 12, 2023
 
 # Standard library imports
 import sys # for adding filepaths
+import numpy as np
 
 # Accessing project directories
 WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/BitBucket/dsapy/src"
@@ -588,7 +589,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_one_int = ArrayList(pylist_of_one_int)
             
             array_list_of_one_int.remove(0)
-            verdict = (array_list_of_one_int == pylist_of_one_int[1:]) 
+            verdict = np.array_equal(array_list_of_one_int._values[:0], pylist_of_one_int[1:])
             
             assert verdict == True
     
@@ -600,7 +601,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
             
             array_list_of_fifteen_ints.remove(0)
-            verdict = (array_list_of_fifteen_ints[:14] == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
             
             assert verdict == True
           
@@ -610,7 +611,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
             
             array_list_of_fifteen_ints.remove(1)
-            verdict = (array_list_of_fifteen_ints[:14] == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
 
             assert verdict == True
             
@@ -620,7 +621,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
             
             array_list_of_fifteen_ints.remove(7)
-            verdict = (array_list_of_fifteen_ints[:14] == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -630,7 +631,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
             
             array_list_of_fifteen_ints.remove(13)
-            verdict = (array_list_of_fifteen_ints[:14] == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -640,7 +641,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
             
             array_list_of_fifteen_ints.remove(14)
-            verdict = (array_list_of_fifteen_ints[:14] == pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -652,7 +653,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
             
             array_list_of_sixteen_ints.remove(0)
-            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
             
             assert verdict == True
           
@@ -662,7 +663,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
             
             array_list_of_sixteen_ints.remove(1)
-            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -672,7 +673,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
             
             array_list_of_sixteen_ints.remove(7)
-            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -682,7 +683,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
             
             array_list_of_sixteen_ints.remove(14)
-            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -692,7 +693,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
             
             array_list_of_sixteen_ints.remove(15)
-            verdict = (array_list_of_sixteen_ints == pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
             
             assert verdict == True
     
@@ -704,7 +705,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
             
             array_list_of_seventeen_ints.remove(0)
-            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
             
             assert verdict == True
           
@@ -714,7 +715,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
             
             array_list_of_seventeen_ints.remove(1)
-            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -724,7 +725,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
             
             array_list_of_seventeen_ints.remove(8)
-            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -734,7 +735,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
             
             array_list_of_seventeen_ints.remove(15)
-            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -744,7 +745,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
             
             array_list_of_seventeen_ints.remove(16)
-            verdict = (array_list_of_seventeen_ints == pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
             
             assert verdict == True
     
@@ -756,7 +757,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(0)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
             
             assert verdict == True
           
@@ -766,7 +767,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(1)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -776,7 +777,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(4095)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -786,7 +787,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8189)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -796,7 +797,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8190)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_one_ints == pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
             
             assert verdict == True
     
@@ -808,7 +809,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(0)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
             
             assert verdict == True
           
@@ -818,7 +819,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(1)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -828,7 +829,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(4095)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -838,7 +839,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8190)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -848,7 +849,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8191)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_two_ints == pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
             
             assert verdict == True
     
@@ -860,7 +861,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(0)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
             
             assert verdict == True
           
@@ -870,7 +871,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(1)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -880,7 +881,7 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(4096)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
             
             assert verdict == True
             
@@ -890,16 +891,16 @@ class TestRemovingValueWithCorrectOldValues:
             array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8191)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
             
             assert verdict == True
             
         def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
             index_after_removed = 8193
-            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8192)
+            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
             array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
             
             array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8192)
-            verdict = (array_list_of_eight_thousand_one_hundred_ninety_three_ints == pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
+            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
             
             assert verdict == True
