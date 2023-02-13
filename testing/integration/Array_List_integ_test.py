@@ -583,6 +583,8 @@ class TestCheckingIfEqual:
     
             
 class TestRemovingValueWithCorrectOldValues:
+    """Uses RemovingValueWithoutError module.
+    """
     class TestRemovingValueFromArrayListOfOneInt:
         def test_remove_first_value_from_ArrayList_of_one_int(self):
             pylist_of_one_int = rand_pylist(1)
