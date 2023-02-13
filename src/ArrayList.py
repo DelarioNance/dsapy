@@ -118,7 +118,9 @@ class ArrayList:
         Args:
             index (int): The user-specified index
         """
-        self._next -= 1
+        removed_value = self._values[index]
+        self._shift_values_left(index)
+        return removed_value
     
     def is_empty(self) -> bool:
         """Returns true iff this ArrayList is empty.
@@ -162,9 +164,27 @@ class ArrayList:
         """
         return ceil(x/base) * base
     
-cool = np.array([1,2,3],dtype='i')
-print(type(cool))
-print(type(cool) == np.ndarray)
+    def _shift_values_left(self, bound: int) -> None:
+        """Shifts every value at an index to the right of a 
+        user-specified index in this ArrayList to the left by
+        one index, decrementing the size of tthis ArrayList.
 
+        Args:
+            bound (int): The user-specified index
+        """
+        size = self._next
+        for index in range(bound,size-1):
+            self._values[index] = self._values[index+1]
+        self._values[size-1] = VALUE_FOR_INDEX_PAST_CAPACITY
+        
+        self._next -= 1
+    
+    def _is_full(self) -> bool:
+        """Returns true iff the size of this ArrayList equals
+        its capacity.
 
-print(np.array_equal(np.array([1,2,3]),[1,2,3]))
+        Returns:
+            bool: True iff the size of this ArrayList equals
+        its capacity
+        """
+        return len(self) == self._capacity
