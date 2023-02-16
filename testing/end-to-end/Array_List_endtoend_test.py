@@ -106,7 +106,7 @@ class TestSearching:
         
         verdict = empty_arraylist.contains(DEFAULT_ZERO_INT_IN_ARRAYLIST)
         
-        assert verdict == True
+        assert verdict == False
         
     def test_search_for_existing_zero_int_in_ArrayList(self):
         arraylist = array_list_range(-1000,1000)

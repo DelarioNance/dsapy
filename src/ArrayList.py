@@ -160,6 +160,23 @@ class ArrayList:
                 min_value = self._values[index]
         return min_value
     
+    def contains(self, value: int) -> bool:
+        """Returns true iff this ArrayList contains a 
+        user-specified value
+
+        Args:
+            value (int): The user-specified value
+
+        Returns:
+            bool: True iff this ArrayList contains the 
+        user-specified value
+        """
+        size = len(self)
+        for index in range(size):
+            if self._values[index] == value:
+                return True
+        return False
+    
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
         inside a user-specified NumPy array by copying each 
