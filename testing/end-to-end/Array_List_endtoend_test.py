@@ -143,6 +143,37 @@ class TestSearching:
         
         assert verdict == False
         
-    
+class TestReversing:
+    def test_reverse_ArrayList_of_one_int(self):
+        arraylist_of_one_int = rand_array_list(1)
+        copy_of_arraylist_of_one_int = arraylist_of_one_int.copy()
+        
+        arraylist_of_one_int.reverse()
+        
+        assert arraylist_of_one_int == copy_of_arraylist_of_one_int
+        
+    def test_reverse_ArrayList_of_ten_ints(self):
+        arraylist_of_ten_ints = rand_array_list(10)
+        copy_of_arraylist_of_ten_ints = arraylist_of_ten_ints.copy()
+        
+        arraylist_of_ten_ints.reverse()
+        
+        assert arraylist_of_ten_ints == copy_of_arraylist_of_ten_ints
+        
+    def test_reverse_ArrayList_of_one_hundred_ints(self):
+        arraylist_of_one_hundred_ints = rand_array_list(100)
+        copy_of_arraylist_of_one_hundred_ints = arraylist_of_one_hundred_ints.copy()
+        
+        arraylist_of_one_hundred_ints.reverse()
+        
+        assert arraylist_of_one_hundred_ints == copy_of_arraylist_of_one_hundred_ints
+        
+    def test_reverse_ArrayList_of_ten_thousand_ints(self):
+        arraylist_of_ten_thousand_ints = rand_array_list(10000)
+        copy_of_arraylist_of_ten_thousand_ints = arraylist_of_ten_thousand_ints.copy()
+        
+        arraylist_of_ten_thousand_ints.reverse()
+        
+        assert arraylist_of_ten_thousand_ints == copy_of_arraylist_of_ten_thousand_ints
         
     
