@@ -2,7 +2,7 @@
 
 Author: Delario Nance, Jr.
 
-Date: January 18, 2023 - February 5, 2023
+Date: January 18, 2023 - February 10, 2023
 
 ## Introduction
 A test plan organizing the `ArrayList` functionalities to setup test, unit test, integration test, and end-to-end test.
