@@ -130,17 +130,32 @@ class ArrayList:
         """
         return self._next == 0
     
+    def max(self) -> int:
+        """Returns the largest value in this ArrayList.
+
+        Returns:
+            int: The maximum value in this ArrayList
+        """
+        max_value = self._values[0]
+        
+        # Not splicing NumPy array since that uses more space
+        size = len(self)
+        for index in range(1,size):
+            if self._values[index] > max_value:
+                max_value = self._values[index]
+        return max_value
+    
     def min(self) -> int:
         """Returns the smallest value in this ArrayList.
 
         Returns:
             int: The minimum value in this ArrayList
         """
-        min_value = 0
+        min_value = self._values[0]
         
         # Not splicing NumPy array since that uses more space
-        size = self._next
-        for index in range(size):
+        size = len(self)
+        for index in range(1,size):
             if self._values[index] < min_value:
                 min_value = self._values[index]
         return min_value
