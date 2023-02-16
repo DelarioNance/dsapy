@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 12, 2023
+Date: January 24, 2023 - February 15, 2023
 """
 
 # Standard library imports
@@ -129,6 +129,21 @@ class ArrayList:
             bool: True iff this ArrayList is empty
         """
         return self._next == 0
+    
+    def min(self) -> int:
+        """Returns the smallest value in this ArrayList.
+
+        Returns:
+            int: The minimum value in this ArrayList
+        """
+        min_value = 0
+        
+        # Not splicing NumPy array since that uses more space
+        size = self._next
+        for index in range(size):
+            if self._values[index] < min_value:
+                min_value = self._values
+        return min_value
     
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
