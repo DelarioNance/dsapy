@@ -183,7 +183,9 @@ class ArrayList:
         Returns:
             ArrayList: The copy of this ArrayList
         """
-        return ArrayList(self._values[:self._next])
+        values = self._values[:self._next]
+        pylist_of_values = [x for x in values]
+        return ArrayList(pylist_of_values)
     
     def reverse(self) -> None:
         """Reverses this ArrayList in-place.
@@ -204,19 +206,8 @@ class ArrayList:
         size = self._next
         
         for index in range(size//2):
-            
-    
-        1:
-        2: [0,1) (2//1 = 1)
-        3: [0,1) 0 or 0-1 (3//2 = 1)
-        4: 0-1 (4//2 = 2)
-        5: 0-1 or 0-1-2 (5//2 = 2)
-        6: 0-1-2 (6//2 = 3)
-        
-        [0,1,2,3,4]
-        index = [0,2] [0,3)
-        [0,1,2,3,4,5]
-        index = [0,2] [0,3)
+            mirror_index = size-index-1
+            self._swap(index,mirror_index)
          
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
