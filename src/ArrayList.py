@@ -177,6 +177,14 @@ class ArrayList:
                 return True
         return False
     
+    def copy(self) -> ArrayList:
+        """Returns a copy of this ArrayList.
+
+        Returns:
+            ArrayList: The copy of this ArrayList
+        """
+        return ArrayList(self._values[:self._next])
+ 
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
         inside a user-specified NumPy array by copying each 
