@@ -20,6 +20,13 @@ sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
 from ArrayList import ArrayList
 from helpers import *
 
+# Global variables
+DEFAULT_ZERO_INT_IN_ARRAYLIST = 0
+DEFAULT_POSITIVE_INT_IN_ARRAYLIST = 1
+DEFAULT_POSITIVE_INT_NOT_IN_ARRAYLIST = 1729
+DEFAULT_NEGATIVE_INT_IN_ARRAYLIST = -1
+DEFAULT_NEGATIVE_INT_NOT_IN_ARRAYLIST = -1729
+
 
 class TestFindingMinimum:
     """Uses GettingValue and GettingSize modules.
@@ -90,3 +97,52 @@ class TestFindingMaximum:
         max_of_arraylist = arraylist_of_ten_thousand_ints.max()
         
         assert max_of_arraylist == max(pylist_of_ten_thousand_ints)
+        
+class TestSearching:
+    """Uses GettingValue and GettingSize modules.
+    """
+    def test_search_for_int_in_empty_ArrayList(self):
+        empty_arraylist = ArrayList([])
+        
+        verdict = empty_arraylist.contains(DEFAULT_ZERO_INT_IN_ARRAYLIST)
+        
+        assert verdict == True
+        
+    def test_search_for_existing_zero_int_in_ArrayList(self):
+        arraylist = array_list_range(-1000,1000)
+        
+        verdict = arraylist.contains(DEFAULT_ZERO_INT_IN_ARRAYLIST)
+        
+        assert verdict == True
+        
+    def test_search_for_existing_positive_int_in_ArrayList(self):
+        arraylist = array_list_range(-1000,1000)
+        
+        verdict = arraylist.contains(DEFAULT_POSITIVE_INT_IN_ARRAYLIST)
+        
+        assert verdict == True
+        
+    def test_search_for_existing_negative_int_in_ArrayList(self):
+        arraylist = array_list_range(-1000,1000)
+        
+        verdict = arraylist.contains(DEFAULT_NEGATIVE_INT_IN_ARRAYLIST)
+        
+        assert verdict == True
+        
+    def test_search_for_positive_int_not_in_ArrayList(self):
+        arraylist = array_list_range(-1000,1000)
+        
+        verdict = arraylist.contains(DEFAULT_POSITIVE_INT_NOT_IN_ARRAYLIST)
+        
+        assert verdict == False
+        
+    def test_search_for_negative_int_not_in_ArrayList(self):
+        arraylist = array_list_range(-1000,1000)
+        
+        verdict = arraylist.contains(DEFAULT_NEGATIVE_INT_NOT_IN_ARRAYLIST)
+        
+        assert verdict == False
+        
+    
+        
+    

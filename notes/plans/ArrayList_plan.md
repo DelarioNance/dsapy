@@ -448,70 +448,71 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 ### [Searching](#arraylist-test-plan)
 
 9. Search for value `0` in empty `ArrayList`
-10. Search for value `500` in `ArrayList` of `1` random integer number in `[1,1000]`
-11. Search for value `500` in `ArrayList` of `10` random integer number in `[1,1000]`
-12. Search for value `500` in `ArrayList` of `100` random integer number in `[1,1000]`
-13. Search for value `500` in `ArrayList` of `10000` random integer number in `[1,1000]`
+10. Search for value `0` in `ArrayList` of values `[-1000,1000]`
+11. Search for value `1` in `ArrayList` of values `[-1000,1000]`
+12. Search for value `-1` in `ArrayList` of values `[-1000,1000]`
+13. Search for value `-1729` in `ArrayList` of values `[-1000,1000]`
+14. Search for value `1729` in `ArrayList` of values `[-1000,1000]`
 
 ---
 ---
 
 ### [Reversing](#arraylist-test-plan)
 
-14. Reverse `ArrayList` of `1` random integer in `[-1000,1000]`
-15. Reverse `ArrayList` of `10` random integer in `[-1000,1000]`
-16. Reverse `ArrayList` of `100` random integer in `[-1000,1000]`
-17. Reverse `ArrayList` of `10000` random integer in `[-1000,1000]`
+15. Reverse `ArrayList` of `1` random integer in `[-1000,1000]`
+16. Reverse `ArrayList` of `10` random integer in `[-1000,1000]`
+17. Reverse `ArrayList` of `100` random integer in `[-1000,1000]`
+18. Reverse `ArrayList` of `10000` random integer in `[-1000,1000]`
 
 ---
 ---
 
 ### [Selection Sorting](#arraylist-test-plan)
 
-18. Selection sort `ArrayList` of `1` random integer in `[-1000,1000]`
-19. Selection sort `ArrayList` of `10` random integer in `[-1000,1000]`
-20. Selection sort `ArrayList` of `100` random integer in `[-1000,1000]`
-21. Selection sort `ArrayList` of `10000` random integer in `[-1000,1000]`
+19. Selection sort `ArrayList` of `1` random integer in `[-1000,1000]`
+20. Selection sort `ArrayList` of `10` random integer in `[-1000,1000]`
+21. Selection sort `ArrayList` of `100` random integer in `[-1000,1000]`
+22. Selection sort `ArrayList` of `10000` random integer in `[-1000,1000]`
 
 ---
 ---
 
 ### [Bubble Sorting](#arraylist-test-plan)
 
-22. Bubble sort `ArrayList` of `1` random integer in `[-1000,1000]`
-23. Bubble sort `ArrayList` of `10` random integer in `[-1000,1000]`
-24. Bubble sort `ArrayList` of `100` random integer in `[-1000,1000]`
-25. Bubble sort `ArrayList` of `10000` random integer in `[-1000,1000]`
+23. Bubble sort `ArrayList` of `1` random integer in `[-1000,1000]`
+24. Bubble sort `ArrayList` of `10` random integer in `[-1000,1000]`
+25. Bubble sort `ArrayList` of `100` random integer in `[-1000,1000]`
+26. Bubble sort `ArrayList` of `10000` random integer in `[-1000,1000]`
 
 ---
 ---
 
 ### [Insertion Sorting](#arraylist-test-plan)
 
-26. Insertion sort `ArrayList` of `1` random integer in `[-1000,1000]`
-27. Insertion sort `ArrayList` of `10` random integer in `[-1000,1000]`
-28. Insertion sort `ArrayList` of `100` random integer in `[-1000,1000]`
-29. Insertion sort `ArrayList` of `10000` random integer in `[-1000,1000]`
+27. Insertion sort `ArrayList` of `1` random integer in `[-1000,1000]`
+28. Insertion sort `ArrayList` of `10` random integer in `[-1000,1000]`
+29. Insertion sort `ArrayList` of `100` random integer in `[-1000,1000]`
+30. Insertion sort `ArrayList` of `10000` random integer in `[-1000,1000]`
 
 ---
 ---
 
 ### [Merge Sorting](#arraylist-test-plan)
 
-30. Merge sort `ArrayList` of `1` random integer in `[-1000,1000]`
-31. Merge sort `ArrayList` of `10` random integer in `[-1000,1000]`
-32. Merge sort `ArrayList` of `100` random integer in `[-1000,1000]`
-33. Merge sort `ArrayList` of `10000` random integer in `[-1000,1000]`
+31. Merge sort `ArrayList` of `1` random integer in `[-1000,1000]`
+32. Merge sort `ArrayList` of `10` random integer in `[-1000,1000]`
+33. Merge sort `ArrayList` of `100` random integer in `[-1000,1000]`
+34. Merge sort `ArrayList` of `10000` random integer in `[-1000,1000]`
 
 ---
 ---
 
 ### [Quick Sorting](#arraylist-test-plan)
 
-34. Quick sort `ArrayList` of `1` random integer in `[-1000,1000]`
-35. Quick sort `ArrayList` of `10` random integer in `[-1000,1000]`
-36. Quick sort `ArrayList` of `100` random integer in `[-1000,1000]`
-37. Quick sort `ArrayList` of `10000` random integer in `[-1000,1000]`
+35. Quick sort `ArrayList` of `1` random integer in `[-1000,1000]`
+36. Quick sort `ArrayList` of `10` random integer in `[-1000,1000]`
+37. Quick sort `ArrayList` of `100` random integer in `[-1000,1000]`
+38. Quick sort `ArrayList` of `10000` random integer in `[-1000,1000]`
 
 
 
