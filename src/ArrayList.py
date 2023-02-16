@@ -142,7 +142,7 @@ class ArrayList:
         size = self._next
         for index in range(size):
             if self._values[index] < min_value:
-                min_value = self._values
+                min_value = self._values[index]
         return min_value
     
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
