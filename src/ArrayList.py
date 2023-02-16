@@ -184,7 +184,40 @@ class ArrayList:
             ArrayList: The copy of this ArrayList
         """
         return ArrayList(self._values[:self._next])
- 
+    
+    def reverse(self) -> None:
+        """Reverses this ArrayList in-place.
+        
+        To get a reversed version of this ArrayList
+        instead of reversing this ArrayList in-place,
+        please create a copy of this ArrayList and
+        then reverse that copy, as shown below:
+        
+            array_list = ArrayList([1,2,3,4,5])
+            
+            copy_of_array_list = array_list.copy()
+            
+            copy_of_array_list.reverse()
+            
+            reversed_array_list = copy_of_array_list
+        """
+        size = self._next
+        
+        for index in range(size//2):
+            
+    
+        1:
+        2: [0,1) (2//1 = 1)
+        3: [0,1) 0 or 0-1 (3//2 = 1)
+        4: 0-1 (4//2 = 2)
+        5: 0-1 or 0-1-2 (5//2 = 2)
+        6: 0-1-2 (6//2 = 3)
+        
+        [0,1,2,3,4]
+        index = [0,2] [0,3)
+        [0,1,2,3,4,5]
+        index = [0,2] [0,3)
+         
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
         inside a user-specified NumPy array by copying each 
@@ -243,3 +276,14 @@ class ArrayList:
         its capacity
         """
         return len(self) == self._capacity
+    
+    def _swap(self, index_a: int, index_b: int) -> None:
+        """Swaps the values at two user-specified positions
+        in this ArrayList.
+
+        Args:
+            index_a (int): The first user-specified position
+            index_b (int): The second user-specified position
+        """
+        self._values[index_a],self._values[index_b] = self._values[index_b],self._values[index_a]
+        
