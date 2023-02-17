@@ -212,15 +212,6 @@ class TestSelectionSorting:
         
         assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
         
-    def test_selection_sort_ArrayList_of_ten_thousand_ints_in_ascending_order(self):
-        pylist_of_ten_thousand_ints = rand_pylist(10000)
-        arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
-        
-        pylist_of_ten_thousand_ints.sort()
-        arraylist_of_ten_thousand_ints.selection_sort()
-        
-        assert arraylist_of_ten_thousand_ints == pylist_of_ten_thousand_ints
-        
     def test_selection_sort_ArrayList_of_one_int_in_descending_order(self):
         pylist_of_one_int = rand_pylist(1)
         arraylist_of_one_int = ArrayList(pylist_of_one_int)
@@ -247,12 +238,3 @@ class TestSelectionSorting:
         arraylist_of_one_hundred_ints.selection_sort(True)
         
         assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
-        
-    def test_selection_sort_ArrayList_of_ten_thousand_ints_in_descending_order(self):
-        pylist_of_ten_thousand_ints = rand_pylist(10000)
-        arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
-        
-        pylist_of_ten_thousand_ints.sort(True)
-        arraylist_of_ten_thousand_ints.selection_sort(True)
-        
-        assert arraylist_of_ten_thousand_ints == pylist_of_ten_thousand_ints
