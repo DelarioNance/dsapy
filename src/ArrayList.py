@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 15, 2023
+Date: January 24, 2023 - February 17, 2023
 """
 
 # Standard library imports
@@ -151,14 +151,28 @@ class ArrayList:
         Returns:
             int: The minimum value in this ArrayList
         """
-        min_value = self._values[0]
+        index_of_min = self._index_of_min(0,len(self)-1)
+        return self._values[index_of_min]
+    
+    def _index_of_min(self, start: int, end: int) -> int:
+        """Returns the smallest value in a user-specified 
+        range in this ArrayList.
+
+        Args:
+            start (int): The first value in the user-specified
+                         range, inclusive
+            end (int): The last value in the user-specified
+                       range, inclusive
+
+        Returns:
+            int: The minimum value in this ArrayList
+        """
+        index_of_min = 0
         
-        # Not splicing NumPy array since that uses more space
-        size = len(self)
-        for index in range(1,size):
-            if self._values[index] < min_value:
-                min_value = self._values[index]
-        return min_value
+        for curr_index in range(start+1,end+1):
+            if self._values[curr_index] < self._values[index_of_min]:
+                index_of_min = curr_index
+        return index_of_min
     
     def contains(self, value: int) -> bool:
         """Returns true iff this ArrayList contains a 
@@ -208,7 +222,14 @@ class ArrayList:
         for index in range(size//2):
             mirror_index = size-index-1
             self._swap(index,mirror_index)
-         
+            
+    def selection_sort(self) -> None:
+        """Sorts the values in this ArrayList using selection
+        sort. Like the bubble_sort, insertion_sort, and 
+        quicksort methods, the selection_sort method sorts 
+        this ArrayList in-place.
+        """
+    
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
         inside a user-specified NumPy array by copying each 
