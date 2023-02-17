@@ -86,7 +86,7 @@ class ArrayList:
             bool: True iff this ArrayList and the user-specified
                   ArrayLisy contain the same values
         """
-        values_in_this_array = self._values[:self._next]
+        values_in_this_array = self._values[:len(self)]
         
         if type(lst_to_compare) == ArrayList:    
             values_in_other_array = lst_to_compare._values[:lst_to_compare._next]
@@ -197,12 +197,33 @@ class ArrayList:
             mirror_index = size-index-1
             self._swap(index,mirror_index)
             
-    def selection_sort(self) -> None:
+    def selection_sort(self, reverse: bool = False) -> None:
         """Sorts the values in this ArrayList using selection
         sort. Like the bubble_sort, insertion_sort, and 
         quicksort methods, the selection_sort method sorts 
         this ArrayList in-place.
+        
+        By default, the values are sorted in ascending order.
+        However, the values can be sorted in descending order
+        by setting the reverse parameter to true. For example,
+        calling
+            ArrayList([6,3,1,5]).selection_sort(True)
+        will change the values in the ArrayList to [6,5,3,1].
+
+        Args:
+            reverse (bool, optional): If true, then the values
+                                      in this ArrayList will be
+                                      sorted in ascending order. 
+                                      Defaults to False.
         """
+        if reverse == False:
+            for curr_index in range(len(self)):
+                index_of_next_min = self._index_of_min(curr_index,len(self)-1)
+                self._swap(curr_index,index_of_next_min)
+        else:
+            for curr_index in range(len(self)):
+                index_of_next_max = self._index_of_max(curr_index,len(self)-1)
+                self._swap(curr_index,index_of_next_max)
     
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
@@ -287,7 +308,7 @@ class ArrayList:
         Returns:
             int: The maximum value in this ArrayList
         """
-        index_of_min = 0
+        index_of_min = start
         
         for curr_index in range(start+1,end+1):
             if self._values[curr_index] > self._values[index_of_min]:
@@ -308,7 +329,7 @@ class ArrayList:
         Returns:
             int: The minimum value in this ArrayList
         """
-        index_of_min = 0
+        index_of_min = start
         
         for curr_index in range(start+1,end+1):
             if self._values[curr_index] < self._values[index_of_min]:

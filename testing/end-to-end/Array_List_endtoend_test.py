@@ -216,7 +216,7 @@ class TestSelectionSorting:
         pylist_of_one_int = rand_pylist(1)
         arraylist_of_one_int = ArrayList(pylist_of_one_int)
         
-        pylist_of_one_int.sort(True)
+        pylist_of_one_int.sort(reverse=True)
         arraylist_of_one_int.selection_sort(True)
         
         assert arraylist_of_one_int == pylist_of_one_int
@@ -225,7 +225,7 @@ class TestSelectionSorting:
         pylist_of_ten_ints = rand_pylist(10)
         arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
         
-        pylist_of_ten_ints.sort(True)
+        pylist_of_ten_ints.sort(reverse=True)
         arraylist_of_ten_ints.selection_sort(True)
         
         assert arraylist_of_ten_ints == pylist_of_ten_ints
@@ -234,7 +234,7 @@ class TestSelectionSorting:
         pylist_of_one_hundred_ints = rand_pylist(100)
         arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
         
-        pylist_of_one_hundred_ints.sort(True)
+        pylist_of_one_hundred_ints.sort(reverse=True)
         arraylist_of_one_hundred_ints.selection_sort(True)
         
         assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
