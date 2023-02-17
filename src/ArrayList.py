@@ -136,14 +136,8 @@ class ArrayList:
         Returns:
             int: The maximum value in this ArrayList
         """
-        max_value = self._values[0]
-        
-        # Not splicing NumPy array since that uses more space
-        size = len(self)
-        for index in range(1,size):
-            if self._values[index] > max_value:
-                max_value = self._values[index]
-        return max_value
+        index_of_max = self._index_of_max(0,len(self)-1)
+        return self._values[index_of_max]
     
     def min(self) -> int:
         """Returns the smallest value in this ArrayList.
@@ -153,26 +147,6 @@ class ArrayList:
         """
         index_of_min = self._index_of_min(0,len(self)-1)
         return self._values[index_of_min]
-    
-    def _index_of_min(self, start: int, end: int) -> int:
-        """Returns the smallest value in a user-specified 
-        range in this ArrayList.
-
-        Args:
-            start (int): The first value in the user-specified
-                         range, inclusive
-            end (int): The last value in the user-specified
-                       range, inclusive
-
-        Returns:
-            int: The minimum value in this ArrayList
-        """
-        index_of_min = 0
-        
-        for curr_index in range(start+1,end+1):
-            if self._values[curr_index] < self._values[index_of_min]:
-                index_of_min = curr_index
-        return index_of_min
     
     def contains(self, value: int) -> bool:
         """Returns true iff this ArrayList contains a 
@@ -298,4 +272,46 @@ class ArrayList:
             index_b (int): The second user-specified position
         """
         self._values[index_a],self._values[index_b] = self._values[index_b],self._values[index_a]
+        
+    def _index_of_max(self, start: int, end: int) -> int:
+        """Returns the largest value in a user-specified 
+        range in this ArrayList. This "private" method is
+        called in the max method.
+
+        Args:
+            start (int): The first value in the user-specified
+                         range, inclusive
+            end (int): The last value in the user-specified
+                       range, inclusive
+
+        Returns:
+            int: The maximum value in this ArrayList
+        """
+        index_of_min = 0
+        
+        for curr_index in range(start+1,end+1):
+            if self._values[curr_index] > self._values[index_of_min]:
+                index_of_min = curr_index
+        return index_of_min
+    
+    def _index_of_min(self, start: int, end: int) -> int:
+        """Returns the smallest value in a user-specified 
+        range in this ArrayList. This "private" method is
+        called in the min and selection_sort methods.
+
+        Args:
+            start (int): The first value in the user-specified
+                         range, inclusive
+            end (int): The last value in the user-specified
+                       range, inclusive
+
+        Returns:
+            int: The minimum value in this ArrayList
+        """
+        index_of_min = 0
+        
+        for curr_index in range(start+1,end+1):
+            if self._values[curr_index] < self._values[index_of_min]:
+                index_of_min = curr_index
+        return index_of_min
         
