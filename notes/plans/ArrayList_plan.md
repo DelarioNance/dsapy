@@ -479,10 +479,14 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 
 ### [Bubble Sorting](#arraylist-test-plan)
 
-23. Bubble sort `ArrayList` of `1` random integer in `[-1000,1000]`
-24. Bubble sort `ArrayList` of `10` random integer in `[-1000,1000]`
-25. Bubble sort `ArrayList` of `100` random integer in `[-1000,1000]`
-26. Bubble sort `ArrayList` of `10000` random integer in `[-1000,1000]`
+23. Bubble sort `ArrayList` of `1` random integer in `[-1000,1000]` in ascending order
+24. Bubble sort `ArrayList` of `10` random integer in `[-1000,1000]` in ascending order
+25. Bubble sort `ArrayList` of `100` random integer in `[-1000,1000]` in ascending order
+26. Bubble sort `ArrayList` of `10000` random integer in `[-1000,1000]` in ascending order
+27. Bubble sort `ArrayList` of `1` random integer in `[-1000,1000]` in descending order
+28. Bubble sort `ArrayList` of `10` random integer in `[-1000,1000]` in descending order
+29. Bubble sort `ArrayList` of `100` random integer in `[-1000,1000]` in descending order
+30. Bubble sort `ArrayList` of `10000` random integer in `[-1000,1000]` in descending order
 
 ---
 ---
