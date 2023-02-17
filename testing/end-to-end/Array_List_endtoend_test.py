@@ -184,6 +184,12 @@ class TestReversing:
         
 class TestSelectionSorting:
     """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
+    
+    Unlike the end-to-end test methods for merge_sort and 
+    quicksort, selection_sort test methods on ArrayLists with
+    ten-thousand ints are ommited because selction_sort runs 
+    for a long time on large ArrayLists due to selection_sort's
+    worst-case running time of O(n^2).
     """
     def test_selection_sort_ArrayList_of_one_int_in_ascending_order(self):
         pylist_of_one_int = rand_pylist(1)
