@@ -199,7 +199,7 @@ class ArrayList:
             
     def selection_sort(self, reverse: bool = False) -> None:
         """Sorts the values in this ArrayList using selection
-        sort. Like the bubble_sort, insertion_sort, and 
+        sort. Like the bubblesort, insertion_sort, and 
         quicksort methods, the selection_sort method sorts 
         this ArrayList in-place.
         
@@ -224,6 +224,63 @@ class ArrayList:
             for curr_index in range(len(self)):
                 index_of_next_max = self._index_of_max(curr_index,len(self)-1)
                 self._swap(curr_index,index_of_next_max)
+                
+    def bubblesort(self, reverse: bool = False) -> None:
+        """Sorts the values in this ArrayList using bubblesort. 
+        Like the selection_sort, insertion_sort, and 
+        quicksort methods, the selection_sort method sorts 
+        this ArrayList in-place.
+        
+        By default, the values are sorted in ascending order.
+        However, the values can be sorted in descending order
+        by setting the reverse parameter to true. For example,
+        calling
+            ArrayList([6,3,1,5]).bubblesort(True)
+        will change the values in the ArrayList to [6,5,3,1].
+
+        Args:
+            reverse (bool, optional): If true, then the values
+                                      in this ArrayList will be
+                                      sorted in ascending order. 
+                                      Defaults to False.
+        """
+        for end_index in range(len(self)-1,0,-1): # Last iteration is index 1
+            if reverse == False:
+                self._bubble_max_right(end_index)
+            else:
+                self._bubble_min_right(end_index)
+            
+    def _bubble_max_right(self, end_index: int) -> None:
+        """Moves the maximum value before a user-specified 
+        index in this ArrayList to the given index by 
+        repeatedly swapping the position of values at adjacent
+        indices if the value in the left index is larger than
+        the value in the right index. Called by bubblesort.
+
+        Args:
+            end_index (int): The user-specified index to put
+                             the maximum value before it in
+        """
+        for left_index in range(end_index):
+            right_index = left_index + 1
+            if self[left_index] >= self[right_index]:
+                self._swap(left_index, right_index)
+                
+    def _bubble_min_right(self, end_index: int) -> None:
+        """Moves the minimum value before a user-specified 
+        index in this ArrayList to the given index by 
+        repeatedly swapping the position of values at adjacent
+        indices if the value in the left index is smaller than
+        the value in the right index. Called by bubblesort.
+
+        Args:
+            end_index (int): The user-specified index to put
+                             the minimum value before it in
+        """
+        for left_index in range(end_index):
+            right_index = left_index + 1
+            if self[left_index] <= self[right_index]:
+                self._swap(left_index, right_index)
     
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
@@ -262,7 +319,7 @@ class ArrayList:
     def _shift_values_left(self, bound: int) -> None:
         """Shifts every value at an index to the right of a 
         user-specified index in this ArrayList to the left by
-        one index, decrementing the size of tthis ArrayList.
+        one index, decrementing the size of this ArrayList.
 
         Args:
             bound (int): The user-specified index
