@@ -3,7 +3,7 @@ A Python script for end-to-end testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: February 15, 2023 - February 15, 2023
+Date: February 15, 2023 - February 17, 2023
 """
 
 # Standard library imports
@@ -242,5 +242,68 @@ class TestSelectionSorting:
         
         pylist_of_one_hundred_ints.sort(reverse=True)
         arraylist_of_one_hundred_ints.selection_sort(True)
+        
+        assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
+        
+class TestBubbleSorting:
+    """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
+    
+    Unlike the end-to-end test methods for merge_sort and 
+    quicksort, bubblesort test methods on ArrayLists with
+    ten-thousand ints are ommited because bubblesort runs 
+    for a long time on large ArrayLists due to bubblesort's
+    worst-case running time of O(n^2).
+    """
+    def test_bubblesort_ArrayList_of_one_int_in_ascending_order(self):
+        pylist_of_one_int = rand_pylist(1)
+        arraylist_of_one_int = ArrayList(pylist_of_one_int)
+        
+        pylist_of_one_int.sort()
+        arraylist_of_one_int.bubblesort()
+        
+        assert arraylist_of_one_int == pylist_of_one_int
+        
+    def test_bubblesort_ArrayList_of_ten_ints_in_ascending_order(self):
+        pylist_of_ten_ints = rand_pylist(10)
+        arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+        
+        pylist_of_ten_ints.sort()
+        arraylist_of_ten_ints.bubblesort()
+        
+        assert arraylist_of_ten_ints == pylist_of_ten_ints
+        
+    def test_bubblesort_ArrayList_of_one_hundred_ints_in_ascending_order(self):
+        pylist_of_one_hundred_ints = rand_pylist(100)
+        arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+        
+        pylist_of_one_hundred_ints.sort()
+        arraylist_of_one_hundred_ints.bubblesort()
+        
+        assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
+        
+    def test_bubblesort_ArrayList_of_one_int_in_descending_order(self):
+        pylist_of_one_int = rand_pylist(1)
+        arraylist_of_one_int = ArrayList(pylist_of_one_int)
+        
+        pylist_of_one_int.sort(reverse=True)
+        arraylist_of_one_int.bubblesort(True)
+        
+        assert arraylist_of_one_int == pylist_of_one_int
+        
+    def test_bubblesort_ArrayList_of_ten_ints_in_descending_order(self):
+        pylist_of_ten_ints = rand_pylist(10)
+        arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+        
+        pylist_of_ten_ints.sort(reverse=True)
+        arraylist_of_ten_ints.bubblesort(True)
+        
+        assert arraylist_of_ten_ints == pylist_of_ten_ints
+        
+    def test_bubblesort_ArrayList_of_one_hundred_ints_in_descending_order(self):
+        pylist_of_one_hundred_ints = rand_pylist(100)
+        arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+        
+        pylist_of_one_hundred_ints.sort(reverse=True)
+        arraylist_of_one_hundred_ints.bubblesort(True)
         
         assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
