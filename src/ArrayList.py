@@ -270,29 +270,11 @@ class ArrayList:
                                       Defaults to False.
         """
         for index in range(len(self)):
-            self._insert_in_left_subarray(index)
-            
-    def _insert_in_left_subarray(self, start_index: int) -> None:
-        """Repeatedly moves the value at a user-specified 
-        index in this ArrayList to the left, swapping 
-        positions with its left neighbor, until the value is
-        larger than all the values to its left. Called by 
-        insertion_sort.
-
-        Args:
-            index_of_val_to_move (int): The user-specified 
-                                        index of the value
-                                        to repeatedly move
-                                        to the left
-        """
-        curr_index, left_index = start_index, start_index - 1
-        while left_index >= 0:
-            if self[left_index] < self[curr_index]: # Sorted
-                break
+            if reverse == False:
+               self._insert_min_in_left_subarray(index)
             else:
-                self._swap(left_index, curr_index)
-                curr_index -= 1
-                left_index -= 1
+                self._insert_max_in_left_subarray(index)
+            
     
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
@@ -436,3 +418,47 @@ class ArrayList:
             right_index = left_index + 1
             if self[left_index] <= self[right_index]:
                 self._swap(left_index, right_index)
+                
+    def _insert_min_in_left_subarray(self, start_index: int) -> None:
+        """Repeatedly moves the value at a user-specified 
+        index in this ArrayList to the left, swapping 
+        positions with its left neighbor, until the value is
+        larger than all the values to its left. Called by 
+        insertion_sort.
+
+        Args:
+            index_of_val_to_move (int): The user-specified 
+                                        index of the value
+                                        to repeatedly move
+                                        to the left
+        """
+        curr_index, left_index = start_index, start_index - 1
+        while left_index >= 0:
+            if self[left_index] < self[curr_index]: # Sorted
+                break
+            else:
+                self._swap(left_index, curr_index)
+                curr_index -= 1
+                left_index -= 1
+                
+    def _insert_max_in_left_subarray(self, start_index: int) -> None:
+        """Repeatedly moves the value at a user-specified 
+        index in this ArrayList to the left, swapping 
+        positions with its left neighbor, until the value is
+        smaller than all the values to its left. Called by 
+        insertion_sort.
+
+        Args:
+            index_of_val_to_move (int): The user-specified 
+                                        index of the value
+                                        to repeatedly move
+                                        to the left
+        """
+        curr_index, left_index = start_index, start_index - 1
+        while left_index >= 0:
+            if self[left_index] > self[curr_index]: # Sorted
+                break
+            else:
+                self._swap(left_index, curr_index)
+                curr_index -= 1
+                left_index -= 1
