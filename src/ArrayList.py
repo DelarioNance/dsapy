@@ -96,7 +96,7 @@ class ArrayList:
         values_in_this_array = self._values[:len(self)]
         
         if type(lst_to_compare) == ArrayList:    
-            values_in_other_array = lst_to_compare._values[:lst_to_compare._next]
+            values_in_other_array = lst_to_compare._values[:len(lst_to_compare)]
             return np.array_equal(values_in_this_array, values_in_other_array)
         else:
             return np.array_equal(values_in_this_array, lst_to_compare)
@@ -316,17 +316,18 @@ class ArrayList:
             end (_type_): The last index of range(inclusive)
 
         Returns:
-            NDArray[np.int_]: _description_
+            NDArray[np.int_]: The sorted array of the original
+                              values
         """
         length = end - start + 1
         if length == 1: # Does not handle len-0 case
             return arr[start:start+1]
         
         mid = start + length//2
-        left = self._mergesort(arr, start, mid-1)
-        right = self._mergesort(arr, mid, end)
+        left_half = self._mergesort(arr, start, mid-1)
+        right_half = self._mergesort(arr, mid, end)
         
-        merged = self._merge(left, right)
+        merged = self._merge(left_half, right_half)
         return merged
     
     def _merge(self, left_arr: NDArray[np.int_], right_arr: NDArray[np.int_]) -> NDArray[np.int_]:
@@ -344,29 +345,27 @@ class ArrayList:
                               and right arrays
         """
         merged_length = len(left_arr) + len(right_arr)
-        merged = np.array([INITIAL_VALUE_IN_MERGED_ARR]*merged_length)
+        merged = np.array([INITIAL_VALUE_IN_MERGED_ARR]*merged_length, dtype = int)
         left_ptr, right_ptr, merged_ptr = 0, 0, 0
         
         while left_ptr < len(left_arr) or right_ptr < len(right_arr):
             if left_ptr == len(left_arr):
                 merged[merged_ptr] = right_arr[right_ptr]
                 right_ptr += 1
-                merged_ptr += 1
                 
             elif right_ptr == len(right_arr):
                 merged[merged_ptr] = left_arr[left_ptr]
                 left_ptr += 1
-                merged_ptr += 1
                 
             elif left_arr[left_ptr] < right_arr[right_ptr]:
                 merged[merged_ptr] = left_arr[left_ptr]
                 left_ptr += 1
-                merged_ptr += 1
             
             else:
                 merged[merged_ptr] = right_arr[right_ptr]
                 right_ptr += 1
-                merged_ptr += 1
+                
+            merged_ptr += 1
             
         return merged
     
@@ -392,7 +391,7 @@ class ArrayList:
             return longer_lst
            
         elif type(values) == NP_NDARRAY_DTYPE:
-            return ArrayList(longer_lst)
+            return np.array(longer_lst, dtype = int)
             
     
     def _round_to_multiple(self, x: int, base: int) -> int:
