@@ -186,7 +186,7 @@ class TestSelectionSorting:
     """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
     
     Unlike the end-to-end test methods for merge_sort and 
-    quicksort, selection_sort test methods on ArrayLists with
+    quicksort, the selection_sort test methods on ArrayLists with
     ten-thousand ints are ommited because selction_sort runs 
     for a long time on large ArrayLists due to selection_sort's
     worst-case running time of O(n^2).
@@ -249,7 +249,7 @@ class TestBubbleSorting:
     """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
     
     Unlike the end-to-end test methods for merge_sort and 
-    quicksort, bubblesort test methods on ArrayLists with
+    quicksort, the bubblesort test methods on ArrayLists with
     ten-thousand ints are ommited because bubblesort runs 
     for a long time on large ArrayLists due to bubblesort's
     worst-case running time of O(n^2).
@@ -305,5 +305,68 @@ class TestBubbleSorting:
         
         pylist_of_one_hundred_ints.sort(reverse=True)
         arraylist_of_one_hundred_ints.bubblesort(True)
+        
+        assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
+        
+class TestInsertionSorting:
+    """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
+    
+    Unlike the end-to-end test methods for merge_sort and 
+    quicksort, the insertion_sort test methods on ArrayLists with
+    ten-thousand ints are ommited because insertion_sort runs 
+    for a long time on large ArrayLists due to insertion_sort's
+    worst-case running time of O(n^2).
+    """
+    def test_insertion_sort_ArrayList_of_one_int_in_ascending_order(self):
+        pylist_of_one_int = rand_pylist(1)
+        arraylist_of_one_int = ArrayList(pylist_of_one_int)
+        
+        pylist_of_one_int.sort()
+        arraylist_of_one_int.insertion_sort()
+        
+        assert arraylist_of_one_int == pylist_of_one_int
+        
+    def test_insertion_sort_ArrayList_of_ten_ints_in_ascending_order(self):
+        pylist_of_ten_ints = rand_pylist(10)
+        arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+        
+        pylist_of_ten_ints.sort()
+        arraylist_of_ten_ints.insertion_sort()
+        
+        assert arraylist_of_ten_ints == pylist_of_ten_ints
+        
+    def test_insertion_sort_ArrayList_of_one_hundred_ints_in_ascending_order(self):
+        pylist_of_one_hundred_ints = rand_pylist(100)
+        arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+        
+        pylist_of_one_hundred_ints.sort()
+        arraylist_of_one_hundred_ints.insertion_sort()
+        
+        assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
+        
+    def test_insertion_sort_ArrayList_of_one_int_in_descending_order(self):
+        pylist_of_one_int = rand_pylist(1)
+        arraylist_of_one_int = ArrayList(pylist_of_one_int)
+        
+        pylist_of_one_int.sort(reverse=True)
+        arraylist_of_one_int.insertion_sort(True)
+        
+        assert arraylist_of_one_int == pylist_of_one_int
+        
+    def test_insertion_sort_ArrayList_of_ten_ints_in_descending_order(self):
+        pylist_of_ten_ints = rand_pylist(10)
+        arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+        
+        pylist_of_ten_ints.sort(reverse=True)
+        arraylist_of_ten_ints.insertion_sort(True)
+        
+        assert arraylist_of_ten_ints == pylist_of_ten_ints
+        
+    def test_insertion_sort_ArrayList_of_one_hundred_ints_in_descending_order(self):
+        pylist_of_one_hundred_ints = rand_pylist(100)
+        arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
+        
+        pylist_of_one_hundred_ints.sort(reverse=True)
+        arraylist_of_one_hundred_ints.insertion_sort(True)
         
         assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
