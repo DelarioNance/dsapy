@@ -3,7 +3,7 @@ A Python script for end-to-end testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: February 15, 2023 - February 17, 2023
+Date: February 15, 2023 - February 18, 2023
 """
 
 # Standard library imports
