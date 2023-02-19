@@ -303,7 +303,11 @@ class ArrayList:
         """        
         values = self._values
         sorted_values = self._mergesort(values, 0, len(self)-1)
-        return ArrayList(sorted_values)
+        sorted_ArrayList = ArrayList(sorted_values)
+        
+        if reverse == True:
+            sorted_ArrayList.reverse()
+        return sorted_ArrayList
     
     def _mergesort(self, arr: NDArray[np.int_], start, end) -> NDArray[np.int_]:
         """Recursively sorts the values within a user-specified
