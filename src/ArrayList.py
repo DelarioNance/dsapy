@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 18, 2023
+Date: January 24, 2023 - February 19, 2023
 """
 
 # Standard library imports
@@ -17,6 +17,8 @@ from typing import Union # for Union type hint
 DEFAULT_CAPACITY_BASE = 16 # Chose 16 since 16 is a power of two close to Java's default of 10
 VALUE_FOR_INDEX_PAST_CAPACITY = -1
 RESIZE_FACTOR = 2 # Not 1.5 to avoid decimal size of NumPy array
+INITIAL_VALUE_IN_MERGED_ARR = 0 # Used in _merge method
+NP_NDARRAY_DTYPE = np.ndarray
 
 class ArrayList:    
     def __init__(self, values: list[int]) -> None:
@@ -31,8 +33,13 @@ class ArrayList:
             self._capacity = DEFAULT_CAPACITY_BASE
         else:
             self._capacity = self._round_to_multiple(len(values), DEFAULT_CAPACITY_BASE)
-        lengthened_pylist_of_values = self._lengthen(values, self._capacity)
-        self._values = np.array(lengthened_pylist_of_values, dtype = int)
+            
+        lengthened_values = self._lengthen(values, self._capacity)
+        if type(values) == list:
+            self._values = np.array(lengthened_values, dtype = int)
+        elif type(values) == NP_NDARRAY_DTYPE:
+            self._values = lengthened_values
+            
         self._next = len(values)
         
     def __len__(self) -> int:
@@ -104,8 +111,8 @@ class ArrayList:
         """
         if self._next == self._capacity:
             new_size = self._next * RESIZE_FACTOR
-            lengthened_pylist_of_values = self._lengthen(self._values, new_size)
-            self._values = np.array(lengthened_pylist_of_values)
+            lengthened_arr_of_values = self._lengthen(self._values, new_size)
+            self._values = lengthened_arr_of_values
             self._capacity = new_size
             
         self._values[self._next] = value
@@ -274,7 +281,94 @@ class ArrayList:
                self._insert_min_in_left_subarray(index)
             else:
                 self._insert_max_in_left_subarray(index)
+    
+    def mergesort(self, reverse: bool = False) -> None:
+        """Sorts the values in this ArrayList using mergesort. 
+        Unlike the selection_sort, bubblesort, and quicksort 
+        methods, the mergesort method sorts this ArrayList 
+        out-of-place.
+        
+        By default, the values are sorted in ascending order.
+        However, the values can be sorted in descending order
+        by setting the reverse parameter to true. For example,
+        calling
+            ArrayList([6,3,1,5]).merge(True)
+        will change the values in the ArrayList to [6,5,3,1].
+
+        Args:
+            reverse (bool, optional): If true, then the values
+                                      in this ArrayList will be
+                                      sorted in ascending order. 
+                                      Defaults to False.
+        """        
+        values = self._values
+        sorted_values = self._mergesort(values, 0, len(self)-1)
+        return ArrayList(sorted_values)
+    
+    def _mergesort(self, arr: NDArray[np.int_], start, end) -> NDArray[np.int_]:
+        """Recursively sorts the values within a user-specified
+        range in an user-specified NumPy array with mergesort. 
+        Called by mergesort.
+
+        Args:
+            arr (NDArray[np.int_]): The user-specified NumPy array
+            start (_type_): The first index of range (inclusive)
+            end (_type_): The last index of range(inclusive)
+
+        Returns:
+            NDArray[np.int_]: _description_
+        """
+        length = end - start + 1
+        if length == 1: # Does not handle len-0 case
+            return arr[start:start+1]
+        
+        mid = start + length//2
+        left = self._mergesort(arr, start, mid-1)
+        right = self._mergesort(arr, mid, end)
+        
+        merged = self._merge(left, right)
+        return merged
+    
+    def _merge(self, left_arr: NDArray[np.int_], right_arr: NDArray[np.int_]) -> NDArray[np.int_]:
+        """Merges two user-specified NumPy arrays which are 
+        sorted in ascending order into another array sorted 
+        in ascending order consisting of the values from the 
+        two original arrays.
+
+        Args:
+            left (NDArray[np.int_]): The first user-specified array
+            right (NDArray[np.int_]): The second user-specified array
+
+        Returns:
+            NDArray[np.int_]: The result from merging the left
+                              and right arrays
+        """
+        merged_length = len(left_arr) + len(right_arr)
+        merged = np.array([INITIAL_VALUE_IN_MERGED_ARR]*merged_length)
+        left_ptr, right_ptr, merged_ptr = 0, 0, 0
+        
+        while left_ptr < len(left_arr) or right_ptr < len(right_arr):
+            if left_ptr == len(left_arr):
+                merged[merged_ptr] = right_arr[right_ptr]
+                right_ptr += 1
+                merged_ptr += 1
+                
+            elif right_ptr == len(right_arr):
+                merged[merged_ptr] = left_arr[left_ptr]
+                left_ptr += 1
+                merged_ptr += 1
+                
+            elif left_arr[left_ptr] < right_arr[right_ptr]:
+                merged[merged_ptr] = left_arr[left_ptr]
+                left_ptr += 1
+                merged_ptr += 1
             
+            else:
+                merged[merged_ptr] = right_arr[right_ptr]
+                right_ptr += 1
+                merged_ptr += 1
+            
+        return merged
     
     def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
         """Lengthens a user-specified Python list (possibly 
@@ -284,15 +378,22 @@ class ArrayList:
 
         Args:
             values (Union[list[int],NDArray[np.int_]]): The user-specified Python list or NumPy array
-            new_size (int): The user-specified size of the newly created longer array
+            new_size (int): The user-specified size of the newly created longer Python list or NumPy array
 
         Returns:
             list[int]: The newly created longer array
         """
-        longer_array = [VALUE_FOR_INDEX_PAST_CAPACITY] * new_size
+        
+        longer_lst = [VALUE_FOR_INDEX_PAST_CAPACITY] * new_size
         for index, value in enumerate(values):
-            longer_array[index] = value
-        return longer_array
+            longer_lst[index] = value
+            
+        if type(values) == list:    
+            return longer_lst
+           
+        elif type(values) == NP_NDARRAY_DTYPE:
+            return ArrayList(longer_lst)
+            
     
     def _round_to_multiple(self, x: int, base: int) -> int:
         """Rounds a user-specified number up to the closest
