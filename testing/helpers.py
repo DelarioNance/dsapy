@@ -28,10 +28,9 @@ def rand_array_list(size: int, start: int = -1000, end: int = 1000) -> ArrayList
     Args:
         size (int): The user-specified size
         start (int, optional): The start of the integer 
-                               range, inclusive. Defaults to 
-                               -1000.
-        end (int, optional): The end of the integer range, 
-                             inclusive. Defaults to 1000.
+        range, inclusive. Defaults to -1000.
+        end (int, optional): The end of the integer range,
+        inclusive. Defaults to 1000.
 
     Returns:
         ArrayList: The ArrayList of random integers

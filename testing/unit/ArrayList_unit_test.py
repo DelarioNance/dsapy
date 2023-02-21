@@ -3,10 +3,11 @@ A Python script for unit testing the ArrayList class with
 PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 10, 2023
+Date: January 24, 2023 - February 20, 2023
 """
 
 # Standard library imports
+import pytest # for markers
 import sys # for adding filepaths
 
 # Accessing project directories
@@ -26,43 +27,31 @@ TEST_RAN_WITHOUT_ERROR = True
 DEFAULT_INT = 1729
 
 
+@pytest.mark.gettingsize
 class TestGettingSize:
-    """Uses __init__ and __len__ methods from ArrayList class.
-    """
-    def test_get_size_of_empty_ArrayList(self):
-        empty_arraylist = rand_array_list(0)
-        
-        size = len(empty_arraylist)
-        
-        assert size == 0
+            
+    @pytest.mark.parametrize("num_of_ints", [
+        0,
+        1,
+        10,
+        100,
+        10000
+    ])
     
-    def test_get_size_of_ArrayList_of_one_int(self):
-        arraylist_of_one_int = rand_array_list(1)
+    def test_get_size_of_ArrayList(self, num_of_ints):
+        """Returns true if and only if calling the len() 
+        method on an ArrayList of an user-specified number of
+        integers returns the correct size of the ArrayList.
+
+        Args:
+            num_of_ints (_type_): The user-specified number 
+            of ints
+        """
+        arraylist = rand_array_list(num_of_ints)
         
-        size = len(arraylist_of_one_int)
+        size = len(arraylist)
         
-        assert size == 1
-    
-    def test_get_size_of_ArrayList_of_ten_ints(self):
-        arraylist_of_ten_ints = rand_array_list(10)
-        
-        size = len(arraylist_of_ten_ints)
-        
-        assert size == 10
-    
-    def test_get_size_of_ArrayList_of_one_hundred_ints(self):
-        arraylist_of_one_hundred_ints = rand_array_list(100)
-        
-        size = len(arraylist_of_one_hundred_ints)
-        
-        assert size == 100
-    
-    def test_get_size_of_ArrayList_of_ten_thousand_ints(self):
-        arraylist_of_ten_thousand_ints = rand_array_list(10000)
-        
-        size = len(arraylist_of_ten_thousand_ints)
-        
-        assert size == 10000
+        assert size == num_of_ints
         
 
 class TestPrinting:
