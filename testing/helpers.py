@@ -39,6 +39,25 @@ def rand_array_list(size: int, start: int = -1000, end: int = 1000) -> ArrayList
     random_values = [random.randint(start, end) for x in range(size)]
     return ArrayList(random_values)
 
+def rand_ndarray(size: int, start: int = -1000, end: int = 1000):
+    """Returns an NumPy array of a user-specified size, 
+    containing random integers in the integer range
+    [start, end].
+
+    Args:
+        size (int): The user-specified size
+        start (int, optional): The start of the integer 
+        range, inclusive. Defaults to -1000.
+        end (int, optional): The end of the integer range,
+        inclusive. Defaults to 1000.
+
+    Returns:
+        ArrayList: The ArrayList of random integers
+    """
+    
+    random_values = np.random.randint(start, end+1, size)
+    return random_values
+
 def rand_pylist(size: int, start: int = -1000, end: int = 1000) -> list:
     """Returns an Pylist of a user-specified size, 
     containing random integers in the integer range

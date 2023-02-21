@@ -11,6 +11,7 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 - [`ArrayList` Test Plan](#arraylist-test-plan)
   - [Introduction](#introduction)
   - [Table of Contents](#table-of-contents)
+- [Part 1 - Writing Tests](#part-1---writing-tests)
   - [**Setup** Tests](#setup-tests)
     - [Creating `ArrayList`](#creating-arraylist)
   - [**Unit** Tests](#unit-tests)
@@ -40,6 +41,10 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
     - [Insertion Sorting](#insertion-sorting)
     - [Merge Sorting](#merge-sorting)
     - [Quick Sorting](#quick-sorting)
+- [Part 2 - Cleaning up Code](#part-2---cleaning-up-code)
+  - [Test Parametrization](#test-parametrization)
+
+# Part 1 - Writing Tests
 
 ## **Setup** Tests
 
@@ -528,11 +533,13 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 51. Quick sort `ArrayList` of `100` random integer in `[-1000,1000]` in descending order
 52. Quick sort `ArrayList` of `10000` random integer in `[-1000,1000]` in descending order
 
+---
 
+# Part 2 - Cleaning up Code
 
+Ways in Which I Cleaned up Code:
+- Many test methods were parametrized to avoid boilerplate code
+- Many test methods were given docstrings
+- Added size of 1,000 to test methods
 
-
-
-
-
-
+## Test Parametrization

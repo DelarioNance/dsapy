@@ -3,7 +3,7 @@ A Python script for unit testing the ArrayList class with
 PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 20, 2023
+Date: January 24, 2023 - February 21, 2023
 """
 
 # Standard library imports
@@ -22,30 +22,30 @@ from helpers import *
 
 
 # Global variables
-INDEX_BEFORE_NEWLINE = -1
-TEST_RAN_WITHOUT_ERROR = True
 DEFAULT_INT = 1729
+INDEX_BEFORE_NEWLINE = -1
+STDOUT_INDEX = 0
+TEST_RAN_WITHOUT_ERROR = True
 
 
-@pytest.mark.gettingsize
 class TestGettingSize:
-            
+    
     @pytest.mark.parametrize("num_of_ints", [
-        0,
-        1,
-        10,
-        100,
-        10000
+        pytest.param(0, id='zero_ints'),
+        pytest.param(1, id='one_int'),
+        pytest.param(10, id='ten_ints'),
+        pytest.param(100, id='one_hundred_ints'),
+        pytest.param(1000, id='one_thousand_ints'),
+        pytest.param(10000, id='ten_thousand_ints')
     ])
     
-    def test_get_size_of_ArrayList(self, num_of_ints):
-        """Returns true if and only if calling the len() 
-        method on an ArrayList of an user-specified number of
-        integers returns the correct size of the ArrayList.
+    def test_get_size_of_ArrayList(self, num_of_ints) -> None:
+        """Tests if a user can get the correct size of an 
+        ArrayList of a user-specified number of random ints.
 
         Args:
             num_of_ints (_type_): The user-specified number 
-            of ints
+            of random ints
         """
         arraylist = rand_array_list(num_of_ints)
         
@@ -77,50 +77,33 @@ class TestPrinting:
     A tutorial of using capsys is found here: 
         https://www.youtube.com/watch?v=dN-pVt7i4Us&t=215s
     """
-    def test_print_empty_ArrayList(self, capsys):
-        empty_arraylist = rand_array_list(0)
-        empty_ndarray = ndarray_of_first_ints(0)
-        
-        print(empty_arraylist)
-        output_from_empty_arraylist = capsys.readouterr()[0][:INDEX_BEFORE_NEWLINE]
-        
-        assert output_from_empty_arraylist == str(empty_ndarray)
-        
-    def test_print_ArrayList_of_one_int(self, capsys):
-        arraylist_of_one_int = array_list_range(1,1)
-        ndarray_of_one_int = ndarray_of_first_ints(1)
-        
-        print(arraylist_of_one_int)
-        output_from_arraylist_of_one_int = capsys.readouterr()[0][:INDEX_BEFORE_NEWLINE]
-        
-        assert output_from_arraylist_of_one_int == str(ndarray_of_one_int)
     
-    def test_print_ArrayList_of_ten_ints(self, capsys):
-        arraylist_of_ten_ints = array_list_range(1,10)
-        ndarray_of_ten_ints = ndarray_of_first_ints(10)
-        
-        print(arraylist_of_ten_ints)
-        output_from_arraylist_of_ten_ints = capsys.readouterr()[0][:INDEX_BEFORE_NEWLINE]
-        
-        assert output_from_arraylist_of_ten_ints == str(ndarray_of_ten_ints)
+    @pytest.mark.parametrize("num_of_ints", [
+        pytest.param(0, id='zero_ints'),
+        pytest.param(1, id='one_int'),
+        pytest.param(10, id='ten_ints'),
+        pytest.param(100, id='one_hundred_ints'),
+        pytest.param(1000, id='one_thousand_ints'),
+        pytest.param(10000, id='ten_thousand_ints')
+    ])
     
-    def test_print_ArrayList_of_one_hundred_ints(self, capsys):
-        arraylist_of_one_hundred_ints = array_list_range(1,100)
-        ndarray_of_one_hundred_ints = ndarray_of_first_ints(100)
+    def test_print_ArrayList(self, capsys, num_of_ints: int) -> None:
+        """Tests if a user can print the correct values in an
+        ArrayList of a user-specified number of random ints.
+
+        Args:
+            capsys (_type_): The built-in pytest fixture for
+            capturing stdout/stderror output
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        ndarray = rand_ndarray(num_of_ints)
+        arraylist = ArrayList(ndarray)
         
-        print(arraylist_of_one_hundred_ints)
-        output_from_arraylist_of_one_hundred_ints = capsys.readouterr()[0][:INDEX_BEFORE_NEWLINE]
+        print(arraylist)
+        printed_output = capsys.readouterr()[STDOUT_INDEX][:INDEX_BEFORE_NEWLINE]
         
-        assert output_from_arraylist_of_one_hundred_ints == str(ndarray_of_one_hundred_ints)
-    
-    def test_print_ArrayList_of_ten_thousand_ints(self, capsys):
-        arraylist_of_ten_thousand_ints = array_list_range(1,10000)
-        ndarray_of_ten_thousand_ints = ndarray_of_first_ints(10000)
-        
-        print(arraylist_of_ten_thousand_ints)
-        output_from_arraylist_of_ten_thousand_ints = capsys.readouterr()[0][:INDEX_BEFORE_NEWLINE]
-        
-        assert output_from_arraylist_of_ten_thousand_ints == str(ndarray_of_ten_thousand_ints)
+        assert printed_output == str(ndarray)
         
 
 class TestCheckingIfEmpty:
