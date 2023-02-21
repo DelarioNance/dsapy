@@ -20,7 +20,7 @@ sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
 from ArrayList import ArrayList
 
 
-def rand_array_list(size: int, start: int = -1000, end: int = 1000) -> ArrayList:
+def rand_arraylist(size: int, start: int = -1000, end: int = 1000) -> ArrayList:
     """Returns an ArrayList of a user-specified size, 
     containing random integers in the integer range
     [start, end].

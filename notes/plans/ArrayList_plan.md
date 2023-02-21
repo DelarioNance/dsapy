@@ -537,9 +537,4 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 
 # Part 2 - Cleaning up Code
 
-Ways in Which I Cleaned up Code:
-- Many test methods were parametrized to avoid boilerplate code
-- Many test methods were given docstrings
-- Added size of 1,000 to test methods
-
 ## Test Parametrization
