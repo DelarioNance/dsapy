@@ -29,7 +29,6 @@ TEST_RAN_WITHOUT_ERROR = True
 
 
 class TestGettingSize:
-    
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(0, id='zero_ints'),
         pytest.param(1, id='one_int'),
@@ -74,7 +73,6 @@ class TestPrinting:
     The capsys tutorial used to familiarize myself with capsys can be is [this YouTube video](https://www.youtube.com/watch?v=dN-pVt7i4Us&t=215s) 
     by anthonywritescode. 
     """
-    
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(0, id='zero_ints'),
         pytest.param(1, id='one_int'),
@@ -104,7 +102,6 @@ class TestPrinting:
         
 
 class TestCheckingIfEmpty:
-    
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(0, id='zero_ints'),
         pytest.param(1, id='one_int'),
@@ -131,13 +128,7 @@ class TestCheckingIfEmpty:
         
         
 class TestGettingValue:
-    """Uses __init__ and __get_item__ methods from ArrayList class.
-    """
-    
-    
-    
     class TestGettingValueWithNonnegativeIndex:
-        
         @pytest.mark.parametrize("num_of_ints, index", [
             pytest.param(1,0, id="only value of one int"),
             pytest.param(10,0, id="start value of ten ints"),
@@ -156,8 +147,8 @@ class TestGettingValue:
         
         def test_get_value_with_nonnegative_index(self, num_of_ints: int , index: int) -> None:
             """Tests if a user can get the correct value at
-            a user-specified index in an ArrayList of a 
-            user-specified number of random ints.
+            a user-specified non-negative index in an ArrayList
+            of a user-specified number of random ints.
 
             Args:
                 num_of_ints (int): The user-specified number of
@@ -171,28 +162,27 @@ class TestGettingValue:
             
             assert value == pylist[index]
             
-    class TestGettingValueWithNonnegativeIndex:
-        
+    class TestGettingValueWithNegativeIndex:
         @pytest.mark.parametrize("num_of_ints, index", [
-            pytest.param(1,0, id="only value of one int"),
-            pytest.param(10,0, id="start value of ten ints"),
-            pytest.param(100,0, id="start value of one hundred ints"),
-            pytest.param(1000,0, id="start value of one thousand ints"),
-            pytest.param(10000,0, id="start value of ten thousand ints"),
-            pytest.param(10,5, id="middle value of ten ints"),
-            pytest.param(100,50, id="middle value of one hundred ints"),
-            pytest.param(1000,500, id="middle value of one thousand ints"),
-            pytest.param(10000,5000, id="middle value of ten thousand ints"),
-            pytest.param(10,9, id="last value of ten ints"),
-            pytest.param(100,99, id="last value of one hundred ints"),            
-            pytest.param(1000,999, id="last value of one thousand ints"),          
-            pytest.param(10000,9999, id="last value of ten thousand ints")
+            pytest.param(1,-1, id="only value of one int"),
+            pytest.param(10,-10, id="start value of ten ints"),
+            pytest.param(100,-100, id="start value of one hundred ints"),
+            pytest.param(1000,-1000, id="start value of one thousand ints"),
+            pytest.param(10000,-10000, id="start value of ten thousand ints"),
+            pytest.param(10,-5, id="middle value of ten ints"),
+            pytest.param(100,-50, id="middle value of one hundred ints"),
+            pytest.param(1000,-500, id="middle value of one thousand ints"),
+            pytest.param(10000,-5000, id="middle value of ten thousand ints"),
+            pytest.param(10,-1, id="last value of ten ints"),
+            pytest.param(100,-1, id="last value of one hundred ints"),            
+            pytest.param(1000,-1, id="last value of one thousand ints"),          
+            pytest.param(10000,-1, id="last value of ten thousand ints")
         ])
         
-        def test_get_value_with_nonnegative_index(self, num_of_ints: int , index: int) -> None:
+        def test_get_value_with_negative_index(self, num_of_ints: int , index: int) -> None:
             """Tests if a user can get the correct value at
-            a user-specified index in an ArrayList of a 
-            user-specified number of random ints.
+            a user-specified negative index in an ArrayList
+            of a user-specified number of random ints.
 
             Args:
                 num_of_ints (int): The user-specified number of
