@@ -52,7 +52,7 @@ class TestGettingSize:
         
         assert size == num_of_ints
         
-
+        
 class TestPrinting:
     """To test if ArrayList objects are correctly printed to 
     the command line, the test methods in this class take in
@@ -145,7 +145,7 @@ class TestGettingValue:
             pytest.param(10000,9999, id="last value of ten thousand ints")
         ])
         
-        def test_get_value_with_nonnegative_index(self, num_of_ints: int , index: int) -> None:
+        def test_get_value_in_ArrayList_with_nonnegative_index(self, num_of_ints: int , index: int) -> None:
             """Tests if a user can get the correct value at
             a user-specified non-negative index in an ArrayList
             of a user-specified number of random ints.
@@ -179,7 +179,7 @@ class TestGettingValue:
             pytest.param(10000,-1, id="last value of ten thousand ints")
         ])
         
-        def test_get_value_with_negative_index(self, num_of_ints: int , index: int) -> None:
+        def test_get_value_in_ArrayList_with_negative_index(self, num_of_ints: int , index: int) -> None:
             """Tests if a user can get the correct value at
             a user-specified negative index in an ArrayList
             of a user-specified number of random ints.
@@ -198,33 +198,35 @@ class TestGettingValue:
                    
             
 class TestSettingValueWithoutError:
-    """Uses __init__ and __setitem__ methods from ArrayList class.
-    """
-    def test_set_value_at_middle_index_in_ArrayList_of_one_int(self):
-        arraylist_of_one_int = rand_arraylist(1)
-        
-        arraylist_of_one_int[0] = DEFAULT_INT
-        
-        assert TEST_RAN_WITHOUT_ERROR
+    @pytest.mark.parametrize("num_of_ints, index", [
+            pytest.param(1,-1, id="only value of one int"),
+            pytest.param(10,-10, id="start value of ten ints"),
+            pytest.param(100,-100, id="start value of one hundred ints"),
+            pytest.param(1000,-1000, id="start value of one thousand ints"),
+            pytest.param(10000,-10000, id="start value of ten thousand ints"),
+            pytest.param(10,-5, id="middle value of ten ints"),
+            pytest.param(100,-50, id="middle value of one hundred ints"),
+            pytest.param(1000,-500, id="middle value of one thousand ints"),
+            pytest.param(10000,-5000, id="middle value of ten thousand ints"),
+            pytest.param(10,-1, id="last value of ten ints"),
+            pytest.param(100,-1, id="last value of one hundred ints"),            
+            pytest.param(1000,-1, id="last value of one thousand ints"),          
+            pytest.param(10000,-1, id="last value of ten thousand ints")
+        ])
     
-    def test_set_value_at_middle_index_in_ArrayList_of_ten_ints(self):
-        arraylist_of_ten_ints = rand_arraylist(10)
+    def test_set_value_in_ArrayList(self, num_of_ints: int, index: int) -> None:
+        """Tests if a user can set a default value at a 
+        user-specified non-negative index in an Array List
+        of a user-specified number of random ints.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+            index (int): The user-specified index
+        """
+        arraylist = rand_arraylist(num_of_ints)
         
-        arraylist_of_ten_ints[4] = DEFAULT_INT
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_set_value_at_middle_index_in_ArrayList_of_one_hundred_ints(self):
-        arraylist_of_one_hundred_ints = rand_arraylist(100)
-        
-        arraylist_of_one_hundred_ints[49] = DEFAULT_INT
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_set_value_at_middle_index_in_ArrayList_of_ten_thousand_ints(self):
-        arraylist_of_ten_thousand_ints = rand_arraylist(10000)
-        
-        arraylist_of_ten_thousand_ints[4999] = DEFAULT_INT
+        arraylist[index] = DEFAULT_INT
         
         assert TEST_RAN_WITHOUT_ERROR
         
