@@ -235,13 +235,21 @@ class TestSettingValueWithoutError:
 class TestAddingValueWithoutError:
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(0, id="zero ints"),
-        pytest.param(1, id="one int"),
-        pytest.param(CAPACITY_MULTIPLE, id="default capacity ints"),
-        pytest.param(CAPACITY_MULTIPLE*2-1, id="one int from full list"),
-        pytest.param(CAPACITY_MULTIPLE*2, id="full list"),
+        pytest.param(CAPACITY_MULTIPLE * (2**0)-1, id="one int from full list of default capacity*(2^0)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**1)-1, id="one int from full list of default capacity*(2^1)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**4)-1, id="one int from full list of default capacity*(2^4)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**6)-1, id="one int from full list of default capacity*(2^6)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**8)-1, id="one int from full list of default capacity*(2^8)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**10)-1, id="one int from full list of default capacity*(2^10)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**0), id="full list of default capacity*(2^0)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**1), id="full list of default capacity*(2^1)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**4), id="full list of default capacity*(2^4)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**6), id="full list of default capacity*(2^6)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**8), id="full list of default capacity*(2^8)"),
+        pytest.param(CAPACITY_MULTIPLE * (2**10), id="full list of default capacity*(2^10)"),
     ])
     
-    def test_add_value_in_ArrayList(self, num_of_ints: int) -> None:
+    def test_add_value_to_full_ArrayList(self, num_of_ints: int) -> None:
         """Tests if a user can add a default value to an 
         ArrayList of a user-specified number of random ints.
 
