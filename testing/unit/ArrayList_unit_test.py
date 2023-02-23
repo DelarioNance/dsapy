@@ -22,6 +22,7 @@ from helpers import *
 
 
 # Global variables
+CAPACITY_MULTIPLE = 16
 DEFAULT_INT = 1729
 INDEX_BEFORE_NEWLINE = -1
 STDOUT_INDEX = 0
@@ -232,75 +233,25 @@ class TestSettingValueWithoutError:
         
 
 class TestAddingValueWithoutError:
-    """Uses __init__ and append methods from ArrayList class.
-    """
-    def test_add_value_to_empty_ArrayList(self):
-        empty_arraylist = rand_arraylist(0)
-        
-        empty_arraylist.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
+    @pytest.mark.parametrize("num_of_ints", [
+        pytest.param(0, id="zero ints"),
+        pytest.param(1, id="one int"),
+        pytest.param(CAPACITY_MULTIPLE, id="default capacity ints"),
+        pytest.param(CAPACITY_MULTIPLE*2-1, id="one int from full list"),
+        pytest.param(CAPACITY_MULTIPLE*2, id="full list"),
+    ])
     
-    def test_add_value_to_ArrayList_of_one_int(self):
-        arraylist_of_one_int = rand_arraylist(1)
+    def test_add_value_in_ArrayList(self, num_of_ints: int) -> None:
+        """Tests if a user can add a default value to an 
+        ArrayList of a user-specified number of random ints.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        arraylist = rand_arraylist(num_of_ints)
         
-        arraylist_of_one_int.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_add_value_to_ArrayList_of_two_ints(self):
-        arraylist_of_two_ints = rand_arraylist(2)
-        
-        arraylist_of_two_ints.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_add_value_to_ArrayList_of_three_ints(self):
-        arraylist_of_three_ints = rand_arraylist(3)
-        
-        arraylist_of_three_ints.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-        arraylist_of_fifteen_ints = rand_arraylist(15)
-        
-        arraylist_of_fifteen_ints.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_add_value_to_ArrayList_of_sixteen_ints(self):
-        arraylist_of_sixteen_ints = rand_arraylist(16)
-        
-        arraylist_of_sixteen_ints.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_add_value_to_ArrayList_of_seventeen_ints(self):
-        arraylist_of_seventeen_ints = rand_arraylist(17)
-        
-        arraylist_of_seventeen_ints.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_arraylist(8191)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_one_ints.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_arraylist(8192)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_two_ints.append(DEFAULT_INT)
-        
-        assert TEST_RAN_WITHOUT_ERROR
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_arraylist(8193)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
+        arraylist.append(DEFAULT_INT)
         
         assert TEST_RAN_WITHOUT_ERROR
         
