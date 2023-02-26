@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 19, 2023
+Date: January 24, 2023 - February 26, 2023
 """
 
 # Standard library imports
@@ -14,25 +14,28 @@ from numpy.typing import NDArray # for NumPy type hints
 from typing import Union # for Union type hint
 
 # Global variables
-DEFAULT_CAPACITY_BASE = 16 # Chose 16 since 16 is a power of two close to Java's default of 10
+DEFAULT_CAPACITY_BASE = 16 # Because 16 is a power of two close to Java's default of 10
 VALUE_FOR_INDEX_PAST_CAPACITY = -1
 RESIZE_FACTOR = 2 # Not 1.5 to avoid decimal size of NumPy array
 INITIAL_VALUE_IN_MERGED_ARR = 0 # Used in _merge method
 NP_NDARRAY_DTYPE = np.ndarray
+ARRAYLIST_INPUT_TYPES = Union[list[int],NDArray[np.int_]]
 
 class ArrayList:    
-    def __init__(self, values: list[int]) -> None:
-        """Constructs an ArrayList object from a 
-        user-specified Python list of integers.
+    def __init__(self, values: ARRAYLIST_INPUT_TYPES) -> None:
+        """Constructs an ArrayList object containing the
+        values from a user-specified Python list or NumPy
+        array of ints.
 
         Args:
-            values (list[int]): The user-specified Python 
-                                list of integers
+            values (ARRAYLIST_INPUT_TYPES): The user-specified
+            Python list or NumPy array of ints
         """
+  
         if len(values) == 0:
             self._capacity = DEFAULT_CAPACITY_BASE
         else:
-            self._capacity = self._round_to_multiple(len(values), DEFAULT_CAPACITY_BASE)
+            self._capacity = self._round_to_next_multiple(len(values), DEFAULT_CAPACITY_BASE)
             
         lengthened_values = self._lengthen(values, self._capacity)
         if type(values) == list:
@@ -42,18 +45,13 @@ class ArrayList:
             
         self._next = len(values)
         
-    def __len__(self) -> int:
+    def __len__(self) -> int: # O(1)
         """Returns the size of this ArrayList.
 
         Returns:
             int: The size of this ArrayList
         """
         return self._next
-    
-    def __str__(self) -> NDArray[np.int_]:
-        """Returns the string representation of this ArrayList.
-        """
-        return str(self._values[:self._next])
     
     def __getitem__(self, index: int) -> int:
         """Returns the value at a user-specified index in 
@@ -65,41 +63,54 @@ class ArrayList:
         Returns:
             int: The value at the given index
         """
-        if index < 0:
-            corresponding_positive_index = self._next + index
+        if index >= 0:
+            return self._values[index]
+        else:
+            corresponding_positive_index = len(self) + index
             return self._values[corresponding_positive_index] 
-        return self._values[index]
     
-    def __setitem__(self, index: int, value: int) -> None:
+    def __setitem__(self, index: int, val: int) -> None:
         """Sets the value at a user-specified index in this
-        ArrayList to a user-specified value
+        ArrayList to a user-specified value.
 
         Args:
             index (int): The user-specified index
-            value (int): The user-specified value
+            val (int): The user-specified value
         """
-        self._values[index] = value
-        
+        self._values[index] = val
+    
+    def __str__(self) -> NDArray[np.int_]:
+        """Returns the string representation of this ArrayList.
+        """
+        return str(self._values[:len(self)])
+
     def __eq__(self, lst_to_compare: Union[list[int], ArrayList]) -> bool:
-        """Returns true iff this ArrayList contains exactly
-        the values in a second user-specified ArrayList to
-        compare.
+        """Returns true iff this ArrayList and a 
+        user-specified Python list or second ArrayList contain
+        the same values at the same indices.
 
         Args:
-            lst_to_compare (ArrayList): The second user-specified 
-                                        ArrayList
+            lst_to_compare (Union[list[int], ArrayList]): The 
+            user-specified Python list or second ArrayList 
+            to compare this ArrayList with
 
         Returns:
-            bool: True iff this ArrayList and the user-specified
-                  ArrayLisy contain the same values
+            bool: True iff this ArrayList and the given Python
+            list or second ArrayList contain the same values at
+            the same indices
         """
-        values_in_this_array = self._values[:len(self)]
         
-        if type(lst_to_compare) == ArrayList:    
-            values_in_other_array = lst_to_compare._values[:len(lst_to_compare)]
-            return np.array_equal(values_in_this_array, values_in_other_array)
-        else:
-            return np.array_equal(values_in_this_array, lst_to_compare)
+        if len(self) != len(lst_to_compare):
+            return False
+        
+        for index in range(len(self)):
+            if self[index] != lst_to_compare[index]:
+                return False
+        return True
+    
+    
+    
+    
     
     def append(self, value: int) -> None:
         """Appends a user-specified value to the end of this
@@ -373,46 +384,49 @@ class ArrayList:
             
         return merged
     
-    def _lengthen(self, values: Union[list[int],NDArray[np.int_]], new_size: int) -> list[int]:
-        """Lengthens a user-specified Python list (possibly 
-        inside a user-specified NumPy array by copying each 
-        value to its same index in a new Python list of a 
-        user-specified size.
+    def _lengthen(self, values: ARRAYLIST_INPUT_TYPES, new_size: int) -> ARRAYLIST_INPUT_TYPES:
+        """Lengthens a user-specified Python list or NumPy
+        array to a new user-specified size by returning a
+        Python list or NumPy array containing each value from
+        the original list or array at the same indices, but
+        with the ArrayList class's default values past the 
+        indices of the old values.
 
         Args:
-            values (Union[list[int],NDArray[np.int_]]): The user-specified Python list or NumPy array
+            values (ARRAYLIST_INPUT_TYPES): The user-specified Python list or NumPy array
             new_size (int): The user-specified size of the newly created longer Python list or NumPy array
 
         Returns:
-            list[int]: The newly created longer array
+            ARRAYLIST_INPUT_TYPES: The newly created longer array
         """
-        
-        longer_lst = [VALUE_FOR_INDEX_PAST_CAPACITY] * new_size
-        for index, value in enumerate(values):
-            longer_lst[index] = value
+
+        lengthened_values = [VALUE_FOR_INDEX_PAST_CAPACITY] * new_size
+        for index, val in enumerate(values):
+            lengthened_values[index] = val
             
         if type(values) == list:    
-            return longer_lst
+            return lengthened_values
            
         elif type(values) == NP_NDARRAY_DTYPE:
-            return np.array(longer_lst, dtype = int)
+            return np.array(lengthened_values, dtype = int)
             
     
-    def _round_to_multiple(self, x: int, base: int) -> int:
-        """Rounds a user-specified number up to the closest
-        multiple of a user-specified base. Inspiration for the
-        newest implementation taken from 
-        [datagy](https://datagy.io/python-round-to-multiple/).
+    def _round_to_next_multiple(self, val: int, base_of_multiple: int) -> int:
+        """Finds the multiple of a user-specified base
+        that a user-specified number is closest to and returns
+        the multiple. Inspiration for the newest implementation
+        taken from [datagy](https://datagy.io/python-round-to-multiple/).
 
         Args:
             x (int): The user-specified number to round
-            base (int): The user-specified base
+            base_of_multiple (int): The user-specified base
+            to return a multiple of
 
         Returns:
             int: The rounded up number to the nearest multiple
                  of base
         """
-        return ceil(x/base) * base
+        return ceil(val/base_of_multiple) * base_of_multiple
     
     def _shift_values_left(self, bound: int) -> None:
         """Shifts every value at an index to the right of a 
