@@ -21,7 +21,7 @@ INITIAL_VALUE_IN_MERGED_ARR = 0 # Used in _merge method
 NP_NDARRAY_DTYPE = np.ndarray
 ARRAYLIST_INPUT_TYPES = Union[list[int],NDArray[np.int_]]
 
-class ArrayList:    
+class ArrayList:
     def __init__(self, values: ARRAYLIST_INPUT_TYPES) -> None:
         """Constructs an ArrayList object containing the
         values from a user-specified Python list or NumPy
@@ -45,7 +45,50 @@ class ArrayList:
             
         self._next = len(values)
         
-    def __len__(self) -> int: # O(1)
+    def _round_to_next_multiple(self, val: int, base_of_multiple: int) -> int:
+        """Finds the multiple of a user-specified base
+        that a user-specified number is closest to and returns
+        the multiple. Inspiration for the newest implementation
+        taken from [datagy](https://datagy.io/python-round-to-multiple/).
+
+        Args:
+            x (int): The user-specified number to round
+            base_of_multiple (int): The user-specified base
+            to return a multiple of
+
+        Returns:
+            int: The rounded up number to the nearest multiple
+                 of base
+        """
+        return ceil(val/base_of_multiple) * base_of_multiple
+    
+    def _lengthen(self, values: ARRAYLIST_INPUT_TYPES, new_size: int) -> ARRAYLIST_INPUT_TYPES:
+        """Lengthens a user-specified Python list or NumPy
+        array to a new user-specified size by returning a
+        Python list or NumPy array containing each value from
+        the original list or array at the same indices, but
+        with the ArrayList class's default values past the 
+        indices of the old values.
+
+        Args:
+            values (ARRAYLIST_INPUT_TYPES): The user-specified Python list or NumPy array
+            new_size (int): The user-specified size of the newly created longer Python list or NumPy array
+
+        Returns:
+            ARRAYLIST_INPUT_TYPES: The newly created longer array
+        """
+
+        lengthened_values = [VALUE_FOR_INDEX_PAST_CAPACITY] * new_size
+        for index, val in enumerate(values):
+            lengthened_values[index] = val
+            
+        if type(values) == list:    
+            return lengthened_values
+           
+        elif type(values) == NP_NDARRAY_DTYPE:
+            return np.array(lengthened_values, dtype = int)
+        
+    def __len__(self) -> int:
         """Returns the size of this ArrayList.
 
         Returns:
@@ -106,25 +149,20 @@ class ArrayList:
         for index in range(len(self)):
             if self[index] != lst_to_compare[index]:
                 return False
-        return True
-    
-    
-    
-    
+        return True    
     
     def append(self, value: int) -> None:
         """Appends a user-specified value to the end of this
-        ArrayList, and increases the capacity of the ArrayList
-        if necessary.
+        ArrayList.
 
         Args:
             value (int): The user-specified value
         """
-        if self._next == self._capacity:
-            new_size = self._next * RESIZE_FACTOR
-            lengthened_arr_of_values = self._lengthen(self._values, new_size)
+        if len(self) == self._capacity:
+            new_capacity = len(self) * RESIZE_FACTOR
+            lengthened_arr_of_values = self._lengthen(self._values, new_capacity)
             self._values = lengthened_arr_of_values
-            self._capacity = new_size
+            self._capacity = new_capacity
             
         self._values[self._next] = value
         self._next += 1        
@@ -137,16 +175,22 @@ class ArrayList:
             index (int): The user-specified index
         """
         removed_value = self._values[index]
-        self._shift_values_left(index)
+        self._shift_values_left_to_index(index)
         return removed_value
     
-    def is_empty(self) -> bool:
-        """Returns true iff this ArrayList is empty.
+    def _shift_values_left_to_index(self, bound: int) -> None:
+        """Shifts every value at an index to the right of a 
+        user-specified index in this ArrayList to the left by
+        one index, decrementing the size of this ArrayList.
 
-        Returns:
-            bool: True iff this ArrayList is empty
+        Args:
+            bound (int): The user-specified index
         """
-        return self._next == 0
+        for index in range(bound,len(self)-1):
+            self._values[index] = self._values[index+1]
+        self._values[len(self)-1] = VALUE_FOR_INDEX_PAST_CAPACITY
+        
+        self._next -= 1
     
     def max(self) -> int:
         """Returns the largest value in this ArrayList.
@@ -154,8 +198,29 @@ class ArrayList:
         Returns:
             int: The maximum value in this ArrayList
         """
-        index_of_max = self._index_of_max(0,len(self)-1)
+        index_of_max = self._get_index_of_max(0,len(self)-1)
         return self._values[index_of_max]
+    
+    def _get_index_of_max(self, start: int, end: int) -> int:
+        """Returns the index of the largest value in a
+        user-specified range in this ArrayList.
+
+        Args:
+            start (int): The first value in the user-specified
+                         range (inclusive)
+            end (int): The last value in the user-specified
+                       range (inclusive)
+
+        Returns:
+            int: The index of the maximum value in this 
+            ArrayList
+        """
+        index_of_max = start
+        
+        for index in range(start+1,end+1):
+            if self._values[index] > self._values[index_of_max]:
+                index_of_max = index
+        return index_of_max
     
     def min(self) -> int:
         """Returns the smallest value in this ArrayList.
@@ -163,25 +228,29 @@ class ArrayList:
         Returns:
             int: The minimum value in this ArrayList
         """
-        index_of_min = self._index_of_min(0,len(self)-1)
+        index_of_min = self._get_index_of_min(0,len(self)-1)
         return self._values[index_of_min]
     
-    def contains(self, value: int) -> bool:
-        """Returns true iff this ArrayList contains a 
-        user-specified value
+    def _get_index_of_min(self, start: int, end: int) -> int:
+        """Returns the index of the smallest value in a
+        user-specified range in this ArrayList.
 
         Args:
-            value (int): The user-specified value
+            start (int): The first value in the user-specified
+                         range (inclusive)
+            end (int): The last value in the user-specified
+                       range (inclusive)
 
         Returns:
-            bool: True iff this ArrayList contains the 
-        user-specified value
+            int: The index of the minimum value in this 
+            ArrayList
         """
-        size = len(self)
-        for index in range(size):
-            if self._values[index] == value:
-                return True
-        return False
+        index_of_min = start
+        
+        for index in range(start+1,end+1):
+            if self._values[index] < self._values[index_of_min]:
+                index_of_min = index
+        return index_of_min
     
     def copy(self) -> ArrayList:
         """Returns a copy of this ArrayList.
@@ -189,14 +258,13 @@ class ArrayList:
         Returns:
             ArrayList: The copy of this ArrayList
         """
-        values = self._values[:self._next]
-        pylist_of_values = [x for x in values]
+        pylist_of_values = [self[index] for index in range(len(self))]
         return ArrayList(pylist_of_values)
     
     def reverse(self) -> None:
         """Reverses this ArrayList in-place.
         
-        To get a reversed version of this ArrayList
+        To get a reversed copy of this ArrayList
         instead of reversing this ArrayList in-place,
         please create a copy of this ArrayList and
         then reverse that copy, as shown below:
@@ -213,8 +281,18 @@ class ArrayList:
         
         for index in range(size//2):
             mirror_index = size-index-1
-            self._swap(index,mirror_index)
+            self._swap(index, mirror_index)
             
+    def _swap(self, index_a: int, index_b: int) -> None:
+        """Swaps the values at two user-specified indices
+        in this ArrayList.
+
+        Args:
+            index_a (int): The first user-specified index
+            index_b (int): The second user-specified index
+        """
+        self._values[index_a], self._values[index_b] = self._values[index_b], self._values[index_a]
+     
     def selection_sort(self, reverse: bool = False) -> None:
         """Sorts the values in this ArrayList using selection
         sort. Like the bubblesort, insertion_sort, and 
@@ -242,7 +320,7 @@ class ArrayList:
             for curr_index in range(len(self)):
                 index_of_next_max = self._index_of_max(curr_index,len(self)-1)
                 self._swap(curr_index,index_of_next_max)
-                
+        
     def bubblesort(self, reverse: bool = False) -> None:
         """Sorts the values in this ArrayList using bubblesort. 
         Like the selection_sort, insertion_sort, and 
@@ -268,6 +346,38 @@ class ArrayList:
             else:
                 self._bubble_min_right(end_index)
     
+    def _bubble_max_right(self, end_index: int) -> None:
+        """Moves the maximum value before a user-specified 
+        index in this ArrayList to the given index by 
+        repeatedly swapping the position of values at adjacent
+        indices if the value in the left index is larger than
+        the value in the right index. Called by bubblesort.
+
+        Args:
+            end_index (int): The user-specified index to put
+                             the maximum value before it in
+        """
+        for left_index in range(end_index):
+            right_index = left_index + 1
+            if self[left_index] >= self[right_index]:
+                self._swap(left_index, right_index)
+                
+    def _bubble_min_right(self, end_index: int) -> None:
+        """Moves the minimum value before a user-specified 
+        index in this ArrayList to the given index by 
+        repeatedly swapping the position of values at adjacent
+        indices if the value in the left index is smaller than
+        the value in the right index. Called by bubblesort.
+
+        Args:
+            end_index (int): The user-specified index to put
+                             the minimum value before it in
+        """
+        for left_index in range(end_index):
+            right_index = left_index + 1
+            if self[left_index] <= self[right_index]:
+                self._swap(left_index, right_index)
+                
     def insertion_sort(self, reverse: bool = False) -> None:
         """Sorts the values in this ArrayList using insertion 
         sort. Like the selection_sort, bubblesort, and 
@@ -292,6 +402,50 @@ class ArrayList:
                self._insert_min_in_left_subarray(index)
             else:
                 self._insert_max_in_left_subarray(index)
+                
+    def _insert_min_in_left_subarray(self, start_index: int) -> None:
+        """Repeatedly moves the value at a user-specified 
+        index in this ArrayList to the left, swapping 
+        positions with its left neighbor, until the value is
+        larger than all the values to its left. Called by 
+        insertion_sort.
+
+        Args:
+            index_of_val_to_move (int): The user-specified 
+                                        index of the value
+                                        to repeatedly move
+                                        to the left
+        """
+        curr_index, left_index = start_index, start_index - 1
+        while left_index >= 0:
+            if self[left_index] < self[curr_index]: # Sorted
+                break
+            else:
+                self._swap(left_index, curr_index)
+                curr_index -= 1
+                left_index -= 1
+                
+    def _insert_max_in_left_subarray(self, start_index: int) -> None:
+        """Repeatedly moves the value at a user-specified 
+        index in this ArrayList to the left, swapping 
+        positions with its left neighbor, until the value is
+        smaller than all the values to its left. Called by 
+        insertion_sort.
+
+        Args:
+            index_of_val_to_move (int): The user-specified 
+                                        index of the value
+                                        to repeatedly move
+                                        to the left
+        """
+        curr_index, left_index = start_index, start_index - 1
+        while left_index >= 0:
+            if self[left_index] > self[curr_index]: # Sorted
+                break
+            else:
+                self._swap(left_index, curr_index)
+                curr_index -= 1
+                left_index -= 1
     
     def mergesort(self, reverse: bool = False) -> None:
         """Sorts the values in this ArrayList using mergesort. 
@@ -384,199 +538,19 @@ class ArrayList:
             
         return merged
     
-    def _lengthen(self, values: ARRAYLIST_INPUT_TYPES, new_size: int) -> ARRAYLIST_INPUT_TYPES:
-        """Lengthens a user-specified Python list or NumPy
-        array to a new user-specified size by returning a
-        Python list or NumPy array containing each value from
-        the original list or array at the same indices, but
-        with the ArrayList class's default values past the 
-        indices of the old values.
+    def contains(self, value: int) -> bool:
+        """Returns true iff this ArrayList contains a 
+        user-specified value
 
         Args:
-            values (ARRAYLIST_INPUT_TYPES): The user-specified Python list or NumPy array
-            new_size (int): The user-specified size of the newly created longer Python list or NumPy array
+            value (int): The user-specified value
 
         Returns:
-            ARRAYLIST_INPUT_TYPES: The newly created longer array
+            bool: True iff this ArrayList contains the 
+        user-specified value
         """
-
-        lengthened_values = [VALUE_FOR_INDEX_PAST_CAPACITY] * new_size
-        for index, val in enumerate(values):
-            lengthened_values[index] = val
-            
-        if type(values) == list:    
-            return lengthened_values
-           
-        elif type(values) == NP_NDARRAY_DTYPE:
-            return np.array(lengthened_values, dtype = int)
-            
-    
-    def _round_to_next_multiple(self, val: int, base_of_multiple: int) -> int:
-        """Finds the multiple of a user-specified base
-        that a user-specified number is closest to and returns
-        the multiple. Inspiration for the newest implementation
-        taken from [datagy](https://datagy.io/python-round-to-multiple/).
-
-        Args:
-            x (int): The user-specified number to round
-            base_of_multiple (int): The user-specified base
-            to return a multiple of
-
-        Returns:
-            int: The rounded up number to the nearest multiple
-                 of base
-        """
-        return ceil(val/base_of_multiple) * base_of_multiple
-    
-    def _shift_values_left(self, bound: int) -> None:
-        """Shifts every value at an index to the right of a 
-        user-specified index in this ArrayList to the left by
-        one index, decrementing the size of this ArrayList.
-
-        Args:
-            bound (int): The user-specified index
-        """
-        size = self._next
-        for index in range(bound,size-1):
-            self._values[index] = self._values[index+1]
-        self._values[size-1] = VALUE_FOR_INDEX_PAST_CAPACITY
-        
-        self._next -= 1
-    
-    def _is_full(self) -> bool:
-        """Returns true iff the size of this ArrayList equals
-        its capacity.
-
-        Returns:
-            bool: True iff the size of this ArrayList equals
-        its capacity
-        """
-        return len(self) == self._capacity
-    
-    def _swap(self, index_a: int, index_b: int) -> None:
-        """Swaps the values at two user-specified positions
-        in this ArrayList.
-
-        Args:
-            index_a (int): The first user-specified position
-            index_b (int): The second user-specified position
-        """
-        self._values[index_a],self._values[index_b] = self._values[index_b],self._values[index_a]
-        
-    def _index_of_max(self, start: int, end: int) -> int:
-        """Returns the largest value in a user-specified 
-        range in this ArrayList. This "private" method is
-        called in the max method.
-
-        Args:
-            start (int): The first value in the user-specified
-                         range, inclusive
-            end (int): The last value in the user-specified
-                       range, inclusive
-
-        Returns:
-            int: The maximum value in this ArrayList
-        """
-        index_of_min = start
-        
-        for curr_index in range(start+1,end+1):
-            if self._values[curr_index] > self._values[index_of_min]:
-                index_of_min = curr_index
-        return index_of_min
-    
-    def _index_of_min(self, start: int, end: int) -> int:
-        """Returns the smallest value in a user-specified 
-        range in this ArrayList. This "private" method is
-        called in the min and selection_sort methods.
-
-        Args:
-            start (int): The first value in the user-specified
-                         range, inclusive
-            end (int): The last value in the user-specified
-                       range, inclusive
-
-        Returns:
-            int: The minimum value in this ArrayList
-        """
-        index_of_min = start
-        
-        for curr_index in range(start+1,end+1):
-            if self._values[curr_index] < self._values[index_of_min]:
-                index_of_min = curr_index
-        return index_of_min
-        
-    def _bubble_max_right(self, end_index: int) -> None:
-        """Moves the maximum value before a user-specified 
-        index in this ArrayList to the given index by 
-        repeatedly swapping the position of values at adjacent
-        indices if the value in the left index is larger than
-        the value in the right index. Called by bubblesort.
-
-        Args:
-            end_index (int): The user-specified index to put
-                             the maximum value before it in
-        """
-        for left_index in range(end_index):
-            right_index = left_index + 1
-            if self[left_index] >= self[right_index]:
-                self._swap(left_index, right_index)
-                
-    def _bubble_min_right(self, end_index: int) -> None:
-        """Moves the minimum value before a user-specified 
-        index in this ArrayList to the given index by 
-        repeatedly swapping the position of values at adjacent
-        indices if the value in the left index is smaller than
-        the value in the right index. Called by bubblesort.
-
-        Args:
-            end_index (int): The user-specified index to put
-                             the minimum value before it in
-        """
-        for left_index in range(end_index):
-            right_index = left_index + 1
-            if self[left_index] <= self[right_index]:
-                self._swap(left_index, right_index)
-                
-    def _insert_min_in_left_subarray(self, start_index: int) -> None:
-        """Repeatedly moves the value at a user-specified 
-        index in this ArrayList to the left, swapping 
-        positions with its left neighbor, until the value is
-        larger than all the values to its left. Called by 
-        insertion_sort.
-
-        Args:
-            index_of_val_to_move (int): The user-specified 
-                                        index of the value
-                                        to repeatedly move
-                                        to the left
-        """
-        curr_index, left_index = start_index, start_index - 1
-        while left_index >= 0:
-            if self[left_index] < self[curr_index]: # Sorted
-                break
-            else:
-                self._swap(left_index, curr_index)
-                curr_index -= 1
-                left_index -= 1
-                
-    def _insert_max_in_left_subarray(self, start_index: int) -> None:
-        """Repeatedly moves the value at a user-specified 
-        index in this ArrayList to the left, swapping 
-        positions with its left neighbor, until the value is
-        smaller than all the values to its left. Called by 
-        insertion_sort.
-
-        Args:
-            index_of_val_to_move (int): The user-specified 
-                                        index of the value
-                                        to repeatedly move
-                                        to the left
-        """
-        curr_index, left_index = start_index, start_index - 1
-        while left_index >= 0:
-            if self[left_index] > self[curr_index]: # Sorted
-                break
-            else:
-                self._swap(left_index, curr_index)
-                curr_index -= 1
-                left_index -= 1
+        size = len(self)
+        for index in range(size):
+            if self._values[index] == value:
+                return True
+        return False
