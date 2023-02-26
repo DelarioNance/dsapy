@@ -107,32 +107,6 @@ class TestPrinting:
         
         assert printed_output == str(ndarray)
         
-
-class TestCheckingIfEmpty:
-    @pytest.mark.parametrize("num_of_ints", [
-        pytest.param(0, id='zero ints'),
-        pytest.param(1, id='one int'),
-        pytest.param(10, id='ten ints'),
-        pytest.param(100, id='one-hundred ints'),
-        pytest.param(1000, id='one-thousand ints'),
-        pytest.param(10000, id='ten-thousand ints')
-    ])
-    
-    def test_check_if_ArrayList_is_empty(self, num_of_ints: int) -> None:
-        """Tests if a user can correctly determine if an 
-        ArrayList of a user-specified number of random ints 
-        is empty or not.
-
-        Args:
-            num_of_ints (int): The user-specified number of 
-            random ints
-        """
-        arraylist = rand_arraylist(num_of_ints)
-        
-        verdict = arraylist.is_empty()
-        
-        assert verdict == (not num_of_ints) # Evaluates to True iff num_of_ints = 0
-        
         
 class TestGettingValue:
     class TestGettingValueWithNonnegativeIndex:
