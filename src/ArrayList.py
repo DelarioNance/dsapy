@@ -207,9 +207,9 @@ class ArrayList:
 
         Args:
             start (int): The first value in the user-specified
-                         range (inclusive)
+            range (inclusive)
             end (int): The last value in the user-specified
-                       range (inclusive)
+            range (inclusive)
 
         Returns:
             int: The index of the maximum value in this 
@@ -236,10 +236,10 @@ class ArrayList:
         user-specified range in this ArrayList.
 
         Args:
-            start (int): The first value in the user-specified
-                         range (inclusive)
+            start (int): The first value in the user-specified 
+            range (inclusive)
             end (int): The last value in the user-specified
-                       range (inclusive)
+            range (inclusive)
 
         Returns:
             int: The index of the minimum value in this 
@@ -308,9 +308,8 @@ class ArrayList:
 
         Args:
             reverse (bool, optional): If true, then the values
-                                      in this ArrayList will be
-                                      sorted in ascending order. 
-                                      Defaults to False.
+            in this ArrayList will be sorted in ascending 
+            order. Defaults to False.
         """
         if reverse == False:
             for curr_index in range(len(self)):
@@ -324,7 +323,7 @@ class ArrayList:
     def bubblesort(self, reverse: bool = False) -> None:
         """Sorts the values in this ArrayList using bubblesort. 
         Like the selection_sort, insertion_sort, and 
-        quicksort methods, the selection_sort method sorts 
+        quicksort methods, the bubblesort method sorts 
         this ArrayList in-place.
         
         By default, the values are sorted in ascending order.
@@ -336,9 +335,8 @@ class ArrayList:
 
         Args:
             reverse (bool, optional): If true, then the values
-                                      in this ArrayList will be
-                                      sorted in ascending order. 
-                                      Defaults to False.
+            in this ArrayList will be sorted in ascending 
+            order. Defaults to False.
         """
         for end_index in range(len(self)-1,0,-1): # Last iteration is index 1
             if reverse == False:
@@ -349,33 +347,33 @@ class ArrayList:
     def _bubble_max_right(self, end_index: int) -> None:
         """Moves the maximum value before a user-specified 
         index in this ArrayList to the given index by 
-        repeatedly swapping the position of values at adjacent
-        indices if the value in the left index is larger than
-        the value in the right index. Called by bubblesort.
+        repeatedly swapping the positions of values at 
+        adjacent indices if the value in the left index is 
+        larger than the value in the right index.
 
         Args:
             end_index (int): The user-specified index to put
-                             the maximum value before it in
+            the maximum value before it in
         """
         for left_index in range(end_index):
             right_index = left_index + 1
-            if self[left_index] >= self[right_index]:
+            if self[left_index] > self[right_index]:
                 self._swap(left_index, right_index)
                 
     def _bubble_min_right(self, end_index: int) -> None:
         """Moves the minimum value before a user-specified 
         index in this ArrayList to the given index by 
-        repeatedly swapping the position of values at adjacent
-        indices if the value in the left index is smaller than
-        the value in the right index. Called by bubblesort.
+        repeatedly swapping the positions of values at 
+        adjacent indices if the value in the left index is 
+        smaller than the value in the right index.
 
         Args:
-            end_index (int): The user-specified index to put
-                             the minimum value before it in
+            end_index (int): The user-specified index to put 
+            the minimum value before it in
         """
         for left_index in range(end_index):
             right_index = left_index + 1
-            if self[left_index] <= self[right_index]:
+            if self[left_index] < self[right_index]:
                 self._swap(left_index, right_index)
                 
     def insertion_sort(self, reverse: bool = False) -> None:
@@ -393,9 +391,8 @@ class ArrayList:
 
         Args:
             reverse (bool, optional): If true, then the values
-                                      in this ArrayList will be
-                                      sorted in ascending order. 
-                                      Defaults to False.
+            in this ArrayList will be sorted in ascending 
+            order. Defaults to False.
         """
         for index in range(len(self)):
             if reverse == False:
@@ -407,14 +404,11 @@ class ArrayList:
         """Repeatedly moves the value at a user-specified 
         index in this ArrayList to the left, swapping 
         positions with its left neighbor, until the value is
-        larger than all the values to its left. Called by 
-        insertion_sort.
+        larger than all the values to its left.
 
         Args:
             index_of_val_to_move (int): The user-specified 
-                                        index of the value
-                                        to repeatedly move
-                                        to the left
+            index of the value to repeatedly move to the left
         """
         curr_index, left_index = start_index, start_index - 1
         while left_index >= 0:
@@ -429,14 +423,11 @@ class ArrayList:
         """Repeatedly moves the value at a user-specified 
         index in this ArrayList to the left, swapping 
         positions with its left neighbor, until the value is
-        smaller than all the values to its left. Called by 
-        insertion_sort.
+        smaller than all the values to its left.
 
         Args:
             index_of_val_to_move (int): The user-specified 
-                                        index of the value
-                                        to repeatedly move
-                                        to the left
+            index of the value to repeatedly move to the left
         """
         curr_index, left_index = start_index, start_index - 1
         while left_index >= 0:
@@ -462,9 +453,8 @@ class ArrayList:
 
         Args:
             reverse (bool, optional): If true, then the values
-                                      in this ArrayList will be
-                                      sorted in ascending order. 
-                                      Defaults to False.
+            in this ArrayList will be sorted in ascending 
+            order. Defaults to False.
         """        
         values = self._values
         sorted_values = self._mergesort(values, 0, len(self)-1)
@@ -476,8 +466,7 @@ class ArrayList:
     
     def _mergesort(self, arr: NDArray[np.int_], start, end) -> NDArray[np.int_]:
         """Recursively sorts the values within a user-specified
-        range in an user-specified NumPy array with mergesort. 
-        Called by mergesort.
+        range in an user-specified NumPy array with mergesort.
 
         Args:
             arr (NDArray[np.int_]): The user-specified NumPy array
@@ -486,9 +475,11 @@ class ArrayList:
 
         Returns:
             NDArray[np.int_]: The sorted array of the original
-                              values
+            values
         """
         length = end - start + 1
+        if length == 0:
+            return np.arr([])
         if length == 1: # Does not handle len-0 case
             return arr[start:start+1]
         
@@ -511,7 +502,7 @@ class ArrayList:
 
         Returns:
             NDArray[np.int_]: The result from merging the left
-                              and right arrays
+            and right arrays
         """
         merged_length = len(left_arr) + len(right_arr)
         merged = np.array([INITIAL_VALUE_IN_MERGED_ARR]*merged_length, dtype = int)

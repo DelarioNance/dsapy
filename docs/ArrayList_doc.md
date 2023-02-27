@@ -34,14 +34,14 @@ A Markdown file containing the documentation of the `ArrayList` class.
 |                   | `copy`                         | $O(n)$             | $O(n)$             |
 |                   | `reverse`                      | $O(n)$             | $O(1)$             |
 |                   | `_swap`                        | $O(1)$             | $O(1)$             |
-| **Sorting**       | `selection_sort`               |                    |                    |
-|                   | `bubblesort`                   |                    |                    |
-|                   | `_bubble_max_right`            |                    |                    |
-|                   | `_bubble_min_right`            |                    |                    |
-|                   | `insertion_sort`               |                    |                    |
-|                   | `_insert_min_in_left_subarray` |                    |                    |
-|                   | `_insert_max_in_left_subarray` |                    |                    |
-|                   | `mergesort`                    |                    |                    |
-|                   | `_mergesort`                   |                    |                    |
-|                   | `_merge`                       |                    |                    |
+| **Sorting**       | `selection_sort`               | $O(n^2)$           | $O(1)$             |
+|                   | `bubblesort`                   | $O(n^2)$           | $O(1)$             |
+|                   | `_bubble_max_right`            | $O(n)$             | $O(1)$             |
+|                   | `_bubble_min_right`            | $O(n)$             | $O(1)$             |
+|                   | `insertion_sort`               | $O(n^2)$           | $O(1)$             |
+|                   | `_insert_min_in_left_subarray` | $O(n)$             | $O(1)$             |
+|                   | `_insert_max_in_left_subarray` | $O(n)$             | $O(1)$             |
+|                   | `mergesort`                    | $O(n \log{n})$     | $O(n \log{n})$?     |
+|                   | `_mergesort`                   | $O(n \log{n})$     | $O(n \log{n})$?     |
+|                   | `_merge`                       | $O(n)$             | $O(n)$             |
 | **Booleans**      | `contains`                     |                    |                    |
