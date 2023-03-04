@@ -200,7 +200,8 @@ class TestSettingValueWithoutError:
     def test_set_value_in_ArrayList(self, num_of_ints: int, index: int) -> None:
         """Tests if a user can set a default value at a 
         user-specified non-negative index in an Array List
-        of a user-specified number of random ints.
+        of a user-specified number of random ints, without
+        error.
 
         Args:
             num_of_ints (int): The user-specified number of 

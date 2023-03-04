@@ -16,6 +16,9 @@ sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
 WSL_FILEPATH_TO_TESTING = "/home/delario-nance-jr/BitBucket/dsapy/testing" 
 sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
 
+# Related third part imports
+import pytest # for markers
+
 # Local application imports
 from ArrayList import ArrayList
 from helpers import *
@@ -30,41 +33,38 @@ TEST_RAN_WITHOUT_ERROR = True
 class TestSettingValueWithCorrectNewValue:
     """Uses GettingValue and SettingValueWithoutError modules.
     """
-    def test_set_value_in_ArrayList_of_one_int(self):
-        arraylist_of_one_int = rand_array_list(1)
-        
-        for index in range(1):
-            arraylist_of_one_int[index] = index + 1 # Uses __setitem__
-            
-        for index in range(1):
-            assert arraylist_of_one_int[index] == index + 1 # Uses __getitem__
+    @pytest.mark.parametrize("num_of_ints, index", [
+            pytest.param(1,0, id="only value of one int"),
+            pytest.param(10,0, id="start value of ten ints"),
+            pytest.param(100,0, id="start value of one-hundred ints"),
+            pytest.param(1000,0, id="start value of one-thousand ints"),
+            pytest.param(10000,0, id="start value of ten-thousand ints"),
+            pytest.param(10,5, id="middle value of ten ints"),
+            pytest.param(100,50, id="middle value of one-hundred ints"),
+            pytest.param(1000,500, id="middle value of one-thousand ints"),
+            pytest.param(10000,5000, id="middle value of ten-thousand ints"),
+            pytest.param(10,9, id="last value of ten ints"),
+            pytest.param(100,99, id="last value of one-hundred ints"),            
+            pytest.param(1000,999, id="last value of one-thousand ints"),          
+            pytest.param(10000,9999, id="last value of ten-thousand ints")
+        ])
     
-    def test_set_values_in_ArrayList_of_ten_ints(self):
-        arraylist_of_ten_ints = rand_array_list(10)
+    def test_set_value_in_ArrayList(self, num_of_ints: int, index: int) -> None:
+        """Tests if a user can set a default value at a 
+        user-specified non-negative index in an Array List
+        of a user-specified number of random ints, with the
+        correct value.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+            index (int): The user-specified non-negative index
+        """
+        arraylist = rand_arraylist(num_of_ints)
         
-        for index in range(10):
-            arraylist_of_ten_ints[index] = index + 1 # Uses __setitem__
-            
-        for index in range(10):
-            assert arraylist_of_ten_ints[index] == index + 1 # Uses __getitem__
-    
-    def test_set_values_in_ArrayList_of_one_hundred_ints(self):
-        arraylist_of_one_hundred_ints = rand_array_list(100)
+        arraylist[index] = DEFAULT_INT
         
-        for index in range(100):
-            arraylist_of_one_hundred_ints[index] = index + 1 # Uses __setitem__
-            
-        for index in range(100):
-            assert arraylist_of_one_hundred_ints[index] == index + 1 # Uses __getitem__
-    
-    def test_set_values_in_ArrayList_of_ten_thousand_ints(self):
-        arraylist_of_ten_thousand_ints = rand_array_list(10000)
-        
-        for index in range(10000):
-            arraylist_of_ten_thousand_ints[index] = index + 1 # Uses __setitem__
-            
-        for index in range(10000):
-            assert arraylist_of_ten_thousand_ints[index] == index + 1 # Uses __getitem__
+        assert arraylist[index] == DEFAULT_INT
 
 
 class TestAddingValueWithCorrectNewSize:
