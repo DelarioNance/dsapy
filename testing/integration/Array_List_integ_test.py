@@ -288,45 +288,37 @@ class TestCheckingIfEqual:
     (hence equal ArrayLists). However, since we are using 
     random integers in the range [-1000,1000], the 
     probability of since an event happening is equal to the
-    fraction 1/(2001^n), where is the size of both ArrayLists.
-    This fraction takes on a minimum value less than 0.05%
-    (when n=1), so we will use random integers in the
-    TestCheckingIfEqualForSameSizeButDifferentValues class.
+    fraction 1/(2001^n), where n is the size of both 
+    ArrayLists. This fraction takes on a very low maximum 
+    value of 0.05% (when n=1), so we will use random integers
+    in the TestCheckingIfEqualForSameSizeButDifferentValues 
+    class.
     """
+    
     class TestCheckingIfEqualForSameSizeAndSameValues:
-        def test_check_if_empty_ArrayLists_are_equal(self):
-            empty_pylist = []
-            first_empty_arraylist = ArrayList(empty_pylist)
-            second_empty_arraylist = ArrayList(empty_pylist)
-            
-            verdict = (first_empty_arraylist == second_empty_arraylist)
-            
-            assert verdict == True
-            
-        def test_check_if_equal_ArrayLists_of_one_int_are_equal(self):
-            pylist_of_one_int = rand_pylist(1)
-            first_arraylist_of_one_int = ArrayList(pylist_of_one_int)
-            second_arraylist_of_one_int = ArrayList(pylist_of_one_int)
-            
-            verdict = (first_arraylist_of_one_int == second_arraylist_of_one_int)
-            
-            assert verdict == True
+        @pytest.mark.parametrize("num_of_ints", [
+        pytest.param(0, id='zero ints'),
+        pytest.param(1, id='one int'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(1000, id='one-thousand ints'),
+        pytest.param(10000, id='ten-thousand ints')
+    ])
         
-        def test_check_if_equal_ArrayLists_of_sixteen_ints_are_equal(self):
-            pylist_of_sixteen_ints = rand_pylist(16)
-            first_arraylist_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
-            second_arraylist_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
+        def test_check_if_ArrayLists_of_same_size_and_same_values_are_equal(self, num_of_ints: int) -> None:
+            """Tests if a user can determine if two ArrayLists
+            of the same user-specified size and same random 
+            ints are truly equal.
+
+            Args:
+                num_of_ints (int): The user-specified number of 
+                random ints
+            """
+            pylist = rand_pylist(num_of_ints)
+            first_arraylist = ArrayList(pylist)
+            second_arraylist = ArrayList(pylist)
             
-            verdict = (first_arraylist_of_sixteen_ints == second_arraylist_of_sixteen_ints)
-            
-            assert verdict == True
-        
-        def test_check_if_equal_ArrayLists_of_one_int_are_equal(self):
-            pylist_of_one_thousand_two_hundred_twenty_nine_ints = rand_pylist(DEFAULT_INT)
-            first_arraylist_of_one_thousand_two_hundred_twenty_nine_ints = ArrayList(pylist_of_one_thousand_two_hundred_twenty_nine_ints)
-            second_arraylist_of_one_thousand_two_hundred_twenty_nine_ints = ArrayList(pylist_of_one_thousand_two_hundred_twenty_nine_ints)
-            
-            verdict = (first_arraylist_of_one_thousand_two_hundred_twenty_nine_ints == second_arraylist_of_one_thousand_two_hundred_twenty_nine_ints)
+            verdict = (first_arraylist == second_arraylist)
             
             assert verdict == True
     
