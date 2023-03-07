@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 26, 2023
+Date: January 24, 2023 - March 3, 2023
 """
 
 # Standard library imports
@@ -109,8 +109,8 @@ class ArrayList:
         if index >= 0:
             return self._values[index]
         else:
-            corresponding_positive_index = len(self) + index
-            return self._values[corresponding_positive_index] 
+            positive_index = self._get_corresponding_positive_index(index)
+            return self._values[positive_index]
     
     def __setitem__(self, index: int, val: int) -> None:
         """Sets the value at a user-specified index in this
@@ -120,7 +120,23 @@ class ArrayList:
             index (int): The user-specified index
             val (int): The user-specified value
         """
-        self._values[index] = val
+        if index >= 0:
+            self._values[index] = val
+        else:
+            positive_index = self._get_corresponding_positive_index(index)
+            self._values[positive_index] = val 
+    
+    def _get_corresponding_positive_index(self, negative_index: int) -> int:
+        """Returns the positive index which corresponding to
+        a user-specified negative index in this ArrayList
+
+        Args:
+            negative_index (int): The user-specified negative index
+
+        Returns:
+            int: The corresponding positive index
+        """
+        return len(self) + negative_index
     
     def __str__(self) -> NDArray[np.int_]:
         """Returns the string representation of this ArrayList.
@@ -175,7 +191,13 @@ class ArrayList:
             index (int): The user-specified index
         """
         removed_value = self._values[index]
-        self._shift_values_left_to_index(index)
+        
+        if index >= 0:
+            self._shift_values_left_to_index(index)
+        else:
+            positive_index = self._get_corresponding_positive_index(index)
+            self._shift_values_left_to_index(positive_index)
+            
         return removed_value
     
     def _shift_values_left_to_index(self, bound: int) -> None:
