@@ -7,6 +7,7 @@ Date: January 24, 2023 - March 7, 2023
 """
 
 # Standard library imports
+import random # for selecting random ints
 import sys # for adding filepaths
 
 # Accessing project directories
@@ -25,6 +26,7 @@ from helpers import *
 # Global variables
 DEFAULT_CAPACITY = 16
 DEFAULT_INT = 1729
+INT_OUTSIDE_RANDOM_RANGE = 1729
 INDEX_BEFORE_NEWLINE = -1
 STDOUT_INDEX = 0
 TEST_RAN_WITHOUT_ERROR = True
@@ -376,3 +378,54 @@ class TestRemovingValueWithoutError:
             arraylist.remove(num_of_ints-1)
             
             assert TEST_RAN_WITHOUT_ERROR
+            
+            
+            
+            
+class TestSearchingForValue:
+    @pytest.mark.parametrize("num_of_ints, target", [
+        pytest.param(1, DEFAULT_INT, id='one int'),
+        pytest.param(10, DEFAULT_INT, id='ten ints'),
+        pytest.param(100, DEFAULT_INT, id='one-hundred ints'),
+        pytest.param(1000, DEFAULT_INT, id='one-thousand ints'),
+        pytest.param(10000, DEFAULT_INT, id='ten-thousand ints')
+    ])
+    def test_search_for_value_in_ArrayList(self, num_of_ints: int, target: int) -> None:
+        """Tests if a user can determine if a user-specified
+        int in an ArrayList of a user-specified number of 
+        random ints is truly in the ArrayList.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+            target (int): The user-specified int to search for
+        """
+        arraylist = rand_arraylist(num_of_ints)
+        arraylist[random.randint(0,num_of_ints-1)] = target
+        
+        verdict = target in arraylist
+        
+        assert (verdict == True)
+        
+    @pytest.mark.parametrize("num_of_ints, target", [
+        pytest.param(1, INT_OUTSIDE_RANDOM_RANGE, id='one int'),
+        pytest.param(10, INT_OUTSIDE_RANDOM_RANGE, id='ten ints'),
+        pytest.param(100, INT_OUTSIDE_RANDOM_RANGE, id='one-hundred ints'),
+        pytest.param(1000, INT_OUTSIDE_RANDOM_RANGE, id='one-thousand ints'),
+        pytest.param(10000, INT_OUTSIDE_RANDOM_RANGE, id='ten-thousand ints')
+    ])
+    def test_search_for_value_not_in_ArrayList(self, num_of_ints: int, target: int) -> None:
+        """Tests if a user can determine if a user-specified
+        int not in an ArrayList of a user-specified number of 
+        random ints is truly not in the ArrayList.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+            target (int): The user-specified int to search for
+        """
+        arraylist = rand_arraylist(num_of_ints)
+        
+        verdict = target not in arraylist
+        
+        assert (verdict == True)

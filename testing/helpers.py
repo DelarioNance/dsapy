@@ -78,7 +78,7 @@ def rand_pylist(size: int, start: int = -1000, end: int = 1000) -> list:
     random_values = [random.randint(start, end) for x in range(size)]
     return random_values
 
-def array_list_range(start: int, end: int) -> list[int]:
+def arraylist_range(start: int, end: int) -> list[int]:
     """Returns an Arraylist of the ints in the integer range
        [start, end].
 
