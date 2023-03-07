@@ -3,7 +3,7 @@ A Python script for integration testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - February 12, 2023
+Date: January 24, 2023 - March 7, 2023
 """
 
 # Standard library imports
@@ -321,7 +321,7 @@ class TestCheckingForEquality:
             verdict = (first_arraylist == second_arraylist)
             
             assert verdict == True
-    
+              
     
     class TestCheckingIfUnequalForSameSizeAndDifferentValues:
         @pytest.mark.parametrize("num_of_ints", [
@@ -332,7 +332,7 @@ class TestCheckingForEquality:
             pytest.param(10000, id='ten-thousand ints')
         ])
         
-        def test_check_if_ArrayLists_of_same_size_but_different_values_are_unequal(self, num_of_ints: int) -> None:
+        def test_check_if_ArrayLists_of_same_size_and_different_values_are_unequal(self, num_of_ints: int) -> None:
             """Tests if a user can determine if two ArrayLists
             of the same user-specified size but different 
             random ints are truly unequal.
@@ -344,63 +344,36 @@ class TestCheckingForEquality:
             first_arraylist =  rand_arraylist(num_of_ints)
             second_arraylist = rand_arraylist(num_of_ints)
             
-            verdict = (first_arraylist == second_arraylist)
+            verdict = (first_arraylist != second_arraylist)
             
-            assert verdict == False
+            assert verdict == True
+        
     
-    class TestCheckingIfEqualForSameValuesButDifferentSizes:
-        def test_check_if_ArrayLists_of_same_one_int_but_different_sizes_are_equal(self):
-            pylist_of_one_int = rand_pylist(1)
-            arraylist_of_one_int = ArrayList(pylist_of_one_int)
-            arraylist_of_two_ints = ArrayList(pylist_of_one_int + [DUMMY_NEGATIVE_INT])
-            
-            verdict = (arraylist_of_one_int == arraylist_of_two_ints)
-            
-            assert verdict == False
+    class TestCheckingIfEqualForDifferentSizes:
+        @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id='one int'),
+            pytest.param(10, id='ten ints'),
+            pytest.param(100, id='one-hundred ints'),
+            pytest.param(1000, id='one-thousand ints'),
+            pytest.param(10000, id='ten-thousand ints')
+        ])
         
-        def test_check_if_ArrayLists_of_same_sixteen_ints_but_different_sizes_are_equal(self):
-            pylist_of_sixteen_ints = rand_pylist(16)
-            arraylist_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
-            arraylist_of_seventeen_ints = ArrayList(pylist_of_sixteen_ints + [DUMMY_NEGATIVE_INT])
+        def test_check_if_ArrayLists_of_different_sizes_are_unequal(self, num_of_ints: int) -> None:
+            """Tests if a user can determine if an ArrayList
+            of a user-specified size and an ArrayList with
+            a different (default test int) size are truly 
+            unequal.
+
+            Args:
+                num_of_ints (int): The user-specified number of 
+                random ints
+            """
+            first_arraylist = rand_arraylist(num_of_ints)
+            second_arraylist = rand_arraylist(DEFAULT_INT)
             
-            verdict = (arraylist_of_sixteen_ints == arraylist_of_seventeen_ints)
+            verdict = (first_arraylist != second_arraylist)
             
-            assert verdict == False
-        
-        def test_check_if_ArrayLists_of_same_one_thousand_two_hundred_twenty_nine_ints_but_different_sizes_are_equal(self):
-            pylist_of_one_thousand_two_hundred_twenty_nine_ints = rand_pylist(DEFAULT_INT)
-            arraylist_of_one_thousand_two_hundred_twenty_nine_ints = ArrayList(pylist_of_one_thousand_two_hundred_twenty_nine_ints)
-            arraylist_of_one_thousand_two_hundred_thirty_ints = ArrayList(pylist_of_one_thousand_two_hundred_twenty_nine_ints + [DUMMY_NEGATIVE_INT])
-            
-            verdict = (arraylist_of_one_thousand_two_hundred_twenty_nine_ints == arraylist_of_one_thousand_two_hundred_thirty_ints)
-            
-            assert verdict == False
-    
-    
-    class TestCheckingIfEqualForDifferentSizeAndDifferentValues:
-        def test_check_if_ArrayLists_of_different_size_and_different_ints_are_equal(self):
-            arraylist_of_one_int =  rand_array_list(1)
-            arraylist_of_two_ints = rand_array_list(2)
-            
-            verdict = (arraylist_of_one_int == arraylist_of_two_ints)
-            
-            assert verdict == False
-        
-        def test_check_if_ArrayLists_of_different_size_and_different_ints_are_equal(self):
-            arraylist_of_sixteen_ints =  rand_array_list(16)
-            arraylist_of_seventeen_ints = rand_array_list(17)
-            
-            verdict = (arraylist_of_sixteen_ints == arraylist_of_seventeen_ints)
-            
-            assert verdict == False
-        
-        def test_check_if_ArrayLists_of_different_size_and_different_ints_are_equal(self):
-            arraylist_of_one_thousand_two_hundred_twenty_nine_ints =  rand_array_list(1229)
-            arraylist_of_one_thousand_two_hundred_thirty_ints = rand_array_list(1230)
-            
-            verdict = (arraylist_of_one_thousand_two_hundred_twenty_nine_ints == arraylist_of_one_thousand_two_hundred_thirty_ints)
-            
-            assert verdict == False
+            assert verdict == True
     
             
 class TestRemovingValueWithCorrectOldValues:
