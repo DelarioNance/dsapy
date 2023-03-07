@@ -23,8 +23,9 @@ A Markdown file containing the documentation of the `ArrayList` class.
 |                   | `__getitem__`                       | $O(1)$             | $O(1)$             |
 |                   | `__setitem__`                       | $O(1)$             | $O(1)$             |
 |                   | `_get_corresponding_positive_index` | $O(1)$             | $O(1)$             |
-|                   | `__str__`                           | ?                  | ?                  |
+|                   | `__contains__`                      | $O(n)$             | $O(1)$             |
 |                   | `__eq__`                            | $O(n)$             | $O(1)$             |
+|                   | `__str__`                           | ?                  | ?                  |
 | **Primary**       | `append`                            | $O(1)$ (amortized) | $O(1)$ (amortized) |
 |                   | `remove`                            | $O(n)$             | $O(1)$             |
 |                   | `_shift_values_left_to_index`       | $O(n)$             | $O(1)$             |
@@ -45,4 +46,3 @@ A Markdown file containing the documentation of the `ArrayList` class.
 |                   | `mergesort`                         | $O(n \log{n})$     | $O(n \log{n})$?    |
 |                   | `_mergesort`                        | $O(n \log{n})$     | $O(n \log{n})$?    |
 |                   | `_merge`                            | $O(n)$             | $O(n)$             |
-| **Booleans**      | `contains`                          |                    |                    |
