@@ -24,6 +24,7 @@ from ArrayList import ArrayList
 from helpers import *
 
 # Global variables
+DEFAULT_CAPACITY = 16
 DEFAULT_INT = 1729
 DUMMY_NEGATIVE_INT = -2 # Not -1 because -1 is the dummy negative int for ArrayLists
 INDEX_BEFORE_NEWLINE = -1
@@ -31,8 +32,6 @@ TEST_RAN_WITHOUT_ERROR = True
 
 
 class TestSettingValueWithCorrectNewValue:
-    """Uses GettingValue and SettingValueWithoutError modules.
-    """
     @pytest.mark.parametrize("num_of_ints, index", [
             pytest.param(1,0, id="only value of one int"),
             pytest.param(10,0, id="start value of ten ints"),
@@ -67,152 +66,88 @@ class TestSettingValueWithCorrectNewValue:
         assert arraylist[index] == DEFAULT_INT
 
 
-class TestAddingValueWithCorrectNewSize:
-    """Uses AddingValueWithoutError and GettingSize modules.
-    """
-    def test_add_value_to_empty_ArrayList(self):
-        empty_arraylist = rand_array_list(0)
-        
-        empty_arraylist.append(DEFAULT_INT)
-        
-        assert len(empty_arraylist) == 1
+class TestAppendingValueWithCorrectNewSize:
+    @pytest.mark.parametrize("num_of_ints", [
+        pytest.param(0, id="list of zero ints"),
+        pytest.param(1, id="list of one int"),
+        pytest.param(2, id="list of two ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**0)-1, id="one-from-full list of default_capacity*(2^0)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**2)-1, id="one-from-full list of default_capacity*(2^2)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**4)-1, id="one-from-full list of default_capacity*(2^4)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**6)-1, id="one-from-full list of default_capacity*(2^6)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**8)-1, id="one-from-full list of default_capacity*(2^8)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**10)-1, id="one-from-full list of default_capacity*(2^10)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**0), id="full list of default_capacity*(2^0)"),
+        pytest.param(DEFAULT_CAPACITY*(2**2), id="full list of default_capacity*(2^2)"),
+        pytest.param(DEFAULT_CAPACITY*(2**4), id="full list of default_capacity*(2^4)"),
+        pytest.param(DEFAULT_CAPACITY*(2**6), id="full list of default_capacity*(2^6)"),
+        pytest.param(DEFAULT_CAPACITY*(2**8), id="full list of default_capacity*(2^8)"),
+        pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10)"),
+        pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10) ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**0) + 1, id="one-past-full list of default_capacity*(2^0)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**2) + 1, id="one-past-full list of default_capacity*(2^2)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**4) + 1, id="one-past-full list of default_capacity*(2^4)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**6) + 1, id="one-past-full list of default_capacity*(2^6)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**8) + 1, id="one-past-full list of default_capacity*(2^8)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
+    ])
     
-    def test_add_value_to_ArrayList_of_one_int(self):
-        arraylist_of_one_int = rand_array_list(1)
+    def test_append_value_to_ArrayList(self, num_of_ints: int) -> None:
+        """Tests if a user can append a default value to 
+        the end of an ArrayList of a user-specified number of 
+        random ints, with the correct new size.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        arraylist = rand_arraylist(num_of_ints)
         
-        arraylist_of_one_int.append(DEFAULT_INT)
+        arraylist.append(DEFAULT_INT)
         
-        assert len(arraylist_of_one_int) == 2
-    
-    def test_add_value_to_ArrayList_of_two_ints(self):
-        arraylist_of_two_ints = rand_array_list(2)
-        
-        arraylist_of_two_ints.append(DEFAULT_INT)
-        
-        assert len(arraylist_of_two_ints) == 3
-    
-    def test_add_value_to_ArrayList_of_three_ints(self):
-        arraylist_of_three_ints = rand_array_list(3)
-        
-        arraylist_of_three_ints.append(DEFAULT_INT)
-        
-        assert len(arraylist_of_three_ints) == 4
-    
-    def test_add_value_to_ArrayList_of_fifteen_ints(self):
-        arraylist_of_fifteen_ints = rand_array_list(15)
-        
-        arraylist_of_fifteen_ints.append(DEFAULT_INT)
-        
-        assert len(arraylist_of_fifteen_ints) == 16
-    
-    def test_add_value_to_ArrayList_of_sixteen_ints(self):
-        arraylist_of_sixteen_ints = rand_array_list(16)
-        
-        arraylist_of_sixteen_ints.append(DEFAULT_INT)
-        
-        assert len(arraylist_of_sixteen_ints) == 17
-    
-    def test_add_value_to_ArrayList_of_seventeen_ints(self):
-        arraylist_of_seventeen_ints = rand_array_list(17)
-        
-        arraylist_of_seventeen_ints.append(DEFAULT_INT)
-        
-        assert len(arraylist_of_seventeen_ints) == 18
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_one_ints.append(DEFAULT_INT)
-        
-        assert len(arraylist_of_eight_thousand_one_hundred_ninety_one_ints) == 8192
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_two_ints.append(DEFAULT_INT)
-        
-        assert len(arraylist_of_eight_thousand_one_hundred_ninety_two_ints) == 8193
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
-        
-        assert len(arraylist_of_eight_thousand_one_hundred_ninety_three_ints) == 8194
+        assert len(arraylist) == num_of_ints + 1
    
         
-class TestAddingValueWithCorrectNewValue:
-    """Uses AddingValueWithoutError and GettingValue modules.
-    """
-    def test_add_value_to_empty_ArrayList(self):
-        empty_arraylist = rand_array_list(0)
-        
-        empty_arraylist.append(DEFAULT_INT)
-        
-        assert empty_arraylist[0] == DEFAULT_INT        
+class TestAppendingValueWithCorrectNewValue:
+    @pytest.mark.parametrize("num_of_ints", [
+        pytest.param(0, id="list of zero ints"),
+        pytest.param(1, id="list of one int"),
+        pytest.param(2, id="list of two ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**0)-1, id="one-from-full list of default_capacity*(2^0)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**2)-1, id="one-from-full list of default_capacity*(2^2)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**4)-1, id="one-from-full list of default_capacity*(2^4)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**6)-1, id="one-from-full list of default_capacity*(2^6)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**8)-1, id="one-from-full list of default_capacity*(2^8)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**10)-1, id="one-from-full list of default_capacity*(2^10)-1"),
+        pytest.param(DEFAULT_CAPACITY*(2**0), id="full list of default_capacity*(2^0)"),
+        pytest.param(DEFAULT_CAPACITY*(2**2), id="full list of default_capacity*(2^2)"),
+        pytest.param(DEFAULT_CAPACITY*(2**4), id="full list of default_capacity*(2^4)"),
+        pytest.param(DEFAULT_CAPACITY*(2**6), id="full list of default_capacity*(2^6)"),
+        pytest.param(DEFAULT_CAPACITY*(2**8), id="full list of default_capacity*(2^8)"),
+        pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10)"),
+        pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10) ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**0) + 1, id="one-past-full list of default_capacity*(2^0)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**2) + 1, id="one-past-full list of default_capacity*(2^2)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**4) + 1, id="one-past-full list of default_capacity*(2^4)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**6) + 1, id="one-past-full list of default_capacity*(2^6)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**8) + 1, id="one-past-full list of default_capacity*(2^8)+1 ints"),
+        pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
+    ])
     
-    def test_add_value_to_ArrayList_of_one_int(self):
-        arraylist_of_one_int = rand_array_list(1)
+    def test_append_value_to_ArrayList(self, num_of_ints: int) -> None:
+        """Tests if a user can append a default value to 
+        the end of an ArrayList of a user-specified number of 
+        random ints, with the correct new value.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        arraylist = rand_arraylist(num_of_ints)
         
-        arraylist_of_one_int.append(DEFAULT_INT)
+        arraylist.append(DEFAULT_INT)
         
-        assert arraylist_of_one_int[1] == DEFAULT_INT
-    
-    def test_add_value_to_ArrayList_of_two_ints(self):
-        arraylist_of_two_ints = rand_array_list(2)
-        
-        arraylist_of_two_ints.append(DEFAULT_INT)
-        
-        assert arraylist_of_two_ints[2] == DEFAULT_INT
-    
-    def test_add_value_to_ArrayList_of_three_ints(self):
-        arraylist_of_three_ints = rand_array_list(3)
-        
-        arraylist_of_three_ints.append(DEFAULT_INT)
-        
-        assert arraylist_of_three_ints[3] == DEFAULT_INT
-    
-    def test_add_value_to_ArrayList_of_fifteen_ints(self):
-        arraylist_of_fifteen_ints = rand_array_list(15)
-        
-        arraylist_of_fifteen_ints.append(DEFAULT_INT)
-        
-        assert arraylist_of_fifteen_ints[15] == DEFAULT_INT
-    
-    def test_add_value_to_ArrayList_of_sixteen_ints(self):
-        arraylist_of_sixteen_ints = rand_array_list(16)
-        
-        arraylist_of_sixteen_ints.append(DEFAULT_INT)
-        
-        assert arraylist_of_sixteen_ints[16] == DEFAULT_INT
-    
-    def test_add_value_to_ArrayList_of_seventeen_ints(self):
-        arraylist_of_seventeen_ints = rand_array_list(17)
-        
-        arraylist_of_seventeen_ints.append(DEFAULT_INT)
-        
-        assert arraylist_of_seventeen_ints[17] == DEFAULT_INT
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_one_ints.append(DEFAULT_INT)
-        
-        assert arraylist_of_eight_thousand_one_hundred_ninety_one_ints[8191] == DEFAULT_INT
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_two_ints.append(DEFAULT_INT)
-        
-        assert arraylist_of_eight_thousand_one_hundred_ninety_two_ints[8192] == DEFAULT_INT
-    
-    def test_add_value_to_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-        arraylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
-        
-        arraylist_of_eight_thousand_one_hundred_ninety_three_ints.append(DEFAULT_INT)
-        
-        assert arraylist_of_eight_thousand_one_hundred_ninety_three_ints[8193] == DEFAULT_INT
+        assert arraylist[num_of_ints] == DEFAULT_INT
         
 
 class TestRemovingValueWithCorrectNewSize:
