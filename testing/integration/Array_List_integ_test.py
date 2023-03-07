@@ -48,7 +48,7 @@ class TestSettingValueWithCorrectNewValue:
             pytest.param(10000,9999, id="last value of ten-thousand ints")
         ])
     
-    def test_set_value_in_ArrayList(self, num_of_ints: int, index: int) -> None:
+    def test_set_value_in_ArrayList_with_correct_new_value(self, num_of_ints: int, index: int) -> None:
         """Tests if a user can set a default value at a 
         user-specified non-negative index in an Array List
         of a user-specified number of random ints, with the
@@ -92,7 +92,7 @@ class TestAppendingValueWithCorrectNewSize:
         pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
     ])
     
-    def test_append_value_to_ArrayList(self, num_of_ints: int) -> None:
+    def test_append_value_to_ArrayList_with_correct_new_size(self, num_of_ints: int) -> None:
         """Tests if a user can append a default value to 
         the end of an ArrayList of a user-specified number of 
         random ints, with the correct new size.
@@ -134,7 +134,7 @@ class TestAppendingValueWithCorrectNewValue:
         pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
     ])
     
-    def test_append_value_to_ArrayList(self, num_of_ints: int) -> None:
+    def test_append_value_to_ArrayList_with_correct_new_value(self, num_of_ints: int) -> None:
         """Tests if a user can append a default value to 
         the end of an ArrayList of a user-specified number of 
         random ints, with the correct new value.
@@ -149,239 +149,134 @@ class TestAppendingValueWithCorrectNewValue:
         
         assert arraylist[num_of_ints] == DEFAULT_INT
         
-
+        
 class TestRemovingValueWithCorrectNewSize:
-    """Uses RemovingValueWithoutError and GettingSize modules.
-    """
-    class TestRemovingValueFromArrayListOfOneInt:
-        def test_remove_first_value_from_ArrayList_of_one_int(self):
-            array_list_of_one_int = rand_array_list(1)
-            
-            array_list_of_one_int.remove(0)
-            
-            assert len(array_list_of_one_int) == 0
-    
-    
-    class TestRemovingValueFromArrayListOfFifteenInts:
-        def test_remove_first_value_from_ArrayList_of_fifteen_ints(self):
-            array_list_of_fifteen_ints = rand_array_list(15)
-            
-            array_list_of_fifteen_ints.remove(0)
-            
-            assert len(array_list_of_fifteen_ints) == 14
+    class TestRemovingStartValueWithCorrectNewSize:
+        @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id="list of one int"),
+            pytest.param(2, id="list of two ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0)-1, id="one-from-full list of default_capacity*(2^0)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2)-1, id="one-from-full list of default_capacity*(2^2)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4)-1, id="one-from-full list of default_capacity*(2^4)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6)-1, id="one-from-full list of default_capacity*(2^6)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8)-1, id="one-from-full list of default_capacity*(2^8)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10)-1, id="one-from-full list of default_capacity*(2^10)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0), id="full list of default_capacity*(2^0) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2), id="full list of default_capacity*(2^2) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4), id="full list of default_capacity*(2^4) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6), id="full list of default_capacity*(2^6) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8), id="full list of default_capacity*(2^8) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0) + 1, id="one-past-full list of default_capacity*(2^0)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2) + 1, id="one-past-full list of default_capacity*(2^2)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4) + 1, id="one-past-full list of default_capacity*(2^4)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6) + 1, id="one-past-full list of default_capacity*(2^6)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8) + 1, id="one-past-full list of default_capacity*(2^8)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
+        ])
         
-        def test_remove_second_value_from_ArrayList_of_fifteen_ints(self):
-            array_list_of_fifteen_ints = rand_array_list(15)
-            
-            array_list_of_fifteen_ints.remove(1)
-            
-            assert len(array_list_of_fifteen_ints) == 14
-        
-        def test_remove_middle_value_from_ArrayList_of_fifteen_ints(self):
-            array_list_of_fifteen_ints = rand_array_list(15)
-            
-            array_list_of_fifteen_ints.remove(7)
-            
-            assert len(array_list_of_fifteen_ints) == 14
-        
-        def test_remove_penultimate_value_from_ArrayList_of_fifteen_ints(self):
-            array_list_of_fifteen_ints = rand_array_list(15)
-            
-            array_list_of_fifteen_ints.remove(13)
-            
-            assert len(array_list_of_fifteen_ints) == 14
+        def test_remove_start_value_from_ArrayList_with_correct_new_size(self, num_of_ints: int) -> None:
+            """Tests if a user can remove the value at the
+            start index in an ArrayList of a user-specified 
+            number of random ints, with the correct new size.
 
-        def test_remove_last_value_from_ArrayList_of_fifteen_ints(self):
-            array_list_of_fifteen_ints = rand_array_list(15)
+            Args:
+                num_of_ints (int): The user-specified number of 
+                random ints
+            """
+            arraylist = rand_arraylist(num_of_ints)
             
-            array_list_of_fifteen_ints.remove(14)
+            arraylist.remove(0)
             
-            assert len(array_list_of_fifteen_ints) == 14
+            assert len(arraylist) == num_of_ints - 1
+            
     
-    
-    class TestRemovingValueFromArrayListOfSixteenInts:
-        def test_remove_first_value_from_ArrayList_of_sixteen_ints(self):
-            array_list_of_sixteen_ints = rand_array_list(16)
-            
-            array_list_of_sixteen_ints.remove(0)
-            
-            assert len(array_list_of_sixteen_ints) == 15
+    class TestRemovingMiddleValueWithCorrectNewSize:
+        @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id="list of one int"),
+            pytest.param(2, id="list of two ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0)-1, id="one-from-full list of default_capacity*(2^0)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2)-1, id="one-from-full list of default_capacity*(2^2)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4)-1, id="one-from-full list of default_capacity*(2^4)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6)-1, id="one-from-full list of default_capacity*(2^6)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8)-1, id="one-from-full list of default_capacity*(2^8)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10)-1, id="one-from-full list of default_capacity*(2^10)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0), id="full list of default_capacity*(2^0) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2), id="full list of default_capacity*(2^2) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4), id="full list of default_capacity*(2^4) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6), id="full list of default_capacity*(2^6) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8), id="full list of default_capacity*(2^8) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0) + 1, id="one-past-full list of default_capacity*(2^0)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2) + 1, id="one-past-full list of default_capacity*(2^2)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4) + 1, id="one-past-full list of default_capacity*(2^4)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6) + 1, id="one-past-full list of default_capacity*(2^6)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8) + 1, id="one-past-full list of default_capacity*(2^8)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
+        ])
         
-        def test_remove_second_value_from_ArrayList_of_sixteen_ints(self):
-            array_list_of_sixteen_ints = rand_array_list(16)
-            
-            array_list_of_sixteen_ints.remove(1)
-            
-            assert len(array_list_of_sixteen_ints) == 15
-        
-        def test_remove_middle_value_from_ArrayList_of_sixteen_ints(self):
-            array_list_of_sixteen_ints = rand_array_list(16)
-            
-            array_list_of_sixteen_ints.remove(7)
-            
-            assert len(array_list_of_sixteen_ints) == 15
-        
-        def test_remove_penultimate_value_from_ArrayList_of_sixteen_ints(self):
-            array_list_of_sixteen_ints = rand_array_list(16)
-            
-            array_list_of_sixteen_ints.remove(14)
-            
-            assert len(array_list_of_sixteen_ints) == 15
+        def test_remove_middle_value_from_ArrayList_with_correct_new_size(self, num_of_ints: int) -> None:
+            """Tests if a user can remove the value at the 
+            middle index of an ArrayList of a user-specified 
+            number of random ints, with the correct new size.
 
-        def test_remove_last_value_from_ArrayList_of_sixteen_ints(self):
-            array_list_of_sixteen_ints = rand_array_list(16)
+            Args:
+                num_of_ints (int): The user-specified number of 
+                random ints
+            """
+            arraylist = rand_arraylist(num_of_ints)
             
-            array_list_of_sixteen_ints.remove(15)
+            arraylist.remove(num_of_ints//2)
             
-            assert len(array_list_of_sixteen_ints) == 15
-    
-    
-    class TestRemovingValueFromArrayListOfSeventeenInts:
-        def test_remove_first_value_from_ArrayList_of_seventeen_ints(self):
-            array_list_of_seventeen_ints = rand_array_list(17)
+            assert len(arraylist) == num_of_ints - 1
             
-            array_list_of_seventeen_ints.remove(0)
             
-            assert len(array_list_of_seventeen_ints) == 16
+    class TestRemovingLastValueWithCorrectNewSize:
+        @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id="list of one int"),
+            pytest.param(2, id="list of two ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0)-1, id="one-from-full list of default_capacity*(2^0)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2)-1, id="one-from-full list of default_capacity*(2^2)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4)-1, id="one-from-full list of default_capacity*(2^4)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6)-1, id="one-from-full list of default_capacity*(2^6)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8)-1, id="one-from-full list of default_capacity*(2^8)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10)-1, id="one-from-full list of default_capacity*(2^10)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0), id="full list of default_capacity*(2^0) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2), id="full list of default_capacity*(2^2) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4), id="full list of default_capacity*(2^4) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6), id="full list of default_capacity*(2^6) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8), id="full list of default_capacity*(2^8) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0) + 1, id="one-past-full list of default_capacity*(2^0)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2) + 1, id="one-past-full list of default_capacity*(2^2)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4) + 1, id="one-past-full list of default_capacity*(2^4)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6) + 1, id="one-past-full list of default_capacity*(2^6)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8) + 1, id="one-past-full list of default_capacity*(2^8)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
+        ])
         
-        def test_remove_second_value_from_ArrayList_of_seventeen_ints(self):
-            array_list_of_seventeen_ints = rand_array_list(17)
-            
-            array_list_of_seventeen_ints.remove(1)
-            
-            assert len(array_list_of_seventeen_ints) == 16
-        
-        def test_remove_middle_value_from_ArrayList_of_seventeen_ints(self):
-            array_list_of_seventeen_ints = rand_array_list(17)
-            
-            array_list_of_seventeen_ints.remove(8)
-            
-            assert len(array_list_of_seventeen_ints) == 16
-        
-        def test_remove_penultimate_value_from_ArrayList_of_seventeen_ints(self):
-            array_list_of_seventeen_ints = rand_array_list(17)
-            
-            array_list_of_seventeen_ints.remove(15)
-            
-            assert len(array_list_of_seventeen_ints) == 16
+        def test_remove_last_value_from_ArrayList_with_correct_new_size(self, num_of_ints: int) -> None:
+            """Tests if a user can remove the value at the 
+            last index of an ArrayList of a user-specified 
+            number of random ints, with the correct new size.
 
-        def test_remove_last_value_from_ArrayList_of_seventeen_ints(self):
-            array_list_of_seventeen_ints = rand_array_list(17)
+            Args:
+                num_of_ints (int): The user-specified number of 
+                random ints
+            """
+            arraylist = rand_arraylist(num_of_ints)
             
-            array_list_of_seventeen_ints.remove(16)
+            arraylist.remove(num_of_ints-1)
             
-            assert len(array_list_of_seventeen_ints) == 16
-    
-    
-    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyOneInts:
-        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(0)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
+            assert len(arraylist) == num_of_ints - 1
         
-        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(1)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
         
-        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(4095)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
         
-        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8189)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
-
-        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = rand_array_list(8191)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8190)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_one_ints) == 8190
-    
-    
-    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyTwoInts:
-        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(0)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
         
-        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(1)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
         
-        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(4095)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
         
-        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8190)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
-
-        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = rand_array_list(8192)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8191)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_two_ints) == 8191
-    
-    
-    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyThreeInts:
-        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(0)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
         
-        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(1)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
         
-        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(4096)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
-        
-        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8191)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
-
-        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = rand_array_list(8193)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8192)
-            
-            assert len(array_list_of_eight_thousand_one_hundred_ninety_three_ints) == 8192
        
             
 class TestCheckingIfEqual:
