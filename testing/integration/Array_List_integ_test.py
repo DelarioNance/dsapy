@@ -269,15 +269,7 @@ class TestRemovingValueWithCorrectNewSize:
             arraylist.remove(num_of_ints-1)
             
             assert len(arraylist) == num_of_ints - 1
-        
-        
-        
-        
-        
-        
-        
-        
-       
+    
             
 class TestCheckingForEquality:
     """In the TestCheckingIfEqualForSameSizeButDifferentValues 
@@ -374,329 +366,131 @@ class TestCheckingForEquality:
             verdict = (first_arraylist != second_arraylist)
             
             assert verdict == True
-    
+
             
 class TestRemovingValueWithCorrectOldValues:
-    """Uses RemovingValueWithoutError module.
-    """
-    class TestRemovingValueFromArrayListOfOneInt:
-        def test_remove_first_value_from_ArrayList_of_one_int(self):
-            pylist_of_one_int = rand_pylist(1)
-            array_list_of_one_int = ArrayList(pylist_of_one_int)
-            
-            array_list_of_one_int.remove(0)
-            verdict = np.array_equal(array_list_of_one_int._values[:0], pylist_of_one_int[1:])
-            
-            assert verdict == True
-    
-    
-    class TestRemovingValueFromArrayListOfFifteenInts:
-        def test_remove_first_value_from_ArrayList_of_fifteen_ints(self):
-            index_after_removed = 1
-            pylist_of_fifteen_ints = rand_pylist(15)
-            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
-            
-            array_list_of_fifteen_ints.remove(0)
-            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
-            
-            assert verdict == True
-          
-        def test_remove_second_value_from_ArrayList_of_fifteen_ints(self):
-            index_after_removed = 2
-            pylist_of_fifteen_ints = rand_pylist(15)
-            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
-            
-            array_list_of_fifteen_ints.remove(1)
-            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
+        
+    class TestRemovingStartValueWithCorrectOldValues:
+        @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id="list of one int"),
+            pytest.param(2, id="list of two ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0)-1, id="one-from-full list of default_capacity*(2^0)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2)-1, id="one-from-full list of default_capacity*(2^2)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4)-1, id="one-from-full list of default_capacity*(2^4)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6)-1, id="one-from-full list of default_capacity*(2^6)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8)-1, id="one-from-full list of default_capacity*(2^8)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10)-1, id="one-from-full list of default_capacity*(2^10)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0), id="full list of default_capacity*(2^0) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2), id="full list of default_capacity*(2^2) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4), id="full list of default_capacity*(2^4) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6), id="full list of default_capacity*(2^6) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8), id="full list of default_capacity*(2^8) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0) + 1, id="one-past-full list of default_capacity*(2^0)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2) + 1, id="one-past-full list of default_capacity*(2^2)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4) + 1, id="one-past-full list of default_capacity*(2^4)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6) + 1, id="one-past-full list of default_capacity*(2^6)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8) + 1, id="one-past-full list of default_capacity*(2^8)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
+        ])
+        
+        def test_remove_start_value_from_ArrayList_with_correct_old_values(self, num_of_ints: int) -> None:
+            """Tests if a user can remove the value at the
+            start index in an ArrayList of a user-specified 
+            number of random ints, with the correct old values.
 
-            assert verdict == True
+            Args:
+                num_of_ints (int): The user-specified number of 
+                random ints
+            """
+            pylist = rand_pylist(num_of_ints)
+            arraylist = ArrayList(pylist)
             
-        def test_remove_middle_value_from_ArrayList_of_fifteen_ints(self):
-            index_after_removed = 8
-            pylist_of_fifteen_ints = rand_pylist(15)
-            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
+            pylist.pop(0)
+            arraylist.remove(0)
             
-            array_list_of_fifteen_ints.remove(7)
-            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_penultimate_value_from_ArrayList_of_fifteen_ints(self):
-            index_after_removed = 14
-            pylist_of_fifteen_ints = rand_pylist(15)
-            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
-            
-            array_list_of_fifteen_ints.remove(13)
-            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_last_value_from_ArrayList_of_fifteen_ints(self):
-            index_after_removed = 15
-            pylist_of_fifteen_ints = rand_pylist(15)
-            array_list_of_fifteen_ints = ArrayList(pylist_of_fifteen_ints)
-            
-            array_list_of_fifteen_ints.remove(14)
-            verdict = np.array_equal(array_list_of_fifteen_ints._values[:14], pylist_of_fifteen_ints[:index_after_removed-1]+pylist_of_fifteen_ints[index_after_removed:])
-            
-            assert verdict == True
+            assert pylist == arraylist
             
     
-    class TestRemovingValueFromArrayListOfSixteenInts:
-        def test_remove_first_value_from_ArrayList_of_sixteen_ints(self):
-            index_after_removed = 1
-            pylist_of_sixteen_ints = rand_pylist(16)
-            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
-            
-            array_list_of_sixteen_ints.remove(0)
-            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
-            
-            assert verdict == True
-          
-        def test_remove_second_value_from_ArrayList_of_sixteen_ints(self):
-            index_after_removed = 2
-            pylist_of_sixteen_ints = rand_pylist(16)
-            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
-            
-            array_list_of_sixteen_ints.remove(1)
-            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_middle_value_from_ArrayList_of_sixteen_ints(self):
-            index_after_removed = 8
-            pylist_of_sixteen_ints = rand_pylist(16)
-            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
-            
-            array_list_of_sixteen_ints.remove(7)
-            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_penultimate_value_from_ArrayList_of_sixteen_ints(self):
-            index_after_removed = 15
-            pylist_of_sixteen_ints = rand_pylist(16)
-            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
-            
-            array_list_of_sixteen_ints.remove(14)
-            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_last_value_from_ArrayList_of_sixteen_ints(self):
-            index_after_removed = 16
-            pylist_of_sixteen_ints = rand_pylist(16)
-            array_list_of_sixteen_ints = ArrayList(pylist_of_sixteen_ints)
-            
-            array_list_of_sixteen_ints.remove(15)
-            verdict = np.array_equal(array_list_of_sixteen_ints._values[:15], pylist_of_sixteen_ints[:index_after_removed-1]+pylist_of_sixteen_ints[index_after_removed:])
-            
-            assert verdict == True
-    
-    
-    class TestRemovingValueFromArrayListOfSeventeenInts:
-        def test_remove_first_value_from_ArrayList_of_seventeen_ints(self):
-            index_after_removed = 1
-            pylist_of_seventeen_ints = rand_pylist(17)
-            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
-            
-            array_list_of_seventeen_ints.remove(0)
-            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
-            
-            assert verdict == True
-          
-        def test_remove_second_value_from_ArrayList_of_seventeen_ints(self):
-            index_after_removed = 2
-            pylist_of_seventeen_ints = rand_pylist(17)
-            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
-            
-            array_list_of_seventeen_ints.remove(1)
-            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_middle_value_from_ArrayList_of_seventeen_ints(self):
-            index_after_removed = 9
-            pylist_of_seventeen_ints = rand_pylist(17)
-            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
-            
-            array_list_of_seventeen_ints.remove(8)
-            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_penultimate_value_from_ArrayList_of_seventeen_ints(self):
-            index_after_removed = 16
-            pylist_of_seventeen_ints = rand_pylist(17)
-            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
-            
-            array_list_of_seventeen_ints.remove(15)
-            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_last_value_from_ArrayList_of_seventeen_ints(self):
-            index_after_removed = 17
-            pylist_of_seventeen_ints = rand_pylist(17)
-            array_list_of_seventeen_ints = ArrayList(pylist_of_seventeen_ints)
-            
-            array_list_of_seventeen_ints.remove(16)
-            verdict = np.array_equal(array_list_of_seventeen_ints._values[:16], pylist_of_seventeen_ints[:index_after_removed-1]+pylist_of_seventeen_ints[index_after_removed:])
-            
-            assert verdict == True
-    
-    
-    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyOneInts:
-        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            index_after_removed = 1
-            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(0)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
-            
-            assert verdict == True
-          
-        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            index_after_removed = 2
-            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(1)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            index_after_removed = 4096
-            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(4095)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            index_after_removed = 8190
-            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8189)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_one_ints(self):
-            index_after_removed = 8191
-            pylist_of_eight_thousand_one_hundred_ninety_one_ints = rand_pylist(8191)
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_one_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_one_ints.remove(8190)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_one_ints._values[:8190], pylist_of_eight_thousand_one_hundred_ninety_one_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_one_ints[index_after_removed:])
-            
-            assert verdict == True
-    
-    
-    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyTwoInts:
-        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            index_after_removed = 1
-            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(0)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
-            
-            assert verdict == True
-          
-        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            index_after_removed = 2
-            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(1)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            index_after_removed = 4096
-            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(4095)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            index_after_removed = 8191
-            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8190)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_two_ints(self):
-            index_after_removed = 8192
-            pylist_of_eight_thousand_one_hundred_ninety_two_ints = rand_pylist(8192)
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_two_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_two_ints.remove(8191)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_two_ints._values[:8191], pylist_of_eight_thousand_one_hundred_ninety_two_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_two_ints[index_after_removed:])
-            
-            assert verdict == True
-    
-    
-    class TestRemovingValueFromArrayListOfEightThousandOneHundredNinetyThreeInts:
-        def test_remove_first_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            index_after_removed = 1
-            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(0)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
-            
-            assert verdict == True
-          
-        def test_remove_second_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            index_after_removed = 2
-            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(1)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_middle_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            index_after_removed = 4097
-            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(4096)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_penultimate_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            index_after_removed = 8192
-            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8191)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
-            
-            assert verdict == True
-            
-        def test_remove_last_value_from_ArrayList_of_eight_thousand_one_hundred_ninety_three_ints(self):
-            index_after_removed = 8193
-            pylist_of_eight_thousand_one_hundred_ninety_three_ints = rand_pylist(8193)
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints = ArrayList(pylist_of_eight_thousand_one_hundred_ninety_three_ints)
-            
-            array_list_of_eight_thousand_one_hundred_ninety_three_ints.remove(8192)
-            verdict = np.array_equal(array_list_of_eight_thousand_one_hundred_ninety_three_ints._values[:8192], pylist_of_eight_thousand_one_hundred_ninety_three_ints[:index_after_removed-1]+pylist_of_eight_thousand_one_hundred_ninety_three_ints[index_after_removed:])
-            
-            assert verdict == True
+    class TestRemovingMiddleValueWithCorrectOldValues:
+        @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id="list of one int"),
+            pytest.param(2, id="list of two ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0)-1, id="one-from-full list of default_capacity*(2^0)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2)-1, id="one-from-full list of default_capacity*(2^2)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4)-1, id="one-from-full list of default_capacity*(2^4)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6)-1, id="one-from-full list of default_capacity*(2^6)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8)-1, id="one-from-full list of default_capacity*(2^8)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10)-1, id="one-from-full list of default_capacity*(2^10)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0), id="full list of default_capacity*(2^0) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2), id="full list of default_capacity*(2^2) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4), id="full list of default_capacity*(2^4) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6), id="full list of default_capacity*(2^6) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8), id="full list of default_capacity*(2^8) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0) + 1, id="one-past-full list of default_capacity*(2^0)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2) + 1, id="one-past-full list of default_capacity*(2^2)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4) + 1, id="one-past-full list of default_capacity*(2^4)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6) + 1, id="one-past-full list of default_capacity*(2^6)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8) + 1, id="one-past-full list of default_capacity*(2^8)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
+        ])
+        
+        def test_remove_middle_value_from_ArrayList_with_correct_old_values(self, num_of_ints: int) -> None:
+            """Tests if a user can remove the value at the 
+            middle index of an ArrayList of a user-specified 
+            number of random ints, with the correct old values.
+
+            Args:
+                num_of_ints (int): The user-specified number of 
+                random ints
+            """
+            pylist = rand_pylist(num_of_ints)
+            arraylist = ArrayList(pylist)
+            
+            pylist.pop(num_of_ints//2)
+            arraylist.remove(num_of_ints//2)
+            
+            assert pylist == arraylist
+            
+            
+    class TestRemovingLastValueWithCorrectOldValues:
+        @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id="list of one int"),
+            pytest.param(2, id="list of two ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0)-1, id="one-from-full list of default_capacity*(2^0)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2)-1, id="one-from-full list of default_capacity*(2^2)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4)-1, id="one-from-full list of default_capacity*(2^4)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6)-1, id="one-from-full list of default_capacity*(2^6)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8)-1, id="one-from-full list of default_capacity*(2^8)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10)-1, id="one-from-full list of default_capacity*(2^10)-1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0), id="full list of default_capacity*(2^0) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2), id="full list of default_capacity*(2^2) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4), id="full list of default_capacity*(2^4) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6), id="full list of default_capacity*(2^6) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8), id="full list of default_capacity*(2^8) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10), id="full list of default_capacity*(2^10) ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**0) + 1, id="one-past-full list of default_capacity*(2^0)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**2) + 1, id="one-past-full list of default_capacity*(2^2)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**4) + 1, id="one-past-full list of default_capacity*(2^4)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**6) + 1, id="one-past-full list of default_capacity*(2^6)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**8) + 1, id="one-past-full list of default_capacity*(2^8)+1 ints"),
+            pytest.param(DEFAULT_CAPACITY*(2**10) + 1, id="one-past-full list of default_capacity*(2^10)+1 ints"),
+        ])
+        
+        def test_remove_last_value_from_ArrayList_with_correct_old_values(self, num_of_ints: int) -> None:
+            """Tests if a user can remove the value at the 
+            last index of an ArrayList of a user-specified 
+            number of random ints, with the correct old values.
+
+            Args:
+                num_of_ints (int): The user-specified number of 
+                random ints
+            """
+            pylist = rand_pylist(num_of_ints)
+            arraylist = ArrayList(pylist)
+            
+            pylist.pop(-1)
+            arraylist.remove(-1)
+            
+            assert pylist == arraylist
