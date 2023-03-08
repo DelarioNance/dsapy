@@ -351,12 +351,12 @@ class ArrayList:
         """
         if reverse == False:
             for curr_index in range(len(self)):
-                index_of_next_min = self._index_of_min(curr_index,len(self)-1)
-                self._swap(curr_index,index_of_next_min)
+                index_of_next_min = self._get_index_of_min(curr_index, len(self)-1)
+                self._swap(curr_index, index_of_next_min)
         else:
             for curr_index in range(len(self)):
-                index_of_next_max = self._index_of_max(curr_index,len(self)-1)
-                self._swap(curr_index,index_of_next_max)
+                index_of_next_max = self._get_index_of_max(curr_index, len(self)-1)
+                self._swap(curr_index, index_of_next_max)
         
     def bubblesort(self, reverse: bool = False) -> None:
         """Sorts the values in this ArrayList using bubblesort. 

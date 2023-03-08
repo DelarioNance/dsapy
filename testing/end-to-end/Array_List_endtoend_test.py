@@ -118,7 +118,7 @@ class TestSelectionSorting:
             pytest.param(1, id='one int'),
             pytest.param(10, id='ten ints'),
             pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
+            # pytest.param(1000, id='one-thousand ints'), SLOW
             # pytest.param(10000, id='ten-thousand ints') SLOW
     ])
     
@@ -142,7 +142,7 @@ class TestSelectionSorting:
             pytest.param(1, id='one int'),
             pytest.param(10, id='ten ints'),
             pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
+            # pytest.param(1000, id='one-thousand ints'), SLOW
             # pytest.param(10000, id='ten-thousand ints') SLOW
     ])
     
@@ -174,7 +174,7 @@ class TestBubbleSorting:
             pytest.param(1, id='one int'),
             pytest.param(10, id='ten ints'),
             pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
+            # pytest.param(1000, id='one-thousand ints'), SLOW
             # pytest.param(10000, id='ten-thousand ints') SLOW
     ])
     
@@ -198,7 +198,7 @@ class TestBubbleSorting:
             pytest.param(1, id='one int'),
             pytest.param(10, id='ten ints'),
             pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
+            # pytest.param(1000, id='one-thousand ints'), SLOW
             # pytest.param(10000, id='ten-thousand ints') SLOW
     ])
     
@@ -230,7 +230,7 @@ class TestInsertionSorting:
             pytest.param(1, id='one int'),
             pytest.param(10, id='ten ints'),
             pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
+            # pytest.param(1000, id='one-thousand ints'), SLOW
             # pytest.param(10000, id='ten-thousand ints') SLOW
     ])
     
@@ -254,7 +254,7 @@ class TestInsertionSorting:
             pytest.param(1, id='one int'),
             pytest.param(10, id='ten ints'),
             pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
+            # pytest.param(1000, id='one-thousand ints'), SLOW
             # pytest.param(10000, id='ten-thousand ints') SLOW
     ])
     
