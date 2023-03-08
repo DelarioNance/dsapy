@@ -55,6 +55,7 @@ class TestGettingMinimum:
         
         assert min_of_arraylist == min(pylist)
         
+        
 class TestGettingMaximum:
     @pytest.mark.parametrize("num_of_ints", [
             pytest.param(1, id='one int'),
@@ -78,6 +79,7 @@ class TestGettingMaximum:
         min_of_arraylist = arraylist.max()
         
         assert min_of_arraylist == max(pylist)
+        
         
 class TestReversing:
     @pytest.mark.parametrize("num_of_ints", [
@@ -104,68 +106,62 @@ class TestReversing:
         
         assert arraylist == copy_of_arraylist
         
+        
 class TestSelectionSorting:
-    """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
-    
-    Unlike the end-to-end test methods for merge_sort and 
-    quicksort, the selection_sort test methods on ArrayLists with
-    ten-thousand ints are ommited because selction_sort runs 
-    for a long time on large ArrayLists due to selection_sort's
-    worst-case running time of O(n^2).
+    """Unlike the end-to-end test methods for merge_sort and 
+    quicksort, the selection_sort test methods on ArrayLists 
+    with ten-thousand ints are ommited because selction_sort 
+    runs for a long time on large ArrayLists due to 
+    selection_sort's worst-case running time of O(n^2).
     """
-    def test_selection_sort_ArrayList_of_one_int_in_ascending_order(self):
-        pylist_of_one_int = rand_pylist(1)
-        arraylist_of_one_int = ArrayList(pylist_of_one_int)
+    @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id='one int'),
+            pytest.param(10, id='ten ints'),
+            pytest.param(100, id='one-hundred ints'),
+            pytest.param(1000, id='one-thousand ints'),
+            # pytest.param(10000, id='ten-thousand ints') SLOW
+    ])
+    
+    def test_selection_sort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
+        """Tests if a user can sort the values in an ArrayList
+        of a user-specified number of random ints, in ascending
+        order.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        pytest = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pytest)
         
-        pylist_of_one_int.sort()
-        arraylist_of_one_int.selection_sort()
+        arraylist.selection_sort(reverse=False)
         
-        assert arraylist_of_one_int == pylist_of_one_int
+        assert arraylist == sorted(pytest, reverse=False)
+    
+    @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id='one int'),
+            pytest.param(10, id='ten ints'),
+            pytest.param(100, id='one-hundred ints'),
+            pytest.param(1000, id='one-thousand ints'),
+            # pytest.param(10000, id='ten-thousand ints') SLOW
+    ])
+    
+    def test_selection_sort_ArrayList_in_descending_order(self, num_of_ints) -> None:
+        """Tests if a user can sort the values in an ArrayList
+        of a user-specified number of random ints, in descending
+        order.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        pytest = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pytest)
         
-    def test_selection_sort_ArrayList_of_ten_ints_in_ascending_order(self):
-        pylist_of_ten_ints = rand_pylist(10)
-        arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
+        arraylist.selection_sort(reverse=False)
         
-        pylist_of_ten_ints.sort()
-        arraylist_of_ten_ints.selection_sort()
+        assert arraylist == sorted(pytest, reverse=False)
         
-        assert arraylist_of_ten_ints == pylist_of_ten_ints
-        
-    def test_selection_sort_ArrayList_of_one_hundred_ints_in_ascending_order(self):
-        pylist_of_one_hundred_ints = rand_pylist(100)
-        arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
-        
-        pylist_of_one_hundred_ints.sort()
-        arraylist_of_one_hundred_ints.selection_sort()
-        
-        assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
-        
-    def test_selection_sort_ArrayList_of_one_int_in_descending_order(self):
-        pylist_of_one_int = rand_pylist(1)
-        arraylist_of_one_int = ArrayList(pylist_of_one_int)
-        
-        pylist_of_one_int.sort(reverse=True)
-        arraylist_of_one_int.selection_sort(True)
-        
-        assert arraylist_of_one_int == pylist_of_one_int
-        
-    def test_selection_sort_ArrayList_of_ten_ints_in_descending_order(self):
-        pylist_of_ten_ints = rand_pylist(10)
-        arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
-        
-        pylist_of_ten_ints.sort(reverse=True)
-        arraylist_of_ten_ints.selection_sort(True)
-        
-        assert arraylist_of_ten_ints == pylist_of_ten_ints
-        
-    def test_selection_sort_ArrayList_of_one_hundred_ints_in_descending_order(self):
-        pylist_of_one_hundred_ints = rand_pylist(100)
-        arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
-        
-        pylist_of_one_hundred_ints.sort(reverse=True)
-        arraylist_of_one_hundred_ints.selection_sort(True)
-        
-        assert arraylist_of_one_hundred_ints == pylist_of_one_hundred_ints
         
 class TestBubbleSorting:
     """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
