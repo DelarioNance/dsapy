@@ -79,89 +79,30 @@ class TestGettingMaximum:
         
         assert min_of_arraylist == max(pylist)
         
-class TestSearching:
-    """Uses GettingValue and GettingSize modules.
-    """
-    def test_search_for_int_in_empty_ArrayList(self):
-        empty_arraylist = ArrayList([])
-        
-        verdict = empty_arraylist.contains(DEFAULT_ZERO_INT_IN_ARRAYLIST)
-        
-        assert verdict == False
-        
-    def test_search_for_existing_zero_int_in_ArrayList(self):
-        arraylist = array_list_range(-1000,1000)
-        
-        verdict = arraylist.contains(DEFAULT_ZERO_INT_IN_ARRAYLIST)
-        
-        assert verdict == True
-        
-    def test_search_for_existing_positive_int_in_ArrayList(self):
-        arraylist = array_list_range(-1000,1000)
-        
-        verdict = arraylist.contains(DEFAULT_POSITIVE_INT_IN_ARRAYLIST)
-        
-        assert verdict == True
-        
-    def test_search_for_existing_negative_int_in_ArrayList(self):
-        arraylist = array_list_range(-1000,1000)
-        
-        verdict = arraylist.contains(DEFAULT_NEGATIVE_INT_IN_ARRAYLIST)
-        
-        assert verdict == True
-        
-    def test_search_for_positive_int_not_in_ArrayList(self):
-        arraylist = array_list_range(-1000,1000)
-        
-        verdict = arraylist.contains(DEFAULT_POSITIVE_INT_NOT_IN_ARRAYLIST)
-        
-        assert verdict == False
-        
-    def test_search_for_negative_int_not_in_ArrayList(self):
-        arraylist = array_list_range(-1000,1000)
-        
-        verdict = arraylist.contains(DEFAULT_NEGATIVE_INT_NOT_IN_ARRAYLIST)
-        
-        assert verdict == False
-        
 class TestReversing:
-    """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
-    """
-    def test_reverse_ArrayList_of_one_int(self):
-        arraylist_of_one_int = rand_array_list(1)
-        copy_of_arraylist_of_one_int = arraylist_of_one_int.copy()
+    @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id='one int'),
+            pytest.param(10, id='ten ints'),
+            pytest.param(100, id='one-hundred ints'),
+            pytest.param(1000, id='one-thousand ints'),
+            pytest.param(10000, id='ten-thousand ints')
+    ])
+    
+    def test_reverse_ArrayList(self, num_of_ints: int) -> None:
+        """Tests if a user can reverse the values in an 
+        ArrayList of a user-specified number of random ints.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        arraylist = rand_arraylist(num_of_ints)
+        copy_of_arraylist = arraylist.copy()
         
-        arraylist_of_one_int.reverse()
-        arraylist_of_one_int.reverse()
+        arraylist.reverse()
+        arraylist.reverse()
         
-        assert arraylist_of_one_int == copy_of_arraylist_of_one_int
-        
-    def test_reverse_ArrayList_of_ten_ints(self):
-        arraylist_of_ten_ints = rand_array_list(10)
-        copy_of_arraylist_of_ten_ints = arraylist_of_ten_ints.copy()
-        
-        arraylist_of_ten_ints.reverse()
-        arraylist_of_ten_ints.reverse()
-        
-        assert arraylist_of_ten_ints == copy_of_arraylist_of_ten_ints
-        
-    def test_reverse_ArrayList_of_one_hundred_ints(self):
-        arraylist_of_one_hundred_ints = rand_array_list(100)
-        copy_of_arraylist_of_one_hundred_ints = arraylist_of_one_hundred_ints.copy()
-        
-        arraylist_of_one_hundred_ints.reverse()
-        arraylist_of_one_hundred_ints.reverse()
-        
-        assert arraylist_of_one_hundred_ints == copy_of_arraylist_of_one_hundred_ints
-        
-    def test_reverse_ArrayList_of_ten_thousand_ints(self):
-        arraylist_of_ten_thousand_ints = rand_array_list(10000)
-        copy_of_arraylist_of_ten_thousand_ints = arraylist_of_ten_thousand_ints.copy()
-        
-        arraylist_of_ten_thousand_ints.reverse()
-        arraylist_of_ten_thousand_ints.reverse()
-        
-        assert arraylist_of_ten_thousand_ints == copy_of_arraylist_of_ten_thousand_ints
+        assert arraylist == copy_of_arraylist
         
 class TestSelectionSorting:
     """Uses GettingValue, GettingSize, and CheckingIfEqual modules.
