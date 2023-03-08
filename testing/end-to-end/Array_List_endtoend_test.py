@@ -55,40 +55,29 @@ class TestGettingMinimum:
         
         assert min_of_arraylist == min(pylist)
         
-class TestFindingMaximum:
-    """Uses GettingValue and GettingSize modules.
-    """
-    def test_find_max_in_ArrayList_of_one_int(self):
-        pylist_of_one_int = rand_pylist(1)
-        arraylist_of_one_int = ArrayList(pylist_of_one_int)
+class TestGettingMaximum:
+    @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id='one int'),
+            pytest.param(10, id='ten ints'),
+            pytest.param(100, id='one-hundred ints'),
+            pytest.param(1000, id='one-thousand ints'),
+            pytest.param(10000, id='ten-thousand ints')
+    ])
         
-        max_of_arraylist = arraylist_of_one_int.max()
+    def test_get_max_in_ArrayList(self, num_of_ints: int) -> None:
+        """Tests if a user can get the maximum value on an
+        ArrayList of a user-specified number of random ints.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+                random ints
+        """
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
-        assert max_of_arraylist == max(pylist_of_one_int)
+        min_of_arraylist = arraylist.max()
         
-    def test_find_max_in_ArrayList_of_ten_ints(self):
-        pylist_of_ten_ints = rand_pylist(10)
-        arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
-        
-        max_of_arraylist = arraylist_of_ten_ints.max()
-        
-        assert max_of_arraylist == max(pylist_of_ten_ints)
-        
-    def test_find_max_in_ArrayList_of_one_hundred_ints(self):
-        pylist_of_one_hundred_ints = rand_pylist(100)
-        arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
-        
-        max_of_arraylist = arraylist_of_one_hundred_ints.max()
-        
-        assert max_of_arraylist == max(pylist_of_one_hundred_ints)
-        
-    def test_find_max_in_ArrayList_of_ten_thousand_ints(self):
-        pylist_of_ten_thousand_ints = rand_pylist(10000)
-        arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
-        
-        max_of_arraylist = arraylist_of_ten_thousand_ints.max()
-        
-        assert max_of_arraylist == max(pylist_of_ten_thousand_ints)
+        assert min_of_arraylist == max(pylist)
         
 class TestSearching:
     """Uses GettingValue and GettingSize modules.
