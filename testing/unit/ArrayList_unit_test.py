@@ -380,8 +380,6 @@ class TestRemovingValueWithoutError:
             assert TEST_RAN_WITHOUT_ERROR
             
             
-            
-            
 class TestSearchingForValue:
     @pytest.mark.parametrize("num_of_ints, target", [
         pytest.param(1, DEFAULT_INT, id='one int'),
@@ -390,6 +388,7 @@ class TestSearchingForValue:
         pytest.param(1000, DEFAULT_INT, id='one-thousand ints'),
         pytest.param(10000, DEFAULT_INT, id='ten-thousand ints')
     ])
+    
     def test_search_for_value_in_ArrayList(self, num_of_ints: int, target: int) -> None:
         """Tests if a user can determine if a user-specified
         int in an ArrayList of a user-specified number of 
@@ -414,6 +413,7 @@ class TestSearchingForValue:
         pytest.param(1000, INT_OUTSIDE_RANDOM_RANGE, id='one-thousand ints'),
         pytest.param(10000, INT_OUTSIDE_RANDOM_RANGE, id='ten-thousand ints')
     ])
+    
     def test_search_for_value_not_in_ArrayList(self, num_of_ints: int, target: int) -> None:
         """Tests if a user can determine if a user-specified
         int not in an ArrayList of a user-specified number of 

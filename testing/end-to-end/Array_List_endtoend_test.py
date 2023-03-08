@@ -3,7 +3,7 @@ A Python script for end-to-end testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: February 15, 2023 - February 19, 2023
+Date: February 15, 2023 - March 7, 2023
 """
 
 # Standard library imports
@@ -15,6 +15,9 @@ WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/BitBucket/dsapy/src"
 sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
 WSL_FILEPATH_TO_TESTING = "/home/delario-nance-jr/BitBucket/dsapy/testing" 
 sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
+
+# Related third part imports
+import pytest # for markers
 
 # Local application imports
 from ArrayList import ArrayList
@@ -28,40 +31,29 @@ DEFAULT_NEGATIVE_INT_IN_ARRAYLIST = -1
 DEFAULT_NEGATIVE_INT_NOT_IN_ARRAYLIST = -1729
 
 
-class TestFindingMinimum:
-    """Uses GettingValue and GettingSize modules.
-    """
-    def test_find_min_in_ArrayList_of_one_int(self):
-        pylist_of_one_int = rand_pylist(1)
-        arraylist_of_one_int = ArrayList(pylist_of_one_int)
+class TestGettingMinimum:
+    @pytest.mark.parametrize("num_of_ints", [
+            pytest.param(1, id='one int'),
+            pytest.param(10, id='ten ints'),
+            pytest.param(100, id='one-hundred ints'),
+            pytest.param(1000, id='one-thousand ints'),
+            pytest.param(10000, id='ten-thousand ints')
+    ])
+    
+    def test_get_min_in_ArrayList(self, num_of_ints: int) -> None:
+        """Tests if a user can get the minimum value on an
+        ArrayList of a user-specified number of random ints.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+                random ints
+        """
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
-        min_of_arraylist = arraylist_of_one_int.min()
+        min_of_arraylist = arraylist.min()
         
-        assert min_of_arraylist == min(pylist_of_one_int)
-        
-    def test_find_min_in_ArrayList_of_ten_ints(self):
-        pylist_of_ten_ints = rand_pylist(10)
-        arraylist_of_ten_ints = ArrayList(pylist_of_ten_ints)
-        
-        min_of_arraylist = arraylist_of_ten_ints.min()
-        
-        assert min_of_arraylist == min(pylist_of_ten_ints)
-        
-    def test_find_min_in_ArrayList_of_one_hundred_ints(self):
-        pylist_of_one_hundred_ints = rand_pylist(100)
-        arraylist_of_one_hundred_ints = ArrayList(pylist_of_one_hundred_ints)
-        
-        min_of_arraylist = arraylist_of_one_hundred_ints.min()
-        
-        assert min_of_arraylist == min(pylist_of_one_hundred_ints)
-        
-    def test_find_min_in_ArrayList_of_ten_thousand_ints(self):
-        pylist_of_ten_thousand_ints = rand_pylist(10000)
-        arraylist_of_ten_thousand_ints = ArrayList(pylist_of_ten_thousand_ints)
-        
-        min_of_arraylist = arraylist_of_ten_thousand_ints.min()
-        
-        assert min_of_arraylist == min(pylist_of_ten_thousand_ints)
+        assert min_of_arraylist == min(pylist)
         
 class TestFindingMaximum:
     """Uses GettingValue and GettingSize modules.

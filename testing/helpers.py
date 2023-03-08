@@ -4,7 +4,7 @@ functions used in the unit, integration, and end-to-end test
 scripts for the ArrayList class.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - January 27, 2023
+Date: January 24, 2023 - March 7, 2023
 """
 
 # Standard library imports

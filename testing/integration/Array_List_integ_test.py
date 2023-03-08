@@ -33,20 +33,20 @@ TEST_RAN_WITHOUT_ERROR = True
 
 class TestSettingValueWithCorrectNewValue:
     @pytest.mark.parametrize("num_of_ints, index", [
-            pytest.param(1,0, id="only value of one int"),
-            pytest.param(10,0, id="start value of ten ints"),
-            pytest.param(100,0, id="start value of one-hundred ints"),
-            pytest.param(1000,0, id="start value of one-thousand ints"),
-            pytest.param(10000,0, id="start value of ten-thousand ints"),
-            pytest.param(10,5, id="middle value of ten ints"),
-            pytest.param(100,50, id="middle value of one-hundred ints"),
-            pytest.param(1000,500, id="middle value of one-thousand ints"),
-            pytest.param(10000,5000, id="middle value of ten-thousand ints"),
-            pytest.param(10,9, id="last value of ten ints"),
-            pytest.param(100,99, id="last value of one-hundred ints"),            
-            pytest.param(1000,999, id="last value of one-thousand ints"),          
-            pytest.param(10000,9999, id="last value of ten-thousand ints")
-        ])
+        pytest.param(1,0, id="only value of one int"),
+        pytest.param(10,0, id="start value of ten ints"),
+        pytest.param(100,0, id="start value of one-hundred ints"),
+        pytest.param(1000,0, id="start value of one-thousand ints"),
+        pytest.param(10000,0, id="start value of ten-thousand ints"),
+        pytest.param(10,5, id="middle value of ten ints"),
+        pytest.param(100,50, id="middle value of one-hundred ints"),
+        pytest.param(1000,500, id="middle value of one-thousand ints"),
+        pytest.param(10000,5000, id="middle value of ten-thousand ints"),
+        pytest.param(10,9, id="last value of ten ints"),
+        pytest.param(100,99, id="last value of one-hundred ints"),            
+        pytest.param(1000,999, id="last value of one-thousand ints"),          
+        pytest.param(10000,9999, id="last value of ten-thousand ints")
+    ])
     
     def test_set_value_in_ArrayList_with_correct_new_value(self, num_of_ints: int, index: int) -> None:
         """Tests if a user can set a default value at a 
@@ -286,7 +286,6 @@ class TestCheckingForEquality:
     in the TestCheckingIfEqualForSameSizeButDifferentValues 
     class.
     """
-    
     class TestCheckingIfEqualForSameSizeAndSameValues:
         @pytest.mark.parametrize("num_of_ints", [
             pytest.param(0, id='zero ints'),
@@ -369,7 +368,6 @@ class TestCheckingForEquality:
 
             
 class TestRemovingValueWithCorrectOldValues:
-        
     class TestRemovingStartValueWithCorrectOldValues:
         @pytest.mark.parametrize("num_of_ints", [
             pytest.param(1, id="list of one int"),
