@@ -31,7 +31,6 @@ class ArrayList:
             values (ARRAYLIST_INPUT_TYPES): The user-specified
             Python list or NumPy array of ints
         """
-  
         if len(values) == 0:
             self._capacity = DEFAULT_CAPACITY_BASE
         else:
@@ -77,7 +76,6 @@ class ArrayList:
         Returns:
             ARRAYLIST_INPUT_TYPES: The newly created longer array
         """
-
         lengthened_values = [VALUE_FOR_INDEX_PAST_CAPACITY] * new_size
         for index, val in enumerate(values):
             lengthened_values[index] = val
@@ -169,7 +167,6 @@ class ArrayList:
             list or second ArrayList contain the same values at
             the same indices
         """
-        
         if len(self) != len(lst_to_compare):
             return False
         
@@ -493,21 +490,19 @@ class ArrayList:
             reverse (bool, optional): If true, then the values
             in this ArrayList will be sorted in ascending 
             order. Defaults to False.
-        """        
-        values = self._values
-        sorted_values = self._mergesort(values, 0, len(self)-1)
+        """
+        sorted_values = self._mergesort(0, len(self)-1)
         sorted_ArrayList = ArrayList(sorted_values)
         
         if reverse == True:
             sorted_ArrayList.reverse()
         return sorted_ArrayList
     
-    def _mergesort(self, arr: NDArray[np.int_], start, end) -> NDArray[np.int_]:
+    def _mergesort(self, start, end) -> NDArray[np.int_]:
         """Recursively sorts the values within a user-specified
-        range in an user-specified NumPy array with mergesort.
+        range in this ArrayList's NumPy array with mergesort.
 
         Args:
-            arr (NDArray[np.int_]): The user-specified NumPy array
             start (_type_): The first index of range (inclusive)
             end (_type_): The last index of range(inclusive)
 
@@ -517,33 +512,35 @@ class ArrayList:
         """
         length = end - start + 1
         if length == 0:
-            return np.arr([])
+            return []
         if length == 1: # Does not handle len-0 case
-            return arr[start:start+1]
+            return [self[start]]
         
         mid = start + length//2
-        left_half = self._mergesort(arr, start, mid-1)
-        right_half = self._mergesort(arr, mid, end)
+        left_half = self._mergesort(start, mid-1)
+        right_half = self._mergesort(mid, end)
         
         merged = self._merge(left_half, right_half)
         return merged
     
-    def _merge(self, left_arr: NDArray[np.int_], right_arr: NDArray[np.int_]) -> NDArray[np.int_]:
-        """Merges two user-specified NumPy arrays which are 
+    def _merge(self, left_arr: list[int], right_arr: list[int]) -> list[int]:
+        """Merges two user-specified Python lists which are 
         sorted in ascending order into another array sorted 
         in ascending order consisting of the values from the 
         two original arrays.
 
         Args:
-            left (NDArray[np.int_]): The first user-specified array
-            right (NDArray[np.int_]): The second user-specified array
+            left (list[int_]): The first user-specified Python
+            list
+            right (list[int_]): The second user-specified Python
+            list
 
         Returns:
-            NDArray[np.int_]: The result from merging the left
-            and right arrays
+            list[int_]: The result from merging the left
+            and right Python lists
         """
         merged_length = len(left_arr) + len(right_arr)
-        merged = np.array([INITIAL_VALUE_IN_MERGED_ARR]*merged_length, dtype = int)
+        merged = [INITIAL_VALUE_IN_MERGED_ARR] * merged_length
         left_ptr, right_ptr, merged_ptr = 0, 0, 0
         
         while left_ptr < len(left_arr) or right_ptr < len(right_arr):
@@ -566,3 +563,57 @@ class ArrayList:
             merged_ptr += 1
             
         return merged
+    
+    def quicksort(self, reverse: bool = False) -> None:
+        """Sorts the values in this ArrayList using randomized
+        quicksort. Like the selection_sort, bubblesort, and
+        insertion_sort methods, the quicksort method sorts this
+        ArrayList in-place.
+        
+        By default, the values are sorted in ascending order.
+        However, the values can be sorted in descending order
+        by setting the reverse parameter to true. For example,
+        calling
+            ArrayList([6,3,1,5]).quicksort(True)
+        will change the values in the ArrayList to [6,5,3,1].
+        
+        Args:
+            reverse (bool, optional): If true, then the values
+            in this ArrayList will be sorted in ascending 
+            order. Defaults to False.
+        """
+        self._quicksort(0, len(self)-1)
+        
+    def _quicksort(self, start: int, end: int) -> None:
+        """Sorts the values in a user-specified range in this 
+        ArrayList by using randomized quicksort to recursively 
+        put of this ArrayList's values at its correct position
+        in the final, sorted version of this ArrayList.
+
+        Args:
+            start (int): The first index in the user-specified
+            range (inclusive)
+            end (int): The last index in the user-specified
+            range (inclusive)
+        """
+        pivot_index = self.partition(self, start, end)
+        self._quicksort(start, pivot_index-1)
+        self._quicksort(pivot_index+1, end)
+        
+    def _partition(self, start: int, end: int) -> int:
+        """Randomly selects a value 
+        (known as the "pivot" value) in a user-specified range
+        in this ArrayList and puts that value at its correct
+        position in the final, sorted version of this 
+        ArrayList.
+
+        Args:
+            start (int): The first index in the user-specified
+            range (inclusive)
+            end (int): The last index in the user-specified
+            range (inclusive)
+
+        Returns:
+            int: The pivot value's position (index) in the 
+            final, sorted version of this ArrayList.
+        """
