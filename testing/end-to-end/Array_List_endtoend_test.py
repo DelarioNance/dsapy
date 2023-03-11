@@ -125,7 +125,7 @@ class TestSelectionSorting:
     def test_selection_sort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
         """Tests if a user can sort the values in an ArrayList
         of a user-specified number of random ints, in ascending
-        order.
+        order, using selection sort.
 
         Args:
             num_of_ints (int): The user-specified number of 
@@ -149,7 +149,7 @@ class TestSelectionSorting:
     def test_selection_sort_ArrayList_in_descending_order(self, num_of_ints) -> None:
         """Tests if a user can sort the values in an ArrayList
         of a user-specified number of random ints, in descending
-        order.
+        order, using selection sort.
 
         Args:
             num_of_ints (int): The user-specified number of 
@@ -181,7 +181,7 @@ class TestBubbleSorting:
     def test_bubblesort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
         """Tests if a user can sort the values in an ArrayList
         of a user-specified number of random ints, in ascending
-        order.
+        order, using bubblesort.
 
         Args:
             num_of_ints (int): The user-specified number of 
@@ -205,7 +205,7 @@ class TestBubbleSorting:
     def test_bubblesort_ArrayList_in_descending_order(self, num_of_ints) -> None:
         """Tests if a user can sort the values in an ArrayList
         of a user-specified number of random ints, in descending
-        order.
+        order, using bubblesort.
 
         Args:
             num_of_ints (int): The user-specified number of 
@@ -237,7 +237,7 @@ class TestInsertionSorting:
     def test_insertion_sort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
         """Tests if a user can sort the values in an ArrayList
         of a user-specified number of random ints, in ascending
-        order.
+        order, using insertion sort.
 
         Args:
             num_of_ints (int): The user-specified number of 
@@ -261,7 +261,7 @@ class TestInsertionSorting:
     def test_insertion_sort_ArrayList_in_descending_order(self, num_of_ints) -> None:
         """Tests if a user can sort the values in an ArrayList
         of a user-specified number of random ints, in descending
-        order.
+        order, using insertion sort.
 
         Args:
             num_of_ints (int): The user-specified number of 
@@ -283,17 +283,17 @@ class TestMergeSorting:
     due to mergesort's worst-case running time of O(n log n).
     """
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
-            pytest.param(10000, id='ten-thousand ints')
+        pytest.param(1, id='one int'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(1000, id='one-thousand ints'),
+        pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_mergesort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
         """Tests if a user can sort the values in an ArrayList
         of a user-specified number of random ints, in ascending
-        order.
+        order, using mergesort.
 
         Args:
             num_of_ints (int): The user-specified number of 
@@ -307,17 +307,17 @@ class TestMergeSorting:
         assert sorted_arraylist == sorted(pytest, reverse=False)
     
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
-            pytest.param(10000, id='ten-thousand ints'),
+        pytest.param(1, id='one int'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(1000, id='one-thousand ints'),
+        pytest.param(10000, id='ten-thousand ints'),
     ])
     
-    def test_mergesort_ArrayList_in_descending_order(self, num_of_ints) -> None:
+    def test_mergesort_ArrayList_in_descending_order(self, num_of_ints: int) -> None:
         """Tests if a user can sort the values in an ArrayList
         of a user-specified number of random ints, in descending
-        order.
+        order, using mergesort.
 
         Args:
             num_of_ints (int): The user-specified number of 
@@ -327,5 +327,55 @@ class TestMergeSorting:
         arraylist = ArrayList(pytest)
         
         sorted_arraylist = arraylist.mergesort(reverse=True)
+        
+        assert sorted_arraylist == sorted(pytest, reverse=True)
+        
+        
+class TestQuickSorting:
+    @pytest.mark.parametrize("num_of_ints", [
+        pytest.param(1, id='one int'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(1000, id='one-thousand ints'),
+        pytest.param(10000, id='ten-thousand ints')
+    ])
+    
+    def test_quicksort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
+        """Tests if a user can sort the values in an ArrayList
+        of a user-specified number of random ints, in ascending
+        order, using quicksort.
+        
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        pytest = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pytest)
+        
+        sorted_arraylist = arraylist.quicksort(reverse=False)
+        
+        assert sorted_arraylist == sorted(pytest, reverse=False)
+        
+    @pytest.mark.parametrize("num_of_ints", [
+        pytest.param(1, id='one int'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(1000, id='one-thousand ints'),
+        pytest.param(10000, id='ten-thousand ints')
+    ])
+    
+    def test_quicksort_ArrayList_in_descending_order(self, num_of_ints: int) -> None:
+        """Tests if a user can sort the values in an ArrayList
+        of a user-specified number of random ints, in descending
+        order, using quicksort.
+
+        Args:
+            num_of_ints (int): The user-specified number of 
+            random ints
+        """
+        pytest = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pytest)
+        
+        sorted_arraylist = arraylist.quicksort(reverse=True)
         
         assert sorted_arraylist == sorted(pytest, reverse=True)
