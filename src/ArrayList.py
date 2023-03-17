@@ -3,7 +3,7 @@ A Python program containing the class definition for my implementation
 of the ArrayList data structure using test-driven development (TDD).
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - March 7, 2023
+Date: January 24, 2023 - March 17, 2023
 """
 
 # Standard library imports
@@ -11,6 +11,7 @@ from __future__ import annotations # for using ArrayList type hint in ArrayList 
 from math import ceil # for rounding up initial ArrayList capacities
 import numpy as np
 from numpy.typing import NDArray # for NumPy type hints
+import random
 from typing import Union # for Union type hint
 
 # Global variables
@@ -565,10 +566,10 @@ class ArrayList:
         return merged
     
     def quicksort(self, reverse: bool = False) -> None:
-        """Sorts the values in this ArrayList using randomized
-        quicksort. Like the selection_sort, bubblesort, and
-        insertion_sort methods, the quicksort method sorts this
-        ArrayList in-place.
+        """Sorts the values in this ArrayList using quicksort.
+        Like the selection_sort, bubblesort, and
+        insertion_sort methods, the quicksort method sorts 
+        this ArrayList in-place.
         
         By default, the values are sorted in ascending order.
         However, the values can be sorted in descending order
@@ -586,9 +587,11 @@ class ArrayList:
         
     def _quicksort(self, start: int, end: int) -> None:
         """Sorts the values in a user-specified range in this 
-        ArrayList by using randomized quicksort to recursively 
-        put of this ArrayList's values at its correct position
-        in the final, sorted version of this ArrayList.
+        ArrayList by using a version of quicksort in which the
+        pivot value is always the leftmost value in the 
+        given range. Recursively puts each value of this 
+        ArrayList at its correct position in the final, sorted
+        version of this ArrayList.
 
         Args:
             start (int): The first index in the user-specified
@@ -596,16 +599,17 @@ class ArrayList:
             end (int): The last index in the user-specified
             range (inclusive)
         """
-        pivot_index = self.partition(self, start, end)
+        if start >= end:
+            return
+        pivot_index = self._partition(start, end)
         self._quicksort(start, pivot_index-1)
         self._quicksort(pivot_index+1, end)
         
     def _partition(self, start: int, end: int) -> int:
-        """Randomly selects a value 
-        (known as the "pivot" value) in a user-specified range
-        in this ArrayList and puts that value at its correct
-        position in the final, sorted version of this 
-        ArrayList.
+        """Selects the leftmost value (known as the "pivot") in 
+        a user-specified range in this ArrayList and puts that 
+        value at its correct position in the final, sorted 
+        version of this ArrayList.
 
         Args:
             start (int): The first index in the user-specified
@@ -614,6 +618,32 @@ class ArrayList:
             range (inclusive)
 
         Returns:
-            int: The pivot value's position (index) in the 
-            final, sorted version of this ArrayList.
+            int: The pivot value's index in the final, sorted 
+            version of this ArrayList.
         """
+        # Initialize start index of pivot
+        starting_pivot_index = start
+        pivot_val = self[starting_pivot_index]
+        
+        # Put pivot in correct place
+        left = start + 1
+        right = end
+        
+        while left <= right:
+            # If left and right values are mismatched, swap them
+            if self[left] > pivot_val and pivot_val > self[right]:
+                self._swap(left, right)
+                left += 1
+                right -= 1
+            else:
+                # Only move left or right if it is not mismatched
+                if self[left] < pivot_val:
+                    left += 1
+                if pivot_val < self[right]:
+                    right -= 1
+                    
+        self._swap(starting_pivot_index, min(left,right))
+        
+        # Return final index of pivot
+        ending_pivot_index = min(left,right)
+        return ending_pivot_index

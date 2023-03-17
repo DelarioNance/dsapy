@@ -3,7 +3,7 @@ A Python script for end-to-end testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: February 15, 2023 - March 7, 2023
+Date: February 15, 2023 - March 17, 2023
 """
 
 # Standard library imports
@@ -131,12 +131,12 @@ class TestSelectionSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
         arraylist.selection_sort(reverse=False)
         
-        assert arraylist == sorted(pytest, reverse=False)
+        assert arraylist == sorted(pylist, reverse=False)
     
     @pytest.mark.parametrize("num_of_ints", [
             pytest.param(1, id='one int'),
@@ -155,12 +155,12 @@ class TestSelectionSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
         arraylist.selection_sort(reverse=True)
         
-        assert arraylist == sorted(pytest, reverse=True)
+        assert arraylist == sorted(pylist, reverse=True)
         
         
 class TestBubbleSorting:
@@ -187,12 +187,12 @@ class TestBubbleSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
         arraylist.bubblesort(reverse=False)
         
-        assert arraylist == sorted(pytest, reverse=False)
+        assert arraylist == sorted(pylist, reverse=False)
     
     @pytest.mark.parametrize("num_of_ints", [
             pytest.param(1, id='one int'),
@@ -211,12 +211,12 @@ class TestBubbleSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
         arraylist.bubblesort(reverse=True)
         
-        assert arraylist == sorted(pytest, reverse=True)
+        assert arraylist == sorted(pylist, reverse=True)
         
         
 class TestInsertionSorting:
@@ -243,12 +243,12 @@ class TestInsertionSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
         arraylist.insertion_sort(reverse=False)
         
-        assert arraylist == sorted(pytest, reverse=False)
+        assert arraylist == sorted(pylist, reverse=False)
     
     @pytest.mark.parametrize("num_of_ints", [
             pytest.param(1, id='one int'),
@@ -267,12 +267,12 @@ class TestInsertionSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
         arraylist.insertion_sort(reverse=True)
         
-        assert arraylist == sorted(pytest, reverse=True)
+        assert arraylist == sorted(pylist, reverse=True)
         
         
 class TestMergeSorting:
@@ -299,12 +299,12 @@ class TestMergeSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
         sorted_arraylist = arraylist.mergesort(reverse=False)
         
-        assert sorted_arraylist == sorted(pytest, reverse=False)
+        assert sorted_arraylist == sorted(pylist, reverse=False)
     
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(1, id='one int'),
@@ -323,12 +323,12 @@ class TestMergeSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
         sorted_arraylist = arraylist.mergesort(reverse=True)
         
-        assert sorted_arraylist == sorted(pytest, reverse=True)
+        assert sorted_arraylist == sorted(pylist, reverse=True)
         
         
 class TestQuickSorting:
@@ -349,12 +349,12 @@ class TestQuickSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        arraylist = ArrayList(pylist)
         
-        sorted_arraylist = arraylist.quicksort(reverse=False)
+        arraylist.quicksort(reverse=False)
         
-        assert sorted_arraylist == sorted(pytest, reverse=False)
+        assert arraylist == sorted(pylist, reverse=False)
         
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(1, id='one int'),
@@ -373,9 +373,10 @@ class TestQuickSorting:
             num_of_ints (int): The user-specified number of 
             random ints
         """
-        pytest = rand_pylist(num_of_ints)
-        arraylist = ArrayList(pytest)
+        pylist = rand_pylist(num_of_ints)
+        print(pylist)
+        arraylist = ArrayList(pylist)
         
-        sorted_arraylist = arraylist.quicksort(reverse=True)
+        arraylist.quicksort(reverse=True)
         
-        assert sorted_arraylist == sorted(pytest, reverse=True)
+        assert arraylist == sorted(pylist, reverse=True)
