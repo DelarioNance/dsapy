@@ -3,7 +3,7 @@ A Python script for integration testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - March 7, 2023
+Date: January 24, 2023 - March 19, 2023
 """
 
 # Standard library imports
@@ -288,11 +288,14 @@ class TestCheckingForEquality:
     """
     class TestCheckingIfEqualForSameSizeAndSameValues:
         @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(0, id='zero ints'),
             pytest.param(1, id='one int'),
+            pytest.param(5, id='five ints'),
             pytest.param(10, id='ten ints'),
+            pytest.param(55, id='fifty-five ints'),
             pytest.param(100, id='one-hundred ints'),
+            pytest.param(555, id='five hundred fifty-five ints'),
             pytest.param(1000, id='one-thousand ints'),
+            pytest.param(5555, id='five thousand five hundred fifty-five ints'),
             pytest.param(10000, id='ten-thousand ints')
         ])
         

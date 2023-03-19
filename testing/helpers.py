@@ -77,28 +77,3 @@ def rand_pylist(size: int, start: int = -1000, end: int = 1000) -> list:
     
     random_values = [random.randint(start, end) for x in range(size)]
     return random_values
-
-def arraylist_range(start: int, end: int) -> list[int]:
-    """Returns an Arraylist of the ints in the integer range
-       [start, end].
-
-    Args:
-        start (int): The start of the integer range, inclusive.
-        end (int): The start of the integer range, inclusive.
-
-    Returns:
-        list[int]: The Arraylist of ints in the range
-                   [start,end]
-    """
-    sequence_of_values = [x for x in range(start, end+1)]
-    return ArrayList(sequence_of_values)
-
-def ndarray_of_first_ints(n: int) -> np.ndarray:
-    """Returns a one-dimensional NumPy array of the first n
-    positive integers.
-
-    Args:
-        n (int): The number of the first positive integers
-    """
-    first_n_ints = np.array([x for x in range(1,n+1)])
-    return first_n_ints

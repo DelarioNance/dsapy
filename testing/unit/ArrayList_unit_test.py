@@ -3,7 +3,7 @@ A Python script for unit testing the ArrayList class with
 Pytest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - March 7, 2023
+Date: January 24, 2023 - March 19, 2023
 """
 
 # Standard library imports
@@ -34,11 +34,14 @@ TEST_RAN_WITHOUT_ERROR = True
 
 class TestGettingSize:
     @pytest.mark.parametrize("num_of_ints", [
-        pytest.param(0, id='zero ints'),
         pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
         pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
         pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
         pytest.param(1000, id='one-thousand ints'),
+        pytest.param(5555, id='five thousand five hundred fifty-five ints'),
         pytest.param(10000, id='ten-thousand ints')
     ])
     
@@ -78,11 +81,14 @@ class TestPrinting:
     by anthonywritescode. 
     """
     @pytest.mark.parametrize("num_of_ints", [
-        pytest.param(0, id='zero ints'),
         pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
         pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
         pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
         pytest.param(1000, id='one-thousand ints'),
+        pytest.param(5555, id='five thousand five hundred fifty-five ints'),
         pytest.param(10000, id='ten-thousand ints')
     ])
     
@@ -383,9 +389,13 @@ class TestRemovingValueWithoutError:
 class TestSearchingForValue:
     @pytest.mark.parametrize("num_of_ints, target", [
         pytest.param(1, DEFAULT_INT, id='one int'),
+        pytest.param(5, DEFAULT_INT, id='five ints'),
         pytest.param(10, DEFAULT_INT, id='ten ints'),
+        pytest.param(55, DEFAULT_INT, id='fifty-five ints'),
         pytest.param(100, DEFAULT_INT, id='one-hundred ints'),
+        pytest.param(555, DEFAULT_INT, id='five hundred fifty-five ints'),
         pytest.param(1000, DEFAULT_INT, id='one-thousand ints'),
+        pytest.param(5555, DEFAULT_INT, id='five thousand five hundred fifty-five ints'),
         pytest.param(10000, DEFAULT_INT, id='ten-thousand ints')
     ])
     

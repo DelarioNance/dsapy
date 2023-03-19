@@ -2,7 +2,7 @@
 
 Author: Delario Nance, Jr.
 
-Date: January 18, 2023 - February 17, 2023
+Date: January 18, 2023 - March 19, 2023
 
 ## Introduction
 A test plan organizing the `ArrayList` functionalities to setup test, unit test, integration test, and end-to-end test.
@@ -41,8 +41,6 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
     - [Insertion Sorting](#insertion-sorting)
     - [Merge Sorting](#merge-sorting)
     - [Quick Sorting](#quick-sorting)
-- [Part 2 - Cleaning up Code](#part-2---cleaning-up-code)
-  - [Test Parametrization](#test-parametrization)
 
 # Part 1 - Writing Tests
 
@@ -532,9 +530,3 @@ A test plan organizing the `ArrayList` functionalities to setup test, unit test,
 50. Quick sort `ArrayList` of `10` random integer in `[-1000,1000]` in descending order
 51. Quick sort `ArrayList` of `100` random integer in `[-1000,1000]` in descending order
 52. Quick sort `ArrayList` of `10000` random integer in `[-1000,1000]` in descending order
-
----
-
-# Part 2 - Cleaning up Code
-
-## Test Parametrization

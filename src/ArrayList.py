@@ -23,6 +23,18 @@ NP_NDARRAY_DTYPE = np.ndarray
 ARRAYLIST_INPUT_TYPES = Union[list[int],NDArray[np.int_]]
 
 class ArrayList:
+    """An implementation of the ArrayList data structure in 
+    Python. For the sake of challenging my coding skills, I
+    chose to build ArrayList objects on top of NumPy arrays
+    rather than Python's built-in array class. From prior 
+    tests, I found that many of the methods in this class are
+    slower than they would be if the class's ArrayList 
+    objects were built on top of Python's built-in array class.
+    I believe that this is due to the overhead caused by 
+    converting Python lists to NumPy arrays in the class's
+    __init__ method and because NumPy arrays are suited for
+    mathematics operations which benefit from vectorization.
+    """
     def __init__(self, values: ARRAYLIST_INPUT_TYPES) -> None:
         """Constructs an ArrayList object containing the
         values from a user-specified Python list or NumPy
@@ -609,7 +621,7 @@ class ArrayList:
         self._quicksort(pivot_index+1, end)
         
     def _partition(self, start: int, end: int) -> int:
-        """Selects the leftmost value (known as the "pivot") in 
+        """Randomly selects a value (known as the "pivot") in
         a user-specified range in this ArrayList and puts that 
         value at its correct position in the final, sorted 
         version of this ArrayList.
@@ -624,24 +636,19 @@ class ArrayList:
             int: The pivot value's index in the final, sorted 
             version of this ArrayList.
         """
-        # Initialize start index of pivot
+        self._move_pivot_to_start(start, end)
         starting_pivot_index = start
         pivot_val = self[starting_pivot_index]
         
-        # Put pivot in correct place
-        left = start + 1
-        right = end
-        
+        left, right = start + 1, end
         while True:
-            # Move left ptr to first mismatched position
+            # <= forces values equal to the pivot to be placed to the left
             while left < len(self) and self[left] <= pivot_val:
                 left += 1
             
-            # Move right ptr to first mismatched position
             while 0 < right and pivot_val < self[right]:
                 right -= 1
             
-            # Swap left and right values
             if left < right:
                 self._swap(left, right)
             else:
@@ -651,3 +658,17 @@ class ArrayList:
         # Return final index of pivot
         ending_pivot_index = right
         return ending_pivot_index
+    
+    def _move_pivot_to_start(self, start: int, end: int) -> None:
+        """Randomly selects a value (known as the "pivot") in
+        a user-specified range in this ArrayList and puts it 
+        at the start of the given range.
+
+        Args:
+            start (int): The first index in the user-specified
+            range (inclusive)
+            end (int): The last index in the user-specified
+            range (inclusive)
+        """
+        initial_index_of_pivot = random.randint(start, end)
+        self._swap(start, initial_index_of_pivot)

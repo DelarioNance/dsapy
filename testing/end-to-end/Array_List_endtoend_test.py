@@ -3,7 +3,7 @@ A Python script for end-to-end testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: February 15, 2023 - March 17, 2023
+Date: February 15, 2023 - March 19, 2023
 """
 
 # Standard library imports
@@ -33,11 +33,15 @@ DEFAULT_NEGATIVE_INT_NOT_IN_ARRAYLIST = -1729
 
 class TestGettingMinimum:
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
-            pytest.param(10000, id='ten-thousand ints')
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_get_min_in_ArrayList(self, num_of_ints: int) -> None:
@@ -58,11 +62,15 @@ class TestGettingMinimum:
         
 class TestGettingMaximum:
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
-            pytest.param(10000, id='ten-thousand ints')
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
         
     def test_get_max_in_ArrayList(self, num_of_ints: int) -> None:
@@ -83,11 +91,15 @@ class TestGettingMaximum:
         
 class TestReversing:
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            pytest.param(1000, id='one-thousand ints'),
-            pytest.param(10000, id='ten-thousand ints')
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_reverse_ArrayList(self, num_of_ints: int) -> None:
@@ -115,11 +127,15 @@ class TestSelectionSorting:
     selection_sort's worst-case running time of O(n^2).
     """
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            # pytest.param(1000, id='one-thousand ints'), SLOW
-            # pytest.param(10000, id='ten-thousand ints') SLOW
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_selection_sort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
@@ -139,11 +155,15 @@ class TestSelectionSorting:
         assert arraylist == sorted(pylist, reverse=False)
     
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            # pytest.param(1000, id='one-thousand ints'), SLOW
-            # pytest.param(10000, id='ten-thousand ints') SLOW
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_selection_sort_ArrayList_in_descending_order(self, num_of_ints) -> None:
@@ -171,11 +191,15 @@ class TestBubbleSorting:
     bubblesort's worst-case running time of O(n^2).
     """
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            # pytest.param(1000, id='one-thousand ints'), SLOW
-            # pytest.param(10000, id='ten-thousand ints') SLOW
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_bubblesort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
@@ -195,11 +219,15 @@ class TestBubbleSorting:
         assert arraylist == sorted(pylist, reverse=False)
     
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            # pytest.param(1000, id='one-thousand ints'), SLOW
-            # pytest.param(10000, id='ten-thousand ints') SLOW
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_bubblesort_ArrayList_in_descending_order(self, num_of_ints) -> None:
@@ -227,11 +255,15 @@ class TestInsertionSorting:
     insertion_sort's worst-case running time of O(n^2).
     """
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            # pytest.param(1000, id='one-thousand ints'), SLOW
-            # pytest.param(10000, id='ten-thousand ints') SLOW
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_insertion_sort_ArrayList_in_ascending_order(self, num_of_ints: int) -> None:
@@ -251,11 +283,15 @@ class TestInsertionSorting:
         assert arraylist == sorted(pylist, reverse=False)
     
     @pytest.mark.parametrize("num_of_ints", [
-            pytest.param(1, id='one int'),
-            pytest.param(10, id='ten ints'),
-            pytest.param(100, id='one-hundred ints'),
-            # pytest.param(1000, id='one-thousand ints'), SLOW
-            # pytest.param(10000, id='ten-thousand ints') SLOW
+        pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
+        pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
+        pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
+        # pytest.param(1000, id='one-thousand ints'),
+        # pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        # pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_insertion_sort_ArrayList_in_descending_order(self, num_of_ints) -> None:
@@ -284,9 +320,13 @@ class TestMergeSorting:
     """
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
         pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
         pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
         pytest.param(1000, id='one-thousand ints'),
+        pytest.param(5555, id='five thousand five hundred fifty-five ints'),
         pytest.param(10000, id='ten-thousand ints')
     ])
     
@@ -308,10 +348,14 @@ class TestMergeSorting:
     
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
         pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
         pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
         pytest.param(1000, id='one-thousand ints'),
-        pytest.param(10000, id='ten-thousand ints'),
+        pytest.param(5555, id='five thousand five hundred fifty-five ints'),
+        pytest.param(10000, id='ten-thousand ints')
     ])
     
     def test_mergesort_ArrayList_in_descending_order(self, num_of_ints: int) -> None:
@@ -334,9 +378,13 @@ class TestMergeSorting:
 class TestQuickSorting:
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
         pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
         pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
         pytest.param(1000, id='one-thousand ints'),
+        pytest.param(5555, id='five thousand five hundred fifty-five ints'),
         pytest.param(10000, id='ten-thousand ints')
     ])
     
@@ -358,9 +406,13 @@ class TestQuickSorting:
         
     @pytest.mark.parametrize("num_of_ints", [
         pytest.param(1, id='one int'),
+        pytest.param(5, id='five ints'),
         pytest.param(10, id='ten ints'),
+        pytest.param(55, id='fifty-five ints'),
         pytest.param(100, id='one-hundred ints'),
+        pytest.param(555, id='five hundred fifty-five ints'),
         pytest.param(1000, id='one-thousand ints'),
+        pytest.param(5555, id='five thousand five hundred fifty-five ints'),
         pytest.param(10000, id='ten-thousand ints')
     ])
     
