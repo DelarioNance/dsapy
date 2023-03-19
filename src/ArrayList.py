@@ -585,6 +585,9 @@ class ArrayList:
         """
         self._quicksort(0, len(self)-1)
         
+        if reverse:
+            self.reverse()
+        
     def _quicksort(self, start: int, end: int) -> None:
         """Sorts the values in a user-specified range in this 
         ArrayList by using a version of quicksort in which the
@@ -629,21 +632,22 @@ class ArrayList:
         left = start + 1
         right = end
         
-        while left <= right:
-            # If left and right values are mismatched, swap them
-            if self[left] > pivot_val and pivot_val > self[right]:
-                self._swap(left, right)
+        while True:
+            # Move left ptr to first mismatched position
+            while left < len(self) and self[left] <= pivot_val:
                 left += 1
+            
+            # Move right ptr to first mismatched position
+            while 0 < right and pivot_val < self[right]:
                 right -= 1
+            
+            # Swap left and right values
+            if left < right:
+                self._swap(left, right)
             else:
-                # Only move left or right if it is not mismatched
-                if self[left] < pivot_val:
-                    left += 1
-                if pivot_val < self[right]:
-                    right -= 1
+                self._swap(starting_pivot_index, right)
+                break
                     
-        self._swap(starting_pivot_index, min(left,right))
-        
         # Return final index of pivot
-        ending_pivot_index = min(left,right)
+        ending_pivot_index = right
         return ending_pivot_index
