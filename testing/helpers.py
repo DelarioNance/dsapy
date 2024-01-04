@@ -13,8 +13,17 @@ import random
 import sys
 
 # Accessing project directories
-WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/BitBucket/dsapy/src"
-sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
+from pathlib import Path # for adding filepaths
+import sys # for adding filepaths
+
+# Accessing project directories
+FILEPATH_TO_SRC = str(Path(__file__)
+                      .parent # path to folder of unit tests
+                      .parent # path to folder of tests
+                      .parent # path to project folder
+                      / "src" # path to folder of data structures
+                      )
+sys.path.append(FILEPATH_TO_SRC)
 
 # Local application imports
 from ArrayList import ArrayList

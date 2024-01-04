@@ -8,13 +8,22 @@ Date: January 24, 2023 - March 19, 2023
 
 # Standard library imports
 import random # for selecting random ints
+from pathlib import Path # for retrieving filepaths
 import sys # for adding filepaths
 
 # Accessing project directories
-WSL_FILEPATH_TO_SRC = "/home/delario-nance-jr/BitBucket/dsapy/src"
-sys.path.append(WSL_FILEPATH_TO_SRC) # ArrayList
-WSL_FILEPATH_TO_TESTING = "/home/delario-nance-jr/BitBucket/dsapy/testing" 
-sys.path.append(WSL_FILEPATH_TO_TESTING) # helpers
+FILEPATH_TO_TESTING = str(Path(__file__) # path to this file
+                          .parent # path to folder of unit tests
+                          .parent # path to folder of tests
+                          )
+FILEPATH_TO_SRC = str(Path(__file__)
+                      .parent # path to folder of unit tests
+                      .parent # path to folder of tests
+                      .parent # path to project folder
+                      / "src" # path to folder of data structures
+                      )
+sys.path.append(FILEPATH_TO_TESTING)
+sys.path.append(FILEPATH_TO_SRC)
 
 # Related third part imports
 import pytest # for markers
