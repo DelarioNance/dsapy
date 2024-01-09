@@ -2,8 +2,6 @@
 
 Author: Delario Nance, Jr.
 
-Date: February 26, 2023 - March 19, 2023
-
 ## Introduction
 A Markdown file containing the documentation of the `ArrayList` class.
 

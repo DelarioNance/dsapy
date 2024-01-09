@@ -3,7 +3,6 @@ A Python script for integration testing the ArrayList class
 with PyTest.
 
 Author: Delario Nance, Jr.
-Date: January 24, 2023 - March 19, 2023
 """
 
 # Standard library imports
