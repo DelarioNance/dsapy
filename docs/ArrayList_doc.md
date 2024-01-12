@@ -23,7 +23,7 @@ A Markdown file containing the documentation of the `ArrayList` class.
 |                   | `_get_corresponding_positive_index` | $O(1)$                                          | $O(1)$                                      |
 |                   | `__contains__`                      | $O(n)$                                          | $O(1)$                                      |
 |                   | `__eq__`                            | $O(n)$                                          | $O(1)$                                      |
-|                   | `__str__`                           | ?                                               | ?                                           |
+|                   | `__str__`                           | $O(n)$                                          | $O(n)$                                      |
 | **Primary**       | `append`                            | $O(1)$ (amortized)                              | $O(1)$ (amortized)                          |
 |                   | `remove`                            | $O(n)$                                          | $O(1)$                                      |
 |                   | `_shift_values_left_to_index`       | $O(n)$                                          | $O(1)$                                      |
